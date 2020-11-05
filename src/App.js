@@ -1,13 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-import './App.css';
+import './Styles/App.min.css';
+
+import MainSite from './Sites/MainSite';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <Router>
+      <MainSite />
+    </Router>
   );
 }
 

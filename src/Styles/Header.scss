@@ -1,0 +1,31 @@
+@import 'vars';
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+
+    .logo {
+        position: fixed;
+        top: 40px;
+        left: 50px;
+        font-family: Quantify, Helvetica, sans-serif;
+        font-size: 75px;
+        color: $text-color;
+    }
+
+    .logIn {
+        position: fixed;
+        top: 35px;
+        right: 35px;
+
+        button,
+        span {
+            border: none;
+            background-color: transparent;
+            color: $text-color;
+            font-size: 28px;
+            font-family: Questrial, Helvetica, sans-serif;
+        }
+    }
+}

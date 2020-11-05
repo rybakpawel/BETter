@@ -1,0 +1,16 @@
+@import 'vars';
+
+.menu {
+    position: absolute;
+    top: 110px;
+    right: 70px;
+    width: 470px;
+    height: calc(100% - 110px);
+    background: linear-gradient(180deg, #849BD5 64.58%, #4168CB 100%);
+
+    .hamburger {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+    }
+}
