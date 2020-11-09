@@ -5,18 +5,19 @@
     top: 50%;
     left: 0;
     transform: translate(0, -50%);
-    width: 1530px;
-    height: 860px;
+    width: 76%;
+    height: 71%;
 }
 
 .startButton {
     position: absolute;
-    bottom: 20%;
+    bottom: 25%;
     left: 50%;
-    transform: translate(0, -50%);
+    transform: translate(-50%, 0);
     padding: 20px 80px;
     background-color: $main-color;
     color: $text-color;
     border: 2px solid $text-color;
     font-size: 35px;
+    font-family: $main-font;
 }

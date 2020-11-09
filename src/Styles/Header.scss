@@ -4,14 +4,16 @@
     position: relative;
     display: flex;
     justify-content: space-between;
+    font-family: $main-font;
 
     .logo {
         position: fixed;
         top: 40px;
         left: 50px;
+        color: $text-color;
         font-family: Quantify, Helvetica, sans-serif;
         font-size: 75px;
-        color: $text-color;
+        font-weight: normal;
     }
 
     .logIn {
@@ -25,7 +27,7 @@
             background-color: transparent;
             color: $text-color;
             font-size: 28px;
-            font-family: Questrial, Helvetica, sans-serif;
+            font-family: 'Questrial', sans-serif;
         }
     }
 }

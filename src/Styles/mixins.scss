@@ -1,0 +1,8 @@
+@mixin menuAnimationFrom {
+    transform: translateX(0);
+    overflow: hidden;
+}
+
+@mixin menuAnimationMiddle {
+    transform: translateX(50%);
+}
