@@ -1,0 +1,128 @@
+@import 'vars';
+@import 'mixins';
+
+.loginContainer {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(6px);
+    z-index: 1;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    width: 336px;
+    height: 426px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 22px 28.5px 27px 28.5px;
+    background-color: $main-color;
+    border: 2px $text-color solid;
+    font-family: 'Questrial', sans-serif;
+    opacity: 0;
+    transition: 0.8s;
+    z-index: 2;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 8px;
+
+        label {
+            padding-left: 3px;
+            color: $text-color;
+            font-size: 14px;
+        }
+
+        input {
+            // padding: 0 5px;
+            height: 40px;
+            font-size: 20px;
+            background-color: $text-color;
+        }
+
+        button {
+            @include resetButton;
+            font-size: 14px;
+            align-self: flex-end;
+            font-family: 'Questrial', sans-serif;
+        }
+    }
+
+    .logButton {
+        @include resetButton;
+        width: 200px;
+        padding: 13px 60px;
+        margin: 110px 0 60px 0;
+        border-bottom: 1px $text-color solid;
+        font-size: 25px;
+        font-family: 'Questrial', sans-serif;
+        align-self: center;
+        transition: 0.3s;
+
+        &:hover {
+            @include hoverButton;
+        }
+    }
+
+    button {
+        @include resetButton;
+        font-family: 'Questrial', sans-serif;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-600) {
+    .loginForm {
+        width: 270px;
+        height: 360px;
+
+        div {
+            padding-bottom: 5px;
+
+            label {
+                padding-left: 2px;
+                font-size: 12px;
+            }
+
+            input {
+                height: 25px;
+            }
+
+            button {
+                font-size: 12px;
+            }
+        }
+
+        .logButton {
+            width: 150px;
+            padding: 13px 40px;
+            margin: 110px 0 40px 0;
+            font-size: 20px;
+        }
+
+        button {
+            font-size: 13px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-650) and (orientation: landscape) {
+    .loginForm {
+        width: 400px;
+        height: 300px;
+
+        .logButton {
+            width: 175px;
+            margin: 60px 0 40px 0;
+            font-size: 20px;
+        }
+
+        button {
+            font-size: 13px;
+        }
+    }
+}

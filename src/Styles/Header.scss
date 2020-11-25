@@ -1,4 +1,5 @@
 @import 'vars';
+@import 'mixins';
 
 .header {
     position: relative;
@@ -7,13 +8,14 @@
     font-family: $main-font;
 
     .logo {
+        @include resetButton;
         position: fixed;
         top: 40px;
         left: 50px;
-        color: $text-color;
-        font-family: Quantify, Helvetica, sans-serif;
+        font-family: 'Quantify', 'Helvetica', sans-serif;
         font-size: 75px;
         font-weight: normal;
+        cursor: pointer;
     }
 
     .logIn {
@@ -23,11 +25,152 @@
 
         button,
         span {
-            border: none;
-            background-color: transparent;
-            color: $text-color;
+            @include resetButton;
             font-size: 28px;
             font-family: 'Questrial', sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.05, 1.05);
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1600) {
+    .header {
+        .logIn {
+
+            button,
+            span {
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1600) and (max-height: $breakpoint-900) {
+    .header {
+        .logo {
+            top: 25px;
+        }
+
+        .logIn {
+            top: 25px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1450) {
+    .header {
+        .logo {
+            top: 35px;
+        }
+
+        .logIn {
+            top: 30px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1450) and (max-height: $breakpoint-900) {
+    .header {
+        .logo {
+            top: 25px;
+        }
+
+        .logIn {
+            top: 25px;
+
+            button,
+            span {
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1450) and (max-height: $breakpoint-800) {
+    .header {
+        .logo {
+            font-size: 60px;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-800) {
+    .header {
+        .logIn {
+
+            button,
+            span {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-600) {
+    .header {
+        .logo {
+            top: 15px;
+            left: 30px;
+            font-size: 50px;
+        }
+
+        .logIn {
+            top: 18px;
+
+            button,
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-860) and (orientation: landscape) {
+    .header {
+        .logo {
+            top: 8px;
+            left: 20px;
+            font-size: 40px;
+        }
+
+        .logIn {
+            top: 12px;
+
+            button,
+            span {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-650) and (orientation: landscape) {
+    .header {
+        .logo {
+            font-size: 35px;
+        }
+
+        .logIn {
+            top: 6px;
+            right: 20px;
+
+            button,
+            span {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-570) and (orientation: landscape) {
+    .header {
+        .logIn {
+            top: 5px;
         }
     }
 }

@@ -20,28 +20,41 @@
             position: absolute;
             top: 30px;
             right: 30px;
-        }
-
-        .menuList {
-            display: block;
-            width: 50%;
-            margin: 40px auto 0 auto;
-            line-height: 50px;
             background-color: transparent;
+            font-size: 60px;
             border: none;
-            border-bottom: solid 1px;
-            font-size: 30px;
             color: $main-color;
+            cursor: pointer;
 
             &:focus {
                 outline: none;
             }
+        }
+
+        a {
+            margin-top: 40px;
 
             &:nth-child(1) {
                 margin-top: 130px;
-                color: $type-font-color;
+
+                .menuList {
+                    color: $type-font-color;
+                }
+            }
+
+            .menuList {
+                @include resetButton;
+                display: block;
+                width: 50%;
+                margin: 0 auto;
+                line-height: 50px;
+                border-bottom: solid 1px;
+                font-size: 30px;
+                color: $main-color;
             }
         }
+
+
     }
 }
 
@@ -82,5 +95,130 @@
 
     100% {
         @include menuAnimationFrom;
+    }
+}
+
+@media (max-width: $breakpoint-1450) {
+    .menu {
+        aside {
+            a {
+                margin-top: 30px;
+
+                .menuList {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-800) {
+    .menu {
+
+        aside {
+            .hamburger {
+                top: 20px;
+                right: 20px;
+                font-size: 50px;
+            }
+
+            a {
+                margin-top: 20px;
+
+                .menuList {
+                    font-size: 20px;
+                    line-height: 45px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-600) {
+    .menu {
+
+        aside {
+            .hamburger {
+                font-size: 40px;
+            }
+
+            a {
+                &:nth-child(1) {
+                    margin-top: 80px;
+                }
+
+                .menuList {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-860) and (orientation: landscape) {
+    .menu {
+
+        aside {
+            .hamburger {
+                top: 15px;
+                right: 15px;
+                font-size: 30px;
+            }
+
+            a {
+                &:nth-child(1) {
+                    margin-top: 50px;
+                }
+
+                .menuList {
+                    font-size: 15px;
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-650) and (orientation: landscape) {
+    .menu {
+
+        aside {
+            .hamburger {
+                top: 12px;
+                right: 12px;
+                font-size: 24px;
+            }
+
+            a {
+                &:nth-child(1) {
+                    margin-top: 40px;
+                }
+
+                .menuList {
+                    font-size: 12px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-570) and (orientation: landscape) {
+    .menu {
+
+        aside {
+            .hamburger {
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+            }
+
+            a {
+                .menuList {
+                    font-size: 10px;
+                    line-height: 25px;
+                }
+            }
+        }
     }
 }

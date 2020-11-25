@@ -1,0 +1,249 @@
+{
+    "teams": [
+        {
+            "id": 1,
+            "name": "Włochy"
+        },
+        {
+            "id": 2,
+            "name": "Szwajcaria"
+        },
+        {
+            "id": 3,
+            "name": "Turcja"
+        },
+        {
+            "id": 4,
+            "name": "Walia"
+        },
+        {
+            "id": 5,
+            "name": "Belgia"
+        },
+        {
+            "id": 6,
+            "name": "Dania"
+        },
+        {
+            "id": 7,
+            "name": "Finlandia"
+        },
+        {
+            "id": 8,
+            "name": "Rosja"
+        },
+        {
+            "id": 9,
+            "name": "Austria"
+        },
+        {
+            "id": 10,
+            "name": "Holandia"
+        },
+        {
+            "id": 11,
+            "name": "Macedonia Północna"
+        },
+        {
+            "id": 12,
+            "name": "Ukraina"
+        },
+        {
+            "id": 13,
+            "name": "Chorwacja"
+        },
+        {
+            "id": 14,
+            "name": "Czechy"
+        },
+        {
+            "id": 15,
+            "name": "Anglia"
+        },
+        {
+            "id": 16,
+            "name": "Szkocja"
+        },
+        {
+            "id": 17,
+            "name": "Polska"
+        },
+        {
+            "id": 18,
+            "name": "Słowacja"
+        },
+        {
+            "id": 19,
+            "name": "Hiszpania"
+        },
+        {
+            "id": 20,
+            "name": "Szwecja"
+        },
+        {
+            "id": 21,
+            "name": "Francja"
+        },
+        {
+            "id": 22,
+            "name": "Niemcy"
+        },
+        {
+            "id": 23,
+            "name": "Węgry"
+        },
+        {
+            "id": 24,
+            "name": "Portugalia"
+        }
+    ],
+    "stadiums": [
+        {
+            "id": 1,
+            "city": "Kopenhaga",
+            "name": "Parken"
+        },
+        {
+            "id": 2,
+            "city": "Amsterdam",
+            "name": "Johan Cruyff ArenA"
+        },
+        {
+            "id": 3,
+            "city": "Bukareszt",
+            "name": "Stadionul Național"
+        },
+        {
+            "id": 4,
+            "city": "Dublin",
+            "name": "Aviva Stadium"
+        },
+        {
+            "id": 5,
+            "city": "Bilbao",
+            "name": "San Mames"
+        },
+        {
+            "id": 6,
+            "city": "Budapeszt",
+            "name": "Puskas Arena"
+        },
+        {
+            "id": 7,
+            "city": "Glasgow",
+            "name": "Hampden Park"
+        },
+        {
+            "id": 8,
+            "city": "Monachium",
+            "name": "Allianz Arena"
+        },
+        {
+            "id": 9,
+            "city": "Baku",
+            "name": "Stadion Olimpijski"
+        },
+        {
+            "id": 10,
+            "city": "Petersburg",
+            "name": "Stadion Kriestowskij"
+        },
+        {
+            "id": 11,
+            "city": "Rzym",
+            "name": "Stadio Olimpico"
+        },
+        {
+            "id": 12,
+            "city": "Londyn",
+            "name": "Wembley"
+        }
+    ],
+    "groups": 
+        {
+            "a": {
+                "matches": [
+                    {
+                        "id": 1,
+                        "team1": 3,
+                        "result1": null,
+                        "team2": 1,
+                        "result2": null,
+                        "date": "11.06.21, 21:00" 
+                    },
+                    {
+                        "id": 2,
+                        "team1": 4,
+                        "result1": null,
+                        "team2": 2,
+                        "result2": null,
+                        "date": "12.06.21, 15:00" 
+                    },
+                    {
+                        "id": 3,
+                        "team1": 3,
+                        "result1": null,
+                        "team2": 4,
+                        "result2": null,
+                        "date": "16.06.21, 18:00" 
+                    },
+                    {
+                        "id": 4,
+                        "team1": 1,
+                        "result1": null,
+                        "team2": 2,
+                        "result2": null,
+                        "date": "16.06.21, 21:00" 
+                    },
+                    {
+                        "id": 5,
+                        "team1": 1,
+                        "result1": null,
+                        "team2": 4,
+                        "result2": null,
+                        "date": "20.06.21, 18:00" 
+                    },
+                    {
+                        "id": 6,
+                        "team1": 2,
+                        "result1": null,
+                        "team2": 3,
+                        "result2": null,
+                        "date": "20.06.21, 18:00" 
+                    }
+                ],
+                "winner": null,
+                "runnerup": null
+            },
+            
+            "b": {
+                "matches": [],
+                "winner": null,
+                "runnerup": null
+            },
+            
+            "c": {
+                "matches": [],
+                "winner": null,
+                "runnerup": null
+            },
+            
+            "d": {
+                "matches": [],
+                "winner": null,
+                "runnerup": null
+            },
+            
+            "e": {
+                "matches": [],
+                "winner": null,
+                "runnerup": null
+            },
+            
+            "f": {
+                "matches": [],
+                "winner": null,
+                "runnerup": null
+            }
+        }
+}

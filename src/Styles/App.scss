@@ -9,3 +9,24 @@
 body {
     background-color: $main-color;
 }
+
+.fade-appear,
+.fade-enter {
+    transform: translateX(-100%);
+}
+
+.fade-appear-active,
+.fade-enter .fade-enter-active {
+    transform: translateX(0);
+    transition: transform 10000ms linear 10000ms;
+}
+
+.fade-exit {
+    transform: translateX(0);
+}
+
+.fade-exit,
+.fade-exit-active {
+    transform: translateX(-100%);
+    transition: transform 10000ms linear;
+}

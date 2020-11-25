@@ -1,0 +1,96 @@
+@import 'vars';
+@import 'mixins';
+
+.betContainer {
+    @include mainContainer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $bet-color;
+    font-family: 'Questrial', sans-serif;
+    padding: 5% 0 3% 0;
+
+    h3 {
+        padding-bottom: 5%;
+        font-size: 45px;
+        font-weight: normal;
+    }
+
+    .betForm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+        overflow: auto;
+
+        div {
+            display: flex;
+            align-items: center;
+            padding-bottom: 20px;
+            font-size: 30px;
+
+            label {
+                padding-right: 30px;
+
+                &:nth-last-of-type(1) {
+                    padding-right: 100px;
+                }
+            }
+
+            .betInputContainer {
+                padding: 0 30px 0 0;
+
+                input {
+                    background-color: $text-color;
+                    border: 1px $main-color solid;
+                    width: 40px;
+                    height: 40px;
+                    font-size: 30px;
+                    text-align: center;
+                    color: $main-color;
+
+                    &:nth-of-type(1) {
+                        margin-right: 10px;
+                    }
+
+                    &:nth-of-type(2) {
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            p {
+                padding-right: 100px;
+            }
+
+            button {
+                @include resetButton;
+                color: $main-color;
+                font-size: 30px;
+            }
+        }
+    }
+
+    .betSubmit {
+        @include resetButton;
+        margin: 5% 0 3% 0;
+        padding: 0 70px 12px 70px;
+        border-bottom: 1px $main-color solid;
+        color: $main-color;
+        font-family: inherit;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: $breakpoint-1600) {
+    .betForm {
+        width: 100%;
+    }
+}
+
+@media (max-width: $breakpoint-1280) {
+    .betForm {
+        width: 100%;
+    }
+}

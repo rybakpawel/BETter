@@ -1,3 +1,32 @@
+@import 'vars';
+
+@mixin resetButton {
+    background-color: transparent;
+    border: none;
+    color: $text-color;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin hoverButton {
+    transform: scale(1.2, 1.2);
+}
+
+@mixin mainContainer {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    width: 76%;
+    height: 71%;
+}
+
 @mixin menuAnimationFrom {
     transform: translateX(0);
     overflow: hidden;

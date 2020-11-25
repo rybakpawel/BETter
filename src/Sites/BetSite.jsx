@@ -1,17 +1,17 @@
 import React from 'react'
 
 import Header from '../Components/Header';
-import Main from '../Components/Main';
 import Menu from '../Components/Menu';
+import Bet from '../Components/Bet';
 
-const MainSite = () => {
+const BetSite = () => {
     return (
         <>
             <Header />
             <Menu />
-            <Main />
+            <Bet />
         </>
     )
 }
 
-export default MainSite;
+export default BetSite;
