@@ -5,8 +5,12 @@ import '../Styles/LogIn.min.css'
 
 const LogIn = () => {
 
-    const [login, setLogin] = useState('');
-    const [password, setPassword] = useState('');
+    const [inputLogin, setInputLogin] = useState(
+        {
+            login: '',
+            password: '',
+        }
+    );
 
     const divRef = useRef();
 
@@ -14,33 +18,34 @@ const LogIn = () => {
         divRef.current.style.opacity = '1';
     })
 
-    const handleInputLogin = (e) => {
-        setLogin(e.target.value);
-    }
-
-    const handleInputPassword = (e) => {
-        setPassword(e.target.value);
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        setInputLogin({
+            ...inputLogin,
+            [name]: value
+        });
     }
 
     return (
         <>
-
             <Link to='/'>
-                <div className={'loginContainer'}></div>
+                <div className='loginContainer'></div>
             </Link>
             <form action="" className='loginForm' ref={divRef}>
                 <div>
                     <label htmlFor="">login</label>
-                    <input type="text" value={login} onChange={handleInputLogin} />
+                    <input name="login" type="text" value={inputLogin.login} onChange={handleInput} />
                 </div>
                 <div>
                     <label htmlFor="">hasło</label>
-                    <input type="password" value={password} onChange={handleInputPassword} />
+                    <input name="password" type="password" value={inputLogin.password} onChange={handleInput} />
                     <button>przypomnij hasło</button>
                 </div>
 
                 <input type="submit" value="Zaloguj" className={'logButton'} />
-                <button>Nie masz konta? Zarejestruj się!</button>
+                <Link to='/register'>
+                    <button className='loginRegisterButton'>Nie masz konta? Zarejestruj się!</button>
+                </Link>
             </form>
         </>
     )

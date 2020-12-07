@@ -10,23 +10,23 @@ body {
     background-color: $main-color;
 }
 
-.fade-appear,
-.fade-enter {
-    transform: translateX(-100%);
-}
+// .fade-enter {
+//     transform: translate(-100%, -50%);
+//     z-index: 1;
+// }
 
-.fade-appear-active,
-.fade-enter .fade-enter-active {
-    transform: translateX(0);
-    transition: transform 10000ms linear 10000ms;
-}
+// .fade-appear-active,
+// .fade-enter .fade-enter-active {
+//     transform: translate(0, -50%);
+//     transition: transform 10000ms linear 5000ms;
+// }
 
-.fade-exit {
-    transform: translateX(0);
-}
+// .fade-exit {
+//     transform: translate(0, -50%);
+// }
 
-.fade-exit,
-.fade-exit-active {
-    transform: translateX(-100%);
-    transition: transform 10000ms linear;
-}
+// .fade-exit,
+// .fade-exit-active {
+//     transform: translate(-100%, -50%);
+//     transition: transform 5000ms linear;
+// }

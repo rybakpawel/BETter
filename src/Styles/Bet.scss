@@ -3,13 +3,7 @@
 
 .betContainer {
     @include mainContainer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: $bet-color;
-    font-family: 'Questrial', sans-serif;
-    padding: 5% 0 3% 0;
+    padding: 5% 0 6% 0;
 
     h3 {
         padding-bottom: 5%;
@@ -20,8 +14,8 @@
     .betForm {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 70%;
+        align-items: flex-start;
+        width: 80%;
         overflow: auto;
 
         div {
@@ -30,16 +24,25 @@
             padding-bottom: 20px;
             font-size: 30px;
 
-            label {
-                padding-right: 30px;
-
-                &:nth-last-of-type(1) {
-                    padding-right: 100px;
-                }
-            }
-
             .betInputContainer {
-                padding: 0 30px 0 0;
+                display: flex;
+                justify-content: center;
+                width: 600px;
+                padding: 0;
+
+                label {
+                    width: 100%;
+
+                    &:nth-of-type(1) {
+                        display: flex;
+                        justify-content: flex-end;
+                        padding-right: 30px;
+                    }
+
+                    &:nth-last-of-type(1) {
+                        padding-left: 30px;
+                    }
+                }
 
                 input {
                     background-color: $text-color;
@@ -74,7 +77,7 @@
 
     .betSubmit {
         @include resetButton;
-        margin: 5% 0 3% 0;
+        margin: 5% 0 0 0;
         padding: 0 70px 12px 70px;
         border-bottom: 1px $main-color solid;
         color: $main-color;

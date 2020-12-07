@@ -16,7 +16,9 @@ const Header = () => {
                         <button>Zaloguj się</button>
                     </Link>
                     <span> / </span>
-                    <button>Zarejestruj się</button>
+                    <Link to="/register">
+                        <button>Zarejestruj się</button>
+                    </Link>
                 </div>
             </div>
         </>

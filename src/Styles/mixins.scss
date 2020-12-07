@@ -25,6 +25,12 @@
     transform: translate(0, -50%);
     width: 76%;
     height: 71%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $bet-color;
+    font-family: 'Questrial', sans-serif;
 }
 
 @mixin menuAnimationFrom {

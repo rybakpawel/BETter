@@ -1,26 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import api from '../api/api'
 
 import '../Styles/Bet.min.css'
 
 const Bet = () => {
+    const { a, b, c, d, e, f } = api.groups
+    let match = 0;
 
-    const [matchList, setMatchList] = useState([]);
+    const compare = (a, b) => {
+        return a.date.slice(0, 2) - b.date.slice(0, 2);
+    }
+
+    const addMatch = () => {
+        match++;
+    }
+
+    const isMatchResult = (match) => {
+        if (!match.result1) return match
+    }
+
+    const allGroups = a.matches.concat(b.matches, c.matches, d.matches, e.matches, f.matches)
+    const nextMatches = allGroups.filter(isMatchResult)
+    const sortByDate = nextMatches.sort(compare)
 
     const handleMatchList = () => {
-
         return (
             <div>
-                <label htmlFor="">{api.teams[api.groups.a.matches[0].team1 - 1].name}</label>
                 <div className="betInputContainer">
+                    <label htmlFor="">{api.teams[sortByDate[match].team1 - 1].name}</label>
                     <input type="number" />
                         :
                     <input type="number" />
-                </div><span></span>
-                <label htmlFor="">{api.teams[api.groups.a.matches[0].team2 - 1].name}</label>
-                <p>{api.groups.a.matches[0].date}</p>
+                    <label htmlFor="">{api.teams[sortByDate[match].team2 - 1].name}</label>
+                </div>
+                <p>{sortByDate[match].date}</p>
                 <button>szczegóły</button>
+                {addMatch()}
             </div>
         )
     }
@@ -29,20 +45,6 @@ const Bet = () => {
         <div className='betContainer'>
             <h3>Najbliższe mecze</h3>
             <form className='betForm'>
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
-                {handleMatchList()}
                 {handleMatchList()}
                 {handleMatchList()}
                 {handleMatchList()}
