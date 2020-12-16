@@ -17,7 +17,7 @@ const Bet = () => {
     }
 
     const isMatchResult = (match) => {
-        if (!match.result1) return match
+        if (match.result1 === -1) return match
     }
 
     const allGroups = a.matches.concat(b.matches, c.matches, d.matches, e.matches, f.matches)

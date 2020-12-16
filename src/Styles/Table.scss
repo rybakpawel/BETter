@@ -1,0 +1,117 @@
+@import 'vars';
+@import 'mixins';
+
+.tableContainer {
+    @include mainContainer;
+    padding: 5% 0 6% 0;
+
+    h3 {
+        font-size: 45px;
+        font-weight: normal;
+    }
+
+    .formTableContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 0 15%;
+        width: 80%;
+
+        .formTable {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-bottom: 15px;
+
+            select {
+                padding: 4px 7px;
+                font-size: 30px;
+                background-color: $text-color;
+                font-family: $main-font;
+            }
+
+            .formTableLegend {
+                font-size: 10px;
+                transform: translateX(25px);
+            }
+        }
+
+        .table {
+            font-size: 40px;
+            color: $main-color;
+
+            .tablePositionShortcuts {
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                font-size: 33px;
+                border-bottom: 3px $main-color solid;
+
+                p {
+
+                    &:nth-last-of-type(1) {
+                        padding-left: 26px;
+                        transform: translateX(8px);
+                    }
+
+                    &:nth-last-of-type(2) {
+                        padding-left: 34px;
+                        transform: translateX(8px);
+                    }
+
+                    &:nth-last-of-type(3),
+                    &:nth-last-of-type(4) {
+                        padding-left: 12px;
+                    }
+
+                    &:nth-last-of-type(5) {
+                        padding-left: 24px;
+                    }
+                }
+            }
+
+            .tablePosition {
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 15px;
+
+                div {
+                    display: flex;
+
+                    &:nth-child(1) {
+
+                        p {
+                            &:nth-child(1) {
+                                padding-right: 7px;
+                            }
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        justify-content: flex-end;
+                        flex-basis: 50%;
+
+                        p {
+
+                            &:nth-last-of-type(1),
+                            &:nth-last-of-type(2),
+                            &:nth-last-of-type(5) {
+                                padding-left: 24px;
+                            }
+
+                            &:nth-last-of-type(3),
+                            &:nth-last-of-type(4) {
+                                padding-left: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.goToBetButton {
+    @include resetButton;
+    @include submitButton;
+}
