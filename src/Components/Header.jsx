@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 
 import '../Styles/Header.min.css'
 
-const Header = () => {
-
+const Header = (props) => {
     return (
         <>
             <div className='header'>
@@ -12,9 +11,7 @@ const Header = () => {
                     <button className='logo'>BETter</button>
                 </Link>
                 <div className='logIn'>
-                    <Link to="/login">
-                        <button>Zaloguj się</button>
-                    </Link>
+                    <button onClick={props.isLogInClicked}>Zaloguj się</button>
                     <span> / </span>
                     <Link to="/register">
                         <button>Zarejestruj się</button>

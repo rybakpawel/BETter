@@ -5,7 +5,6 @@ import { Route, Switch } from 'react-router-dom'
 import './Styles/App.min.css';
 
 import MainSite from './Sites/MainSite';
-import LogInSite from './Sites/LogInSite';
 import BetSite from './Sites/BetSite';
 import RegisterSite from './Sites/RegisterSite';
 import TableSite from './Sites/TableSite';
@@ -23,7 +22,6 @@ function App() {
         {/* <Switch location={location}> */}
         <Switch>
           <Route path="/" exact component={MainSite} />
-          <Route path="/login" exact component={LogInSite} />
           <Route path="/bet" exact component={BetSite} />
           <Route path="/register" exact component={RegisterSite} />
           <Route path="/table" exact component={TableSite} />

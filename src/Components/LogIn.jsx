@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import '../Styles/LogIn.min.css'
 
-const LogIn = () => {
+const LogIn = (props) => {
 
     const [inputLogin, setInputLogin] = useState(
         {
@@ -28,9 +28,7 @@ const LogIn = () => {
 
     return (
         <>
-            <Link to='/'>
-                <div className='loginContainer'></div>
-            </Link>
+            <div className='loginContainer' onClick={props.isLogInClicked}></div>
             <form action="" className='loginForm' ref={divRef}>
                 <div>
                     <label htmlFor="">login</label>

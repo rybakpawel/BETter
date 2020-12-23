@@ -22,6 +22,7 @@
         position: fixed;
         top: 35px;
         right: 35px;
+        transition: 0.2s;
 
         button,
         span {
@@ -29,11 +30,10 @@
             font-size: 28px;
             font-family: 'Questrial', sans-serif;
             cursor: pointer;
-            transition: 0.3s;
+        }
 
-            &:hover {
-                transform: scale(1.05, 1.05);
-            }
+        &:hover {
+            transform: scale(1.05, 1.05);
         }
     }
 }

@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Header from '../Components/Header';
 import Main from '../Components/Main';
 import Menu from '../Components/Menu';
+import LogIn from '../Components/LogIn';
 
 const MainSite = () => {
+    const [isLogIn, setIsLogIn] = useState(false)
+    const handleIsLogIn = () => {
+        setIsLogIn(!isLogIn)
+    }
+
     return (
         <>
-            <Header />
+            <Header isLogInClicked={handleIsLogIn} />
             <Menu />
             <Main />
+            {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>
     )
 }

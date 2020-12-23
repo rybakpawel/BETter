@@ -5,6 +5,17 @@
     @include mainContainer;
 }
 
+.quote {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: rotate(-10deg);
+    font-size: 100px;
+    font-family: 'Vtks Escape',
+        sans-serif;
+    color: $text-color;
+}
+
 .tutorialButton {
     position: absolute;
     bottom: 25%;

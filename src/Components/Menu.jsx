@@ -8,9 +8,15 @@ import '../Styles/Menu.min.css'
 
 const Menu = () => {
 
+    const [isMenuHover, setIsMenuHover] = useState('')
     const [isMenuListActive, setIsMenuListActive] = useState(false);
     const [zIndex, setZIndex] = useState('');
     const [isAnimationActive, setIsAnimationActive] = useState('');
+
+    const handleIsMenuHover = () => {
+        if (!isMenuHover) setIsMenuHover('active')
+        else if (isMenuHover) setIsMenuHover('')
+    }
 
     const handleIsMenuListActive = () => {
         setIsMenuListActive(!isMenuListActive);
@@ -29,7 +35,7 @@ const Menu = () => {
 
     return (
         <>
-            <nav className={`menu ${zIndex} ${isAnimationActive}`}>
+            <nav className={`menu ${zIndex} ${isAnimationActive}`} onMouseEnter={handleIsMenuHover} onMouseLeave={handleIsMenuHover}>
                 <aside>
                     {isMenuListActive
                         ?
@@ -49,10 +55,10 @@ const Menu = () => {
                             <Link to='/rules' style={{ textDecoration: 'none' }}>
                                 <button className='menuList'>Zasady</button>
                             </Link>
-                            <button className='hamburger' onClick={handleIsMenuListActive}><VscChromeClose /></button>
+                            <button className={`hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><VscChromeClose /></button>
                         </>
                         :
-                        <button className='hamburger' onClick={handleIsMenuListActive}><FaBars /></button>}
+                        <button className={`hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><FaBars /></button>}
                 </aside>
             </nav>
         </>
