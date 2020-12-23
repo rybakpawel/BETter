@@ -6,8 +6,7 @@
     padding: 5% 0 6% 0;
 
     h3 {
-        font-size: 45px;
-        font-weight: normal;
+        @include pageTitle;
     }
 
     .formTableContainer {

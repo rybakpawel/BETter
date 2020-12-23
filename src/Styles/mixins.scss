@@ -42,6 +42,11 @@
     font-family: 'Questrial', sans-serif;
 }
 
+@mixin pageTitle {
+    font-size: 45px;
+    font-weight: normal;
+}
+
 @mixin menuAnimationFrom {
     transform: translateX(0);
     overflow: hidden;

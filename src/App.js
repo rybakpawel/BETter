@@ -8,6 +8,7 @@ import MainSite from './Sites/MainSite';
 import BetSite from './Sites/BetSite';
 import RegisterSite from './Sites/RegisterSite';
 import TableSite from './Sites/TableSite';
+import RulesSite from './Sites/RulesSite';
 
 function App() {
  
@@ -25,6 +26,7 @@ function App() {
           <Route path="/bet" exact component={BetSite} />
           <Route path="/register" exact component={RegisterSite} />
           <Route path="/table" exact component={TableSite} />
+          <Route path="/rules" exact component={RulesSite} />
 
         </Switch>
       {/* </CSSTransition>

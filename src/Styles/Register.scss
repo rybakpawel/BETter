@@ -6,10 +6,8 @@
     padding: 5% 0 6% 0;
 
     h3 {
+        @include pageTitle;
         padding-bottom: 7%;
-        font-size: 50px;
-        font-weight: normal;
-        color: $main-color;
     }
 
     .registerForm {

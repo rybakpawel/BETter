@@ -1,0 +1,62 @@
+@import 'vars';
+@import 'mixins';
+
+.rulesContainer {
+    @include mainContainer;
+    padding: 5% 0 6% 0;
+
+    h3 {
+        @include pageTitle;
+    }
+
+    .rules {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+
+        .rulesButtonContainer {
+            @include resetButton;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px 20px 40px 20px;
+            font-size: 40px;
+            font-family: $main-font;
+            border: 3px solid $main-color;
+            border-radius: 5%;
+            background-color: $main-color;
+            transform: perspective(50px) rotateY(-1.5deg);
+            transition: 0.3s;
+
+            &:hover {
+                transform: perspective(0) rotateY(0);
+            }
+
+            span::before {
+                margin-left: 0;
+                color: $bet-color;
+                font-size: 200px;
+            }
+
+            h4 {
+                margin-top: 20px;
+                font-weight: normal;
+                color: $bet-color;
+            }
+        }
+    }
+
+    .rulesSubmit {
+        @include resetButton;
+        margin: auto 0 0 0;
+        padding: 0 70px 12px 70px;
+        border-bottom: 1px $main-color solid;
+        color: $main-color;
+        font-family: inherit;
+        font-size: 30px;
+    }
+}

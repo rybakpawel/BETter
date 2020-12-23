@@ -1,0 +1,118 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 23/12/2020 14:40
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-menu:before { content: "\f100"; }
+.flaticon-soccer-ball:before { content: "\f101"; }
+.flaticon-stadium:before { content: "\f102"; }
+.flaticon-trophy-with-a-star:before { content: "\f103"; }
+.flaticon-soccer-ball-in-front-of-the-arch:before { content: "\f104"; }
+.flaticon-soccer-tactics-sketch:before { content: "\f105"; }
+.flaticon-ball:before { content: "\f106"; }
+.flaticon-star-on-top-of-podium-of-sportive-competition:before { content: "\f107"; }
+.flaticon-soccer-tactical-sketch-of-players-movements-on-whiteboard:before { content: "\f108"; }
+.flaticon-running-sportive-shoe-for-soccer-players:before { content: "\f109"; }
+.flaticon-triumph-soccer-ball-symbol:before { content: "\f10a"; }
+.flaticon-planning-soccer-tactical-sketch:before { content: "\f10b"; }
+.flaticon-hand-holding-two-soccer-cards:before { content: "\f10c"; }
+.flaticon-soccer-goal:before { content: "\f10d"; }
+.flaticon-t-shirt-of-soccer-player-front:before { content: "\f10e"; }
+.flaticon-two-black-flags:before { content: "\f10f"; }
+.flaticon-goal-word-in-a-label-of-star-shape:before { content: "\f110"; }
+.flaticon-soccer-athlete:before { content: "\f111"; }
+.flaticon-ambulance:before { content: "\f112"; }
+.flaticon-soccer-yellow-or-red-card-in-a-hand:before { content: "\f113"; }
+.flaticon-sports-t-shirt:before { content: "\f114"; }
+.flaticon-soccer-world-competition-program-on-tv-monitor-screen:before { content: "\f115"; }
+.flaticon-chronometer-sports-tool:before { content: "\f116"; }
+.flaticon-hand-showing-yellow-soccer-card:before { content: "\f117"; }
+.flaticon-sportive-t-shirt:before { content: "\f118"; }
+.flaticon-soccer-faults-cards-couple:before { content: "\f119"; }
+.flaticon-sportive-medal-necklace:before { content: "\f11a"; }
+.flaticon-white-soccer-sportive-t-shirt:before { content: "\f11b"; }
+.flaticon-soccer-shoe:before { content: "\f11c"; }
+.flaticon-scores:before { content: "\f11d"; }
+.flaticon-soccer-annotation-with-the-ball-entering-to-the-arch-by-the-upper-right-angle:before { content: "\f11e"; }
+.flaticon-hand-showing-red-expulsion-soccer-card:before { content: "\f11f"; }
+.flaticon-black-t-shirt-of-a-soccer-player:before { content: "\f120"; }
+.flaticon-soccer-ball-on-a-shield:before { content: "\f121"; }
+.flaticon-football-club-flag:before { content: "\f122"; }
+.flaticon-sports-man:before { content: "\f123"; }
+.flaticon-soccer-field-outlined-top-view-sportive-symbol:before { content: "\f124"; }
+.flaticon-soccer-goal-ball-entrance-centered-in-arch:before { content: "\f125"; }
+.flaticon-soccer-ball-1:before { content: "\f126"; }
+.flaticon-goal-label:before { content: "\f127"; }
+.flaticon-soccer-field-corner-with-black-triangular-flag-in-the-angle:before { content: "\f128"; }
+.flaticon-sport-game-scores:before { content: "\f129"; }
+.flaticon-sportive-medal-with-a-star:before { content: "\f12a"; }
+.flaticon-sportive-trophy-cup:before { content: "\f12b"; }
+.flaticon-chronometer:before { content: "\f12c"; }
+.flaticon-soccer-ball-on-tv-monitor:before { content: "\f12d"; }
+.flaticon-soccer-ball-2:before { content: "\f12e"; }
+.flaticon-timer-or-chronometer-tool-to-control-time:before { content: "\f12f"; }
+.flaticon-soccer-player-with-white-t-shirt:before { content: "\f130"; }
+.flaticon-sportive-scores:before { content: "\f131"; }
+.flaticon-soccer-arch:before { content: "\f132"; }
+.flaticon-football-symbol-with-ball-and-wrenches-with-leaves:before { content: "\f133"; }
+.flaticon-athletic-soccer-player:before { content: "\f134"; }
+.flaticon-soccer-player:before { content: "\f135"; }
+.flaticon-soccer-player-striped-t-shirt:before { content: "\f136"; }
+.flaticon-dark-rounded-soccer-field-top-view:before { content: "\f137"; }
+.flaticon-first-aid-kit:before { content: "\f138"; }
+.flaticon-sportive-competition-trophy-symbol:before { content: "\f139"; }
+.flaticon-football-player-t-shirt-with-number-8:before { content: "\f13a"; }
+.flaticon-soccer-ball-3:before { content: "\f13b"; }
+.flaticon-yellow-and-red-soccer-cards:before { content: "\f13c"; }
+.flaticon-medal-for-winner:before { content: "\f13d"; }
+.flaticon-whistle:before { content: "\f13e"; }
+.flaticon-soccer-field-rounded-shape-top-view:before { content: "\f13f"; }
+.flaticon-soccer-arch-frontal-view:before { content: "\f140"; }
+.flaticon-sportive-competition-results:before { content: "\f141"; }
+.flaticon-two-black-sportive-flags:before { content: "\f142"; }
+.flaticon-striped-sportive-t-shirt:before { content: "\f143"; }
+.flaticon-empty-soccer-field-top-view:before { content: "\f144"; }
+.flaticon-soccer-player-with-striped-t-shirt:before { content: "\f145"; }
+.flaticon-soccer-player-1:before { content: "\f146"; }
+.flaticon-soccer-field-corner-with-flag:before { content: "\f147"; }
+.flaticon-chronometer-1:before { content: "\f148"; }
+.flaticon-sportive-results:before { content: "\f149"; }
+.flaticon-whistle-1:before { content: "\f14a"; }
+.flaticon-soccer-player-2:before { content: "\f14b"; }
+.flaticon-soccer-field-top-view:before { content: "\f14c"; }
+.flaticon-sports-results-numbers:before { content: "\f14d"; }
+.flaticon-sportive-trophy:before { content: "\f14e"; }
+.flaticon-sportive-checkered-flag-tool:before { content: "\f14f"; }
+.flaticon-athlete:before { content: "\f150"; }
+.flaticon-two-checkered-sportive-flags:before { content: "\f151"; }
+.flaticon-two-sportive-black-flags:before { content: "\f152"; }
+.flaticon-sportive-t-shirt-1:before { content: "\f153"; }
+.flaticon-soccer-field-on-a-board:before { content: "\f154"; }
+.flaticon-man-of-football-squad:before { content: "\f155"; }
