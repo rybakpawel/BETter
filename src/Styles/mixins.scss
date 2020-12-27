@@ -47,6 +47,13 @@
     font-weight: normal;
 }
 
+@mixin rulesIcons {
+    position: absolute;
+    color: $main-color;
+    font-size: 30px;
+    transition: 0.3s;
+}
+
 @mixin menuAnimationFrom {
     transform: translateX(0);
     overflow: hidden;

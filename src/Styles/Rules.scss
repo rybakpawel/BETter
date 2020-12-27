@@ -22,14 +22,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
             padding: 20px 20px 40px 20px;
             font-size: 40px;
             font-family: $main-font;
             border: 3px solid $main-color;
             border-radius: 5%;
             background-color: $main-color;
-            transform: perspective(50px) rotateY(-1.5deg);
+            transform: perspective(50px) rotateY(1.5deg);
             transition: 0.3s;
 
             &:hover {
@@ -47,6 +46,50 @@
                 font-weight: normal;
                 color: $bet-color;
             }
+        }
+
+        .activeRule {
+            // transform: perspective(0) rotateY(0) translateX(-500px);
+
+            // &:hover {
+            //     transform: perspective(0) rotateY(0) translateX(-500px);
+            // }
+        }
+
+        .notActiveRule {
+            opacity: 0;
+            order: 1;
+            // transform: scale(0.5) translate(5px);
+        }
+
+        .ruleDescription {
+            position: absolute;
+            top: 50%;
+            left: 40%;
+            width: 50%;
+            font-size: 30px;
+            letter-spacing: 1px;
+            line-height: 35px;
+            transform: translateY(-50%);
+            transition: 0.3s;
+
+            .better {
+                font-family: 'Quantify', 'Helvetica', sans-serif;
+            }
+        }
+
+        .closeRule {
+            @include resetButton;
+            @include rulesIcons;
+            top: 25%;
+            right: 10%;
+        }
+
+        .nextRuleButton {
+            @include resetButton;
+            @include rulesIcons;
+            top: 70%;
+            right: 10%;
         }
     }
 
