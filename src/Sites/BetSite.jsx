@@ -14,9 +14,10 @@ const BetSite = () => {
 
     return (
         <>
+            <Bet />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            <Bet />
+            {/* <Bet /> */}
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

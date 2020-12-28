@@ -11,23 +11,20 @@ body {
     overflow: hidden;
 }
 
-// .fade-enter {
-//     transform: translate(-100%, -50%);
-//     z-index: 1;
-// }
+.fade-enter {
+    opacity: 0;
+}
 
-// .fade-appear-active,
-// .fade-enter .fade-enter-active {
-//     transform: translate(0, -50%);
-//     transition: transform 10000ms linear 5000ms;
-// }
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms linear;
+}
 
-// .fade-exit {
-//     transform: translate(0, -50%);
-// }
+.fade-exit {
+    opacity: 1;
+}
 
-// .fade-exit,
-// .fade-exit-active {
-//     transform: translate(-100%, -50%);
-//     transition: transform 5000ms linear;
-// }
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms linear;
+}

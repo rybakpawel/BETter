@@ -14,9 +14,10 @@ const MainSite = () => {
 
     return (
         <>
+            <Main />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            <Main />
+            {/* <Main /> */}
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

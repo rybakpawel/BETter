@@ -40,6 +40,7 @@
     justify-content: space-between;
     background-color: $bet-color;
     font-family: 'Questrial', sans-serif;
+    z-index: 1;
 }
 
 @mixin pageTitle {

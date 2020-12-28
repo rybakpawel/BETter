@@ -13,9 +13,10 @@ const TableSite = () => {
     }
     return (
         <>
+            <Table />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            <Table />
+            {/* <Table /> */}
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

@@ -14,9 +14,10 @@ const RegisterSite = () => {
 
     return (
         <>
+            <Register />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            <Register />
+            {/* <Register /> */}
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

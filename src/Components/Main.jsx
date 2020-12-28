@@ -18,11 +18,11 @@ const Main = () => {
     }
 
     return (
-        <>
+        <div className='mainContainer'>
             <img src={heroImage} alt="mainImage" className='hero' />
             <h2 className='quote'>Football,<br></br>bloody hell!</h2>
             {isTutorialClicked ? showTutorial() : <button className='tutorialButton' onClick={handleTutorialClick}>Samouczek</button>}
-        </>
+        </div>
     )
 }
 
