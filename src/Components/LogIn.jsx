@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import '../Styles/LogIn.min.css'
-
 const LogIn = (props) => {
 
     const [inputLogin, setInputLogin] = useState(
@@ -28,21 +26,21 @@ const LogIn = (props) => {
 
     return (
         <>
-            <div className='loginContainer' onClick={props.isLogInClicked}></div>
-            <form action="" className='loginForm' ref={divRef}>
-                <div>
-                    <label htmlFor="">login</label>
-                    <input name="login" type="text" value={inputLogin.login} onChange={handleInput} />
+            <div className='login-wrapper' onClick={props.isLogInClicked}></div>
+            <form action="" className='login' ref={divRef}>
+                <div className='login__form'>
+                    <label className='login__form__label' htmlFor="">login</label>
+                    <input className='login__form__input' name="login" type="text" value={inputLogin.login} onChange={handleInput} />
                 </div>
-                <div>
-                    <label htmlFor="">hasło</label>
-                    <input name="password" type="password" value={inputLogin.password} onChange={handleInput} />
-                    <button>przypomnij hasło</button>
+                <div className='login__form'>
+                    <label className='login__form__label' htmlFor="">hasło</label>
+                    <input className='login__form__input' name="password" type="password" value={inputLogin.password} onChange={handleInput} />
+                    <button className='login__form__button'>przypomnij hasło</button>
                 </div>
 
-                <input type="submit" value="Zaloguj" className={'logButton'} />
+                <input className='login__login-button' type="submit" value="Zaloguj" />
                 <Link to='/register'>
-                    <button className='loginRegisterButton'>Nie masz konta? Zarejestruj się!</button>
+                    <button className='login__register-button'>Nie masz konta? Zarejestruj się!</button>
                 </Link>
             </form>
         </>

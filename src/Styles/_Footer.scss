@@ -1,7 +1,7 @@
 @import 'vars';
 @import 'mixins';
 
-.footerContainer {
+.footer {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -9,11 +9,12 @@
     height: 5%;
     background-color: #849BD5;
     text-align: center;
+    font-family: $main-font;
 
-    .footerIconsDescription {
+    .footer__iconsDescription {
         padding: 5px 0;
 
-        a {
+        .footer__iconsDescription__link {
             text-decoration: none;
 
             &:visited {
@@ -23,11 +24,15 @@
         }
     }
 
-    .footerCopyright {
+    .footer__copyright {
         position: absolute;
         bottom: 10%;
         left: 50%;
         transform: translateX(-50%);
         font-size: 18px;
+
+        .footer__copyright__logo {
+            font-family: $logo-font;
+        }
     }
 }

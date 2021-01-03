@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import '../Styles/Main.min.css'
-
 import heroImage from '../images/football.jpg'
 
 const Main = () => {
@@ -18,10 +16,10 @@ const Main = () => {
     }
 
     return (
-        <div className='mainContainer'>
-            <img src={heroImage} alt="mainImage" className='hero' />
-            <h2 className='quote'>Football,<br></br>bloody hell!</h2>
-            {isTutorialClicked ? showTutorial() : <button className='tutorialButton' onClick={handleTutorialClick}>Samouczek</button>}
+        <div className='main'>
+            <img className='main__hero' src={heroImage} alt="mainImage" />
+            <h2 className='main__quote'>Football,<br></br>bloody hell!</h2>
+            {isTutorialClicked ? showTutorial() : <button className='main__button' onClick={handleTutorialClick}>Samouczek</button>}
         </div>
     )
 }

@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 
 import api from '../api/api'
 
-import '../Styles/Table.min.css'
-
 const Table = () => {
     const [selected, setSelected] = useState(0)
 
@@ -89,7 +87,7 @@ const Table = () => {
         tablePosition++;
 
         return (
-            <div className='tablePosition'>
+            <div className='table__wrapper__group__position'>
                 <div>
                     <p>{`${tablePosition}.`}</p>
                     <p>{team.name}</p>
@@ -107,11 +105,11 @@ const Table = () => {
     }
 
     return (
-        <div className='tableContainer'>
-            <h3>Tabela</h3>
-            <div className='formTableContainer'>
-                <form action="" className='formTable'>
-                    <select value={selected + 1} name="groups" id="groups" onChange={handleOption}>
+        <div className='table'>
+            <h3 className='table__title'>Tabela</h3>
+            <div className='table__wrapper'>
+                <form action="" className='table__wrapper__form'>
+                    <select className='table__wrapper__form__select-group' value={selected + 1} name="groups" id="groups" onChange={handleOption}>
                         <option value={1}>Grupa A</option>
                         <option value={2}>Grupa B</option>
                         <option value={3}>Grupa C</option>
@@ -119,16 +117,16 @@ const Table = () => {
                         <option value={5}>Grupa E</option>
                         <option value={6}>Grupa F</option>
                     </select>
-                    <p className='formTableLegend'>M - mecze, Z - zwycięstwa, R - remisy, P - porażki, B - bramki, Pkt - punkty</p>
+                    <p className='table__wrapper__form__legend'>M - mecze, Z - zwycięstwa, R - remisy, P - porażki, B - bramki, Pkt - punkty</p>
                 </form>
-                <div className='table'>
-                    <div className='tablePositionShortcuts'>
-                        <p>M</p>
-                        <p>Z</p>
-                        <p>R</p>
-                        <p>P</p>
-                        <p>B</p>
-                        <p>Pkt</p>
+                <div className='table__wrapper__group'>
+                    <div className='table__wrapper__group__shortcuts'>
+                        <p className='table__wrapper__group__shortcuts__shortcut'>M</p>
+                        <p className='table__wrapper__group__shortcuts__shortcut'>Z</p>
+                        <p className='table__wrapper__group__shortcuts__shortcut'>R</p>
+                        <p className='table__wrapper__group__shortcuts__shortcut'>P</p>
+                        <p className='table__wrapper__group__shortcuts__shortcut'>B</p>
+                        <p className='table__wrapper__group__shortcuts__shortcut'>Pkt</p>
                     </div>
                     {handleTable(groups[selected][0])}
                     {handleTable(groups[selected][1])}
@@ -137,7 +135,7 @@ const Table = () => {
                 </div>
             </div>
             <Link to='/bet'>
-                <button className='goToBetButton'>Przejdź do typowania!</button>
+                <button className='table__button'>Przejdź do typowania!</button>
             </Link>
         </div>
     )

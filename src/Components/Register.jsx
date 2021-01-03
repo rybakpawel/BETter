@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import '../Styles/Register.min.css'
-
 const Register = () => {
 
     const [inputRegister, setInputRegister] = useState(
@@ -53,28 +51,28 @@ const Register = () => {
 
     const form = (label, name, type, inputType, errorMessageType) => {
         return (
-            <div>
-                <label htmlFor="" className='registerLabel'>{label}</label>
+            <div className="register__form__box">
+                <label htmlFor="" className='register__form__box__label'>{label}</label>
                 <input
                     name={name}
                     type={type}
-                    className='registerInput'
+                    className='register__form__box__input'
                     value={inputType}
                     onChange={handleInput} />
-                <p>{errorMessageType || null}</p>
+                <p className='register__form__box__error'>{errorMessageType || null}</p>
             </div>
         )
     }
 
     return (
-        <div className='registerContainer'>
-            <h3>Rejestracja</h3>
-            <form action="" className='registerForm' onSubmit={handleSubmit} noValidate>
+        <div className='register'>
+            <h3 className='register__title'>Rejestracja</h3>
+            <form action="" className='register__form' onSubmit={handleSubmit} noValidate>
                 {form('e-mail', 'email', 'email', inputRegister.email, errorMessage.email)}
                 {form('login', 'login', 'text', inputRegister.login, errorMessage.login)}
                 {form('hasło', 'password', 'password', inputRegister.password, errorMessage.password)}
                 {form('potwierdź hasło', 'confirmPassword', 'password', inputRegister.confirmPassword, errorMessage.confirmPassword)}
-                <input type="submit" value="Załóż konto" className="registerSubmit" onSubmit={handleSubmit}></input>
+                <input type="submit" value="Załóż konto" className="register__form__button" onSubmit={handleSubmit}></input>
             </form>
 
         </div>

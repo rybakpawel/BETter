@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import { FaBars } from 'react-icons/fa'
 import { VscChromeClose } from 'react-icons/vsc'
-
-import '../Styles/Menu.min.css'
 
 const Menu = () => {
 
@@ -14,19 +12,19 @@ const Menu = () => {
     const [isAnimationActive, setIsAnimationActive] = useState('');
 
     const handleIsMenuHover = () => {
-        if (!isMenuHover) setIsMenuHover('active')
+        if (!isMenuHover) setIsMenuHover('navigation__menu__hamburger--active')
         else if (isMenuHover) setIsMenuHover('')
     }
 
     const handleIsMenuListActive = () => {
         setIsMenuListActive(!isMenuListActive);
         if (!isMenuListActive) {
-            setIsAnimationActive('animationMenuIn');
+            setIsAnimationActive('navigation--animation-menu-in');
             setTimeout(() => {
-                setZIndex('activeZIndex');
+                setZIndex('navigation--active-z-index');
             }, 250);
         } else {
-            setIsAnimationActive('animationMenuOut');
+            setIsAnimationActive('navigation--animation-menu-out');
             setTimeout(() => {
                 setZIndex('')
             }, 250);
@@ -35,30 +33,30 @@ const Menu = () => {
 
     return (
         <>
-            <nav className={`menu ${zIndex} ${isAnimationActive}`} onMouseEnter={handleIsMenuHover} onMouseLeave={handleIsMenuHover}>
-                <aside>
+            <nav className={`navigation ${zIndex} ${isAnimationActive}`} onMouseEnter={handleIsMenuHover} onMouseLeave={handleIsMenuHover}>
+                <aside className='navigation__menu'>
                     {isMenuListActive
                         ?
                         <>
-                            <Link to='/bet' style={{ textDecoration: 'none' }}>
-                                <button className='menuList'>Wytypuj wyniki!</button>
+                            <Link className='navigation__menu__link' to='/bet' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item'>Wytypuj wyniki!</button>
                             </Link>
-                            <Link to='/table' style={{ textDecoration: 'none' }}>
-                                <button className='menuList'>Tabela</button>
+                            <Link className='navigation__menu__link' to='/table' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item'>Tabela</button>
                             </Link>
-                            <Link to='/calendar' style={{ textDecoration: 'none' }}>
-                                <button className='menuList'>Terminarz</button>
+                            <Link className='navigation__menu__link' to='/calendar' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item'>Terminarz</button>
                             </Link>
-                            <Link to='/contestants' style={{ textDecoration: 'none' }}>
-                                <button className='menuList'>Uczestnicy</button>
+                            <Link className='navigation__menu__link' to='/competition' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item'>Rozgrywka</button>
                             </Link>
-                            <Link to='/rules' style={{ textDecoration: 'none' }}>
-                                <button className='menuList'>Zasady</button>
+                            <Link className='navigation__menu__link' to='/rules' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item'>Zasady</button>
                             </Link>
-                            <button className={`hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><VscChromeClose /></button>
+                            <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><VscChromeClose /></button>
                         </>
                         :
-                        <button className={`hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><FaBars /></button>}
+                        <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><FaBars /></button>}
                 </aside>
             </nav>
         </>

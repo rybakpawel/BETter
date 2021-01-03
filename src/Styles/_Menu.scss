@@ -1,7 +1,7 @@
 @import 'vars';
 @import 'mixins';
 
-.menu {
+.navigation {
     position: absolute;
     top: 8%;
     right: 4%;
@@ -10,13 +10,36 @@
     background: linear-gradient(180deg, #a0acca 60%, #849BD5 90%);
     font-family: $main-font;
 
-    aside {
+    &__menu {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         height: 100%;
 
-        .hamburger {
+        &__link {
+            margin-top: 40px;
+
+            &:nth-child(1) {
+                margin-top: 130px;
+
+                .navigation__menu__link__list-item {
+                    color: $type-font-color;
+                }
+            }
+
+            &__list-item {
+                @include resetButton;
+                display: block;
+                width: 50%;
+                margin: 0 auto;
+                line-height: 50px;
+                border-bottom: solid 1px;
+                font-size: 30px;
+                color: $main-color;
+            }
+        }
+
+        &__hamburger {
             position: absolute;
             top: 30px;
             right: 30px;
@@ -32,46 +55,21 @@
             }
         }
 
-        .active {
+        &__hamburger--active {
             font-size: 70px;
         }
-
-        a {
-            margin-top: 40px;
-
-            &:nth-child(1) {
-                margin-top: 130px;
-
-                .menuList {
-                    color: $type-font-color;
-                }
-            }
-
-            .menuList {
-                @include resetButton;
-                display: block;
-                width: 50%;
-                margin: 0 auto;
-                line-height: 50px;
-                border-bottom: solid 1px;
-                font-size: 30px;
-                color: $main-color;
-            }
-        }
-
-
     }
 }
 
-.animationMenuIn {
+.navigation--animation-menu-in {
     animation: slideMenuIn 0.6s;
 }
 
-.animationMenuOut {
+.navigation--animation-menu-out {
     animation: slideMenuOut 0.6s;
 }
 
-.activeZIndex {
+.navigation--active-z-index {
     z-index: 1;
 }
 

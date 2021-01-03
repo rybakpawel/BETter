@@ -2,8 +2,6 @@ import React from 'react'
 
 import api from '../api/api'
 
-import '../Styles/Bet.min.css'
-
 const Bet = () => {
     const { a, b, c, d, e, f } = api.groups
     let match = 0;
@@ -26,25 +24,25 @@ const Bet = () => {
 
     const handleMatchList = () => {
         return (
-            <div>
-                <div className="betInputContainer">
-                    <label htmlFor="">{api.teams[sortByDate[match].team1 - 1].name}</label>
-                    <input type="number" />
+            <div className='matches bet__form__matches'>
+                <div className='matches__one-match'>
+                    <label className='matches__one-match__team' htmlFor="">{api.teams[sortByDate[match].team1 - 1].name}</label>
+                    <input className='matches__one-match__result' type="number" />
                         :
-                    <input type="number" />
-                    <label htmlFor="">{api.teams[sortByDate[match].team2 - 1].name}</label>
+                    <input className='matches__one-match__result' type="number" />
+                    <label className='matches__one-match__team' htmlFor="">{api.teams[sortByDate[match].team2 - 1].name}</label>
                 </div>
-                <p>{sortByDate[match].date}</p>
-                <button>szczegóły</button>
+                <p className='matches__date'>{sortByDate[match].date}</p>
+                <button className='matches__details'>szczegóły</button>
                 {addMatch()}
             </div>
         )
     }
 
     return (
-        <div className='betContainer'>
-            <h3>Najbliższe mecze</h3>
-            <form className='betForm'>
+        <div className='bet'>
+            <h3 className='bet__title'>Najbliższe mecze</h3>
+            <form className='bet__form'>
                 {handleMatchList()}
                 {handleMatchList()}
                 {handleMatchList()}
@@ -52,7 +50,7 @@ const Bet = () => {
                 {handleMatchList()}
                 {handleMatchList()}
             </form>
-            <input type="submit" value="Zatwierdź" className="betSubmit"></input>
+            <input className="bet__submit" type="submit" value="Zatwierdź"></input>
         </div>
     )
 }

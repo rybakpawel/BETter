@@ -1,44 +1,44 @@
 @import 'vars';
 @import 'mixins';
 
-.tableContainer {
+.table {
     @include mainContainer;
     padding: 5% 0 6% 0;
 
-    h3 {
+    &__title {
         @include pageTitle;
     }
 
-    .formTableContainer {
+    &__wrapper {
         display: flex;
         flex-direction: column;
         padding: 0 15%;
         width: 80%;
 
-        .formTable {
+        &__form {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             padding-bottom: 15px;
 
-            select {
+            &__select-group {
                 padding: 4px 7px;
                 font-size: 30px;
                 background-color: $text-color;
                 font-family: $main-font;
             }
 
-            .formTableLegend {
+            &__legend {
                 font-size: 10px;
                 transform: translateX(25px);
             }
         }
 
-        .table {
+        &__group {
             font-size: 40px;
             color: $main-color;
 
-            .tablePositionShortcuts {
+            &__shortcuts {
                 display: flex;
                 justify-content: flex-end;
                 margin-bottom: 10px;
@@ -46,7 +46,7 @@
                 font-size: 33px;
                 border-bottom: 3px $main-color solid;
 
-                p {
+                &__shortcut {
 
                     &:nth-last-of-type(1) {
                         padding-left: 26px;
@@ -69,7 +69,7 @@
                 }
             }
 
-            .tablePosition {
+            &__position {
                 display: flex;
                 justify-content: space-between;
                 padding-bottom: 15px;
@@ -108,9 +108,9 @@
             }
         }
     }
-}
 
-.goToBetButton {
-    @include resetButton;
-    @include submitButton;
+    &__button {
+        @include resetButton;
+        @include submitButton;
+    }
 }

@@ -17,7 +17,6 @@ const RegisterSite = () => {
             <Register />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            {/* <Register /> */}
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

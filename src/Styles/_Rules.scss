@@ -1,22 +1,22 @@
 @import 'vars';
 @import 'mixins';
 
-.rulesContainer {
+.rules {
     @include mainContainer;
     padding: 5% 0 6% 0;
 
-    h3 {
+    &__title {
         @include pageTitle;
     }
 
-    .rules {
+    &__rule {
         display: flex;
         justify-content: space-around;
         align-items: center;
         width: 80%;
         height: 100%;
 
-        .rulesButtonContainer {
+        &__card {
             @include resetButton;
             display: flex;
             flex-direction: column;
@@ -35,20 +35,20 @@
                 transform: perspective(0) rotateY(0);
             }
 
-            span::before {
+            .rules__rule__card__icon::before {
                 margin-left: 0;
                 color: $bet-color;
                 font-size: 200px;
             }
 
-            h4 {
+            &__title {
                 margin-top: 20px;
                 font-weight: normal;
                 color: $bet-color;
             }
         }
 
-        .activeRule {
+        &--active {
             // transform: perspective(0) rotateY(0) translateX(-500px);
 
             // &:hover {
@@ -56,13 +56,13 @@
             // }
         }
 
-        .notActiveRule {
+        &--not-active {
             opacity: 0;
             order: 1;
             // transform: scale(0.5) translate(5px);
         }
 
-        .ruleDescription {
+        &__description {
             position: absolute;
             top: 50%;
             left: 40%;
@@ -73,19 +73,19 @@
             transform: translateY(-50%);
             transition: 0.3s;
 
-            .better {
+            &__better {
                 font-family: 'Quantify', 'Helvetica', sans-serif;
             }
         }
 
-        .closeRule {
+        &__close {
             @include resetButton;
             @include rulesIcons;
             top: 25%;
             right: 10%;
         }
 
-        .nextRuleButton {
+        &__next {
             @include resetButton;
             @include rulesIcons;
             top: 70%;
@@ -93,7 +93,7 @@
         }
     }
 
-    .rulesSubmit {
+    &__button {
         @include resetButton;
         margin: auto 0 0 0;
         padding: 0 70px 12px 70px;

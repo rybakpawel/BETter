@@ -1,23 +1,23 @@
 @import 'vars';
 @import 'mixins';
 
-.registerContainer {
+.register {
     @include mainContainer;
     padding: 5% 0 6% 0;
 
-    h3 {
+    &__title {
         @include pageTitle;
         padding-bottom: 7%;
     }
 
-    .registerForm {
+    &__form {
         display: flex;
         flex-direction: column;
         align-items: center;
         flex-basis: 100%;
         width: 100%;
 
-        div {
+        &__box {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,13 +25,13 @@
             padding-bottom: 20px;
             font-size: 24px;
 
-            .registerLabel {
+            &__label {
                 width: 33%;
                 padding-right: 10px;
                 text-align: right;
             }
 
-            .registerInput {
+            &__input {
                 flex-grow: 2;
                 height: 50px;
                 padding: 0 5px;
@@ -39,14 +39,14 @@
                 background-color: $text-color;
             }
 
-            p {
+            &__error {
                 width: 33%;
                 padding-left: 10px;
                 color: $type-font-color;
             }
         }
 
-        .registerSubmit {
+        &__button {
             @include resetButton;
             margin: auto 0 0 0;
             padding: 0 70px 12px 70px;
@@ -56,6 +56,4 @@
             font-size: 30px;
         }
     }
-
-
 }

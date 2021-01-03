@@ -17,7 +17,6 @@ const MainSite = () => {
             <Main />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            {/* <Main /> */}
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>
