@@ -24,18 +24,48 @@
 
                 .navigation__menu__link__list-item {
                     color: $type-font-color;
+                    border-color: $type-font-color;
+
+                    &::before {
+                        color: $type-font-color;
+                    }
+
+                    &::after {
+                        color: $type-font-color;
+                    }
                 }
             }
 
             &__list-item {
                 @include resetButton;
+                @include submitButton;
+                position: relative;
                 display: block;
-                width: 50%;
                 margin: 0 auto;
-                line-height: 50px;
-                border-bottom: solid 1px;
-                font-size: 30px;
-                color: $main-color;
+                overflow: hidden;
+
+                &::before {
+                    @include pseudoElementBeforeButton;
+                    width: 298px;
+                    height: 60px;
+                }
+
+                &::after {
+                    @include pseudoElementAfterButton;
+                    width: 0;
+                    height: 59px;
+                }
+
+                &:hover {
+                    &::before {
+                        transform: translateY(0);
+                    }
+
+                    &::after {
+                        width: 300px;
+                        color: $main-color;
+                    }
+                }
             }
         }
 

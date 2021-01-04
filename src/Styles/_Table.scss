@@ -109,8 +109,37 @@
         }
     }
 
-    &__button {
-        @include resetButton;
-        @include submitButton;
+    &__link {
+        text-decoration: none;
+
+        &__button {
+            @include resetButton;
+            @include submitButton(450px);
+
+            &::before {
+                @include pseudoElementBeforeButton;
+                width: 448px;
+                height: 60px;
+            }
+
+            &::after {
+                @include pseudoElementAfterButton;
+                width: 0;
+                height: 59px;
+            }
+
+            &:hover {
+                &::before {
+                    transform: translateY(0);
+                }
+
+                &::after {
+                    width: 450px;
+                    color: $main-color;
+                }
+            }
+        }
     }
+
+
 }

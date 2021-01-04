@@ -78,13 +78,13 @@ body {
   padding: 5% 0 6% 0;
 }
 
-.bet .bet__title {
+.bet__title {
   font-size: 45px;
   font-weight: normal;
   padding-bottom: 5%;
 }
 
-.bet .bet__form {
+.bet__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -99,7 +99,7 @@ body {
   overflow: auto;
 }
 
-.bet .bet__form .matches {
+.bet__form .matches {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,7 +110,7 @@ body {
   font-size: 30px;
 }
 
-.bet .bet__form .matches .matches__one-match {
+.bet__form .matches__one-match {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,11 +121,11 @@ body {
   padding: 0;
 }
 
-.bet .bet__form .matches .matches__one-match .matches__one-match__team {
+.bet__form .matches__one-match__team {
   width: 100%;
 }
 
-.bet .bet__form .matches .matches__one-match .matches__one-match__team:nth-of-type(1) {
+.bet__form .matches__one-match__team:nth-of-type(1) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -135,11 +135,11 @@ body {
   padding-right: 30px;
 }
 
-.bet .bet__form .matches .matches__one-match .matches__one-match__team:nth-last-of-type(1) {
+.bet__form .matches__one-match__team:nth-last-of-type(1) {
   padding-left: 30px;
 }
 
-.bet .bet__form .matches .matches__one-match .matches__one-match__result {
+.bet__form .matches__one-match__result {
   background-color: #E5E5E5;
   border: 1px #2F384D solid;
   width: 40px;
@@ -149,19 +149,19 @@ body {
   color: #2F384D;
 }
 
-.bet .bet__form .matches .matches__one-match .matches__one-match__result:nth-of-type(1) {
+.bet__form .matches__one-match__result:nth-of-type(1) {
   margin-right: 10px;
 }
 
-.bet .bet__form .matches .matches__one-match .matches__one-match__result:nth-of-type(2) {
+.bet__form .matches__one-match__result:nth-of-type(2) {
   margin-left: 10px;
 }
 
-.bet .bet__form .matches .matches__date {
+.bet__form .matches__date {
   padding-right: 100px;
 }
 
-.bet .bet__form .matches .matches__details {
+.bet__form .matches__details {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
@@ -169,32 +169,77 @@ body {
   font-size: 30px;
 }
 
-.bet .bet__form .matches .matches__details:hover {
+.bet__form .matches__details:hover {
   cursor: pointer;
 }
 
-.bet .bet__form .matches .matches__details:focus {
+.bet__form .matches__details:focus {
   outline: none;
 }
 
-.bet .bet__submit {
+.bet__submit {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
+  position: relative;
+  display: block;
+  overflow: hidden;
   margin: 5% 0 0 0;
-  padding: 0 70px 12px 70px;
+  width: 300px;
+  line-height: 60px;
   border-bottom: 1px #2F384D solid;
   color: #2F384D;
   font-family: inherit;
   font-size: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.bet .bet__submit:hover {
+.bet__submit:hover {
   cursor: pointer;
 }
 
-.bet .bet__submit:focus {
+.bet__submit:focus {
   outline: none;
+}
+
+.bet__submit::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #2F384D;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 298px;
+  height: 60px;
+}
+
+.bet__submit::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 59px;
+}
+
+.bet__submit:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.bet__submit:hover::after {
+  width: 300px;
+  color: #2F384D;
 }
 
 @media (max-width: 1600px) {
@@ -448,7 +493,7 @@ body {
   z-index: 2;
 }
 
-.login .login__form {
+.login__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -460,20 +505,20 @@ body {
   padding-bottom: 8px;
 }
 
-.login .login__form .login__form__label {
+.login__form__label {
   padding-left: 3px;
   color: #E5E5E5;
   font-size: 14px;
 }
 
-.login .login__form .login__form__input {
+.login__form__input {
   height: 40px;
   padding-left: 5px;
   font-size: 20px;
   background-color: #E5E5E5;
 }
 
-.login .login__form .login__form__button {
+.login__form__button {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
@@ -483,45 +528,85 @@ body {
   font-family: 'Questrial', sans-serif;
 }
 
-.login .login__form .login__form__button:hover {
+.login__form__button:hover {
   cursor: pointer;
 }
 
-.login .login__form .login__form__button:focus {
+.login__form__button:focus {
   outline: none;
 }
 
-.login .login__login-button {
+.login__login-button {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 5% 0 0 0;
   width: 200px;
-  padding: 13px 60px;
-  margin: 110px 0 60px 0;
+  line-height: 50px;
   border-bottom: 1px #E5E5E5 solid;
+  color: #E5E5E5;
+  font-family: inherit;
   font-size: 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin: 110px 0 60px 0;
   font-family: 'Questrial', sans-serif;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
 }
 
-.login .login__login-button:hover {
+.login__login-button:hover {
   cursor: pointer;
 }
 
-.login .login__login-button:focus {
+.login__login-button:focus {
   outline: none;
 }
 
-.login .login__login-button:hover {
-  -webkit-transform: scale(1.2, 1.2);
-          transform: scale(1.2, 1.2);
+.login__login-button::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #E5E5E5;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 198px;
+  height: 60px;
 }
 
-.login .login__register-button {
+.login__login-button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 49px;
+}
+
+.login__login-button:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.login__login-button:hover::after {
+  width: 200px;
+  color: #E5E5E5;
+}
+
+.login__register-button {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
@@ -529,11 +614,11 @@ body {
   font-size: 15px;
 }
 
-.login .login__register-button:hover {
+.login__register-button:hover {
   cursor: pointer;
 }
 
-.login .login__register-button:focus {
+.login__register-button:focus {
   outline: none;
 }
 
@@ -713,19 +798,37 @@ body {
 
 .navigation__menu__link:nth-child(1) .navigation__menu__link__list-item {
   color: #9F0D0D;
+  border-color: #9F0D0D;
+}
+
+.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item::before {
+  color: #9F0D0D;
+}
+
+.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item::after {
+  color: #9F0D0D;
 }
 
 .navigation__menu__link__list-item {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
+  position: relative;
   display: block;
-  width: 50%;
-  margin: 0 auto;
-  line-height: 50px;
-  border-bottom: solid 1px;
-  font-size: 30px;
+  overflow: hidden;
+  margin: 5% 0 0 0;
+  width: 300px;
+  line-height: 60px;
+  border-bottom: 1px #2F384D solid;
   color: #2F384D;
+  font-family: inherit;
+  font-size: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .navigation__menu__link__list-item:hover {
@@ -734,6 +837,45 @@ body {
 
 .navigation__menu__link__list-item:focus {
   outline: none;
+}
+
+.navigation__menu__link__list-item::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #2F384D;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 298px;
+  height: 60px;
+}
+
+.navigation__menu__link__list-item::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 59px;
+}
+
+.navigation__menu__link__list-item:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.navigation__menu__link__list-item:hover::after {
+  width: 300px;
+  color: #2F384D;
 }
 
 .navigation__menu__hamburger {
@@ -1007,12 +1149,19 @@ body {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
-  margin: auto 0 0 0;
-  padding: 0 70px 12px 70px;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 5% 0 0 0;
+  width: 300px;
+  line-height: 60px;
   border-bottom: 1px #2F384D solid;
   color: #2F384D;
   font-family: inherit;
   font-size: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin: auto 0 0 0;
 }
 
 .register__form__button:hover {
@@ -1021,6 +1170,45 @@ body {
 
 .register__form__button:focus {
   outline: none;
+}
+
+.register__form__button::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #2F384D;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 298px;
+  height: 60px;
+}
+
+.register__form__button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 59px;
+}
+
+.register__form__button:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.register__form__button:hover::after {
+  width: 300px;
+  color: #2F384D;
 }
 
 .rules {
@@ -1193,12 +1381,19 @@ body {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
-  margin: auto 0 0 0;
-  padding: 0 70px 12px 70px;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 5% 0 0 0;
+  width: 300px;
+  line-height: 60px;
   border-bottom: 1px #2F384D solid;
   color: #2F384D;
   font-family: inherit;
   font-size: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin: 0;
 }
 
 .rules__button:hover {
@@ -1207,6 +1402,45 @@ body {
 
 .rules__button:focus {
   outline: none;
+}
+
+.rules__button::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #2F384D;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 298px;
+  height: 60px;
+}
+
+.rules__button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 59px;
+}
+
+.rules__button:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.rules__button:hover::after {
+  width: 300px;
+  color: #2F384D;
 }
 
 .table {
@@ -1353,23 +1587,72 @@ body {
   padding-left: 12px;
 }
 
-.table__button {
+.table__link {
+  text-decoration: none;
+}
+
+.table__link__button {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
+  position: relative;
+  display: block;
+  overflow: hidden;
   margin: 5% 0 0 0;
-  padding: 0 70px 12px 70px;
+  width: 450px;
+  line-height: 60px;
   border-bottom: 1px #2F384D solid;
   color: #2F384D;
   font-family: inherit;
   font-size: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.table__button:hover {
+.table__link__button:hover {
   cursor: pointer;
 }
 
-.table__button:focus {
+.table__link__button:focus {
   outline: none;
+}
+
+.table__link__button::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #2F384D;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 448px;
+  height: 60px;
+}
+
+.table__link__button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 59px;
+}
+
+.table__link__button:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.table__link__button:hover::after {
+  width: 450px;
+  color: #2F384D;
 }
 /*# sourceMappingURL=Styles.css.map */

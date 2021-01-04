@@ -3,7 +3,6 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import './Styles/Styles.css';
-// import './Styles/App.min.css';
 
 import MainSite from './Sites/MainSite';
 import BetSite from './Sites/BetSite';

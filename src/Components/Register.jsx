@@ -72,7 +72,7 @@ const Register = () => {
                 {form('login', 'login', 'text', inputRegister.login, errorMessage.login)}
                 {form('hasło', 'password', 'password', inputRegister.password, errorMessage.password)}
                 {form('potwierdź hasło', 'confirmPassword', 'password', inputRegister.confirmPassword, errorMessage.confirmPassword)}
-                <input type="submit" value="Załóż konto" className="register__form__button" onSubmit={handleSubmit}></input>
+                <button type="submit" className="register__form__button" onSubmit={handleSubmit}>Załóż konto</button>
             </form>
 
         </div>

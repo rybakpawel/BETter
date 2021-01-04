@@ -134,8 +134,8 @@ const Table = () => {
                     {handleTable(groups[selected][3])}
                 </div>
             </div>
-            <Link to='/bet'>
-                <button className='table__button'>Przejdź do typowania!</button>
+            <Link to='/bet' className='table__link'>
+                <button className='table__link__button' type='button'>Przejdź do typowania!</button>
             </Link>
         </div>
     )

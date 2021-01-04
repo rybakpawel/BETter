@@ -70,7 +70,7 @@ const Rules = () => {
                 </button>
                 {isActive ? showRule(isActive) : null}
             </div>
-            <button className="rules__button">Załóż konto</button>
+            <button className="rules__button" type='button'>Załóż konto</button>
         </div>
     )
 }

@@ -50,7 +50,7 @@ const Bet = () => {
                 {handleMatchList()}
                 {handleMatchList()}
             </form>
-            <input className="bet__submit" type="submit" value="Zatwierdź"></input>
+            <button className="bet__submit" type="submit">Zatwierdź</button>
         </div>
     )
 }

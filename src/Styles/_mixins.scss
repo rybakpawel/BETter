@@ -14,13 +14,39 @@
     }
 }
 
-@mixin submitButton {
+@mixin pseudoElementBeforeButton($color: $main-color) {
+    content: '';
+    position: absolute;
+    display: block;
+    color: $color;
+    border-left: solid 1px;
+    border-right: solid 1px;
+    transform: translateY(100%);
+    transition: 0.3s;
+}
+
+@mixin pseudoElementAfterButton {
+    content: '';
+    position: absolute;
+    display: block;
+    color: transparent;
+    border-top: solid 1px;
+    transform: translateY(-100%);
+    transition: 0.3s;
+}
+
+@mixin submitButton($width: 300px, $color: $main-color, $font-size: 30px, $line-height: 60px) {
+    position: relative;
+    display: block;
+    overflow: hidden;
     margin: 5% 0 0 0;
-    padding: 0 70px 12px 70px;
-    border-bottom: 1px $main-color solid;
-    color: $main-color;
+    width: $width;
+    line-height: $line-height;
+    border-bottom: 1px $color solid;
+    color: $color;
     font-family: inherit;
-    font-size: 30px;
+    font-size: $font-size;
+    transition: 0.3s;
 }
 
 @mixin hoverButton {

@@ -48,12 +48,31 @@
 
         &__button {
             @include resetButton;
+            @include submitButton;
             margin: auto 0 0 0;
-            padding: 0 70px 12px 70px;
-            border-bottom: 1px $main-color solid;
-            color: $main-color;
-            font-family: inherit;
-            font-size: 30px;
+
+            &::before {
+                @include pseudoElementBeforeButton;
+                width: 298px;
+                height: 60px;
+            }
+
+            &::after {
+                @include pseudoElementAfterButton;
+                width: 0;
+                height: 59px;
+            }
+
+            &:hover {
+                &::before {
+                    transform: translateY(0);
+                }
+
+                &::after {
+                    width: 300px;
+                    color: $main-color;
+                }
+            }
         }
     }
 }

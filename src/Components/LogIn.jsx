@@ -38,7 +38,7 @@ const LogIn = (props) => {
                     <button className='login__form__button'>przypomnij hasło</button>
                 </div>
 
-                <input className='login__login-button' type="submit" value="Zaloguj" />
+                <button className='login__login-button' type="submit">Zaloguj</button>
                 <Link to='/register'>
                     <button className='login__register-button'>Nie masz konta? Zarejestruj się!</button>
                 </Link>
