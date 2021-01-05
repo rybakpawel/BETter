@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-import Header from '../Components/Header';
-import Menu from '../Components/Menu';
-import Competition from '../Components/Competition';
-import LogIn from '../Components/LogIn';
-import Footer from '../Components/Footer';
+import Header from '../Header';
+import Menu from '../Menu';
+import Bet from '../Bet';
+import LogIn from '../LogIn';
+import Footer from '../Footer';
 
 const BetSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
@@ -14,7 +14,7 @@ const BetSite = () => {
 
     return (
         <>
-            <Competition />
+            <Bet />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
             <Footer />

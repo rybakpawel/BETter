@@ -7,7 +7,7 @@
     justify-content: space-between;
     font-family: $main-font;
 
-    .header__logo {
+    &__logo {
         @include resetButton;
         position: fixed;
         top: 40px;
@@ -18,22 +18,22 @@
         cursor: pointer;
     }
 
-    .header__login {
+    &__login {
         position: fixed;
         top: 35px;
         right: 35px;
-        transition: 0.2s;
 
-        .header__login__button,
+        &__button,
         span {
             @include resetButton;
             font-size: 28px;
             font-family: 'Questrial', sans-serif;
             cursor: pointer;
-        }
+            transition: 0.4s;
 
-        &:hover {
-            transform: scale(1.05, 1.05);
+            &:hover {
+                opacity: 0.7;
+            }
         }
     }
 }

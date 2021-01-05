@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
-import Header from '../Components/Header';
-import Main from '../Components/Main';
-import Menu from '../Components/Menu';
-import LogIn from '../Components/LogIn';
-import Footer from '../Components/Footer';
+import Header from '../Header';
+import Register from '../Register';
+import Menu from '../Menu';
+import LogIn from '../LogIn';
+import Footer from '../Footer';
 
-const MainSite = () => {
+const RegisterSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
@@ -14,7 +14,7 @@ const MainSite = () => {
 
     return (
         <>
-            <Main />
+            <Register />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
             <Footer />
@@ -23,4 +23,4 @@ const MainSite = () => {
     )
 }
 
-export default MainSite;
+export default RegisterSite;

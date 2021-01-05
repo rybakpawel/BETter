@@ -2,7 +2,7 @@ import React from 'react'
 
 const Competition = () => {
     return (
-        <div>elo</div>
+        <div className='competition'>siemka</div>
     )
 }
 

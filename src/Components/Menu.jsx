@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { FaBars } from 'react-icons/fa'
 import { VscChromeClose } from 'react-icons/vsc'

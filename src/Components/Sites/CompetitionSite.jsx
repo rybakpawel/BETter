@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 
-import Header from '../Components/Header';
-import Menu from '../Components/Menu';
-import Table from '../Components/Table';
-import LogIn from '../Components/LogIn';
-import Footer from '../Components/Footer';
+import Header from '../Header';
+import Menu from '../Menu';
+import Competition from '../Competition';
+import LogIn from '../LogIn';
+import Footer from '../Footer';
 
-const TableSite = () => {
+const BetSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
     }
+
     return (
         <>
-            <Table />
+            <Competition />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
             <Footer />
@@ -22,4 +23,4 @@ const TableSite = () => {
     )
 }
 
-export default TableSite;
+export default BetSite;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { VscChromeClose, VscArrowRight } from 'react-icons/vsc'
-import '../icons/font/flaticon.css'
+import '../images/icons/font/flaticon.css'
 
 const Rules = () => {
     const [isActive, setIsActive] = useState(null)

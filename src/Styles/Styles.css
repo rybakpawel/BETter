@@ -301,7 +301,7 @@ body {
   font-family: "Questrial", sans-serif;
 }
 
-.header .header__logo {
+.header__logo {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
@@ -314,45 +314,45 @@ body {
   cursor: pointer;
 }
 
-.header .header__logo:hover {
+.header__logo:hover {
   cursor: pointer;
 }
 
-.header .header__logo:focus {
+.header__logo:focus {
   outline: none;
 }
 
-.header .header__login {
+.header__login {
   position: fixed;
   top: 35px;
   right: 35px;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
 }
 
-.header .header__login .header__login__button,
-.header .header__login span {
+.header__login__button,
+.header__login span {
   background-color: transparent;
   border: none;
   color: #E5E5E5;
   font-size: 28px;
   font-family: 'Questrial', sans-serif;
   cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-.header .header__login .header__login__button:hover,
-.header .header__login span:hover {
+.header__login__button:hover,
+.header__login span:hover {
   cursor: pointer;
 }
 
-.header .header__login .header__login__button:focus,
-.header .header__login span:focus {
+.header__login__button:focus,
+.header__login span:focus {
   outline: none;
 }
 
-.header .header__login:hover {
-  -webkit-transform: scale(1.05, 1.05);
-          transform: scale(1.05, 1.05);
+.header__login__button:hover,
+.header__login span:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 1600px) {

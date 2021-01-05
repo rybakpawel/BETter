@@ -1,26 +1,25 @@
 import React, { useState } from 'react'
 
-import Header from '../Components/Header';
-import Rules from '../Components/Rules';
-import Menu from '../Components/Menu';
-import LogIn from '../Components/LogIn';
-import Footer from '../Components/Footer';
+import Header from '../Header';
+import Menu from '../Menu';
+import Table from '../Table';
+import LogIn from '../LogIn';
+import Footer from '../Footer';
 
-const RegisterSite = () => {
+const TableSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
     }
-
     return (
         <>
-            <Rules />
+            <Table />
             <Header isLogInClicked={handleIsLogIn} />
             <Menu />
-            <Footer icons={true} />
+            <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>
     )
 }
 
-export default RegisterSite;
+export default TableSite;

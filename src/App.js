@@ -4,12 +4,12 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import './Styles/Styles.css';
 
-import MainSite from './Sites/MainSite';
-import BetSite from './Sites/BetSite';
-import RegisterSite from './Sites/RegisterSite';
-import TableSite from './Sites/TableSite';
-import CompetitionSite from './Sites/CompetitionSite';
-import RulesSite from './Sites/RulesSite';
+import MainSite from './Components/Sites/MainSite';
+import BetSite from './Components/Sites/BetSite';
+import RegisterSite from './Components/Sites/RegisterSite';
+import TableSite from './Components/Sites/TableSite';
+import CompetitionSite from './Components/Sites/CompetitionSite';
+import RulesSite from './Components/Sites/RulesSite';
 
 function App() {
 
