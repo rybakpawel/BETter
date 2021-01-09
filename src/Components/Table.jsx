@@ -1,13 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import api from '../api/api'
-
 const Table = () => {
+
+    const [isLoading, setIsLoading] = useState(true)
+    const [allGroups, setAllGroups] = useState(null)
+    const [groups, setGroups] = useState(null)
     const [selected, setSelected] = useState(0)
 
-    const { a, b, c, d, e, f } = api.groups
-    const allGroups = a.matches.concat(b.matches, c.matches, d.matches, e.matches, f.matches);
+    useEffect(() => {
+        loadData();
+    }, [])
+
+    const loadData = async () => {
+        const response = await fetch('/table')
+        const data = await response.json()
+        setAllGroups(data.allGroups)
+        setGroups(data.groups)
+        setIsLoading(false);
+    }
 
     let tablePosition = 0;
 
@@ -15,30 +26,6 @@ const Table = () => {
         tablePosition = 0;
         setSelected(e.target.value - 1)
     }
-
-    const getGroup = (group) => {
-        const wholeGroup = api.teams.filter(team => {
-            return team.group === group
-        })
-        return wholeGroup
-    }
-
-    const compare = (a, b) => {
-        return b.points - a.points;
-    }
-
-    // const addStatistics = (team, rival) => {
-
-    // }
-
-    const groups = [
-        getGroup("a").sort(compare),
-        getGroup("b").sort(compare),
-        getGroup("c").sort(compare),
-        getGroup("d").sort(compare),
-        getGroup("e").sort(compare),
-        getGroup("f").sort(compare),
-    ]
 
     const handleTable = (team) => {
         const teamMatches = allGroups.filter(match => {
@@ -128,10 +115,10 @@ const Table = () => {
                         <p className='table__wrapper__group__shortcuts__shortcut'>B</p>
                         <p className='table__wrapper__group__shortcuts__shortcut'>Pkt</p>
                     </div>
-                    {handleTable(groups[selected][0])}
-                    {handleTable(groups[selected][1])}
-                    {handleTable(groups[selected][2])}
-                    {handleTable(groups[selected][3])}
+                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][0])}
+                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][1])}
+                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][2])}
+                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][3])}
                 </div>
             </div>
             <Link to='/bet' className='table__link'>
