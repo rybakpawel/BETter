@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path')
 const bet = require('./bet')
 const table = require('./table')
+const competition = require('./competition')
 
 const app = express();
 const port = 3080;
@@ -23,4 +24,8 @@ app.get('/table', (req, res) => {
         groups: table.groups,
         allGroups: table.allGroups
     })
+})
+
+app.get('/competition', (req, res) => {
+    res.send(competition)
 })

@@ -1,4 +1,8 @@
 const api = require('../src/api/api.json')
+// const connection = require('./connection');
+
+// connection.connectMongo()
+// connection.getDb()
 
 const { a, b, c, d, e, f } = api.groups
 const allGroups = a.matches.concat(b.matches, c.matches, d.matches, e.matches, f.matches)
@@ -25,4 +29,3 @@ const groups = [
 
 module.exports.groups = groups
 module.exports.allGroups = allGroups
-// module.exports.allGroups = allGroups

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import api from '../api/api'
-
 const Bet = () => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [sorted, setSorted] = useState(null)
+    const [teams, setTeams] = useState(null)
 
     useEffect(() => {
         loadData();
@@ -14,30 +13,28 @@ const Bet = () => {
     const loadData = async () => {
         const response = await fetch('/bet')
         const data = await response.json()
-        setSorted(data)
+        setSorted(data.sortByDate)
+        setTeams(data.teams)
         setIsLoading(false);
     }
 
-    let match = 0;
-    const addMatch = () => {
-        match++;
-    }
-
-    const handleMatchList = () => {
-        return (
-            <div className='matches bet__form__matches'>
-                <div className='matches__one-match'>
-                    <label className='matches__one-match__team' htmlFor="">{api.teams[sorted[match].team1 - 1].name}</label>
-                    <input className='matches__one-match__result' type="number" />
+    const nextMatch = (matches) => {
+        const matchList = matches.map((match) => {
+            return (
+                <div className='matches bet__form__matches'>
+                    <div className='matches__one-match'>
+                        <label className='matches__one-match__team' htmlFor="">{teams[match.team1 - 1].name}</label>
+                        <input className='matches__one-match__result' type="number" />
                         :
                     <input className='matches__one-match__result' type="number" />
-                    <label className='matches__one-match__team' htmlFor="">{api.teams[sorted[match].team2 - 1].name}</label>
+                        <label className='matches__one-match__team' htmlFor="">{teams[match.team2 - 1].name}</label>
+                    </div>
+                    <p className='matches__date'>{match.date}</p>
+                    <button className='matches__details'>szczegóły</button>
                 </div>
-                <p className='matches__date'>{sorted[match].date}</p>
-                <button className='matches__details'>szczegóły</button>
-                {addMatch()}
-            </div>
-        )
+            )
+        })
+        return matchList
     }
 
     if (isLoading) {
@@ -49,12 +46,7 @@ const Bet = () => {
             <div className='bet'>
                 <h3 className='bet__title'>Najbliższe mecze</h3>
                 <form className='bet__form'>
-                    {isLoading ? <p>ładowanie..</p> : handleMatchList()}
-                    {isLoading ? <p>ładowanie..</p> : handleMatchList()}
-                    {isLoading ? <p>ładowanie..</p> : handleMatchList()}
-                    {isLoading ? <p>ładowanie..</p> : handleMatchList()}
-                    {isLoading ? <p>ładowanie..</p> : handleMatchList()}
-                    {isLoading ? <p>ładowanie..</p> : handleMatchList()}
+                    {isLoading ? <p>ładowanie..</p> : nextMatch(sorted)}
                 </form>
                 <button className="bet__submit" type="submit">Zatwierdź</button>
             </div>
