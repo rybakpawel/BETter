@@ -20,8 +20,19 @@ const Competition = () => {
         setIsLoading(false);
     }
 
+    const handleGrid = () => {
+        return (
+            <>
+                <div>{handleMatchList(sorted)}</div>
+                <div>{handleUserList(users)}</div>
+            </>
+        )
+    }
+
     const handleMatchList = (matches) => {
-        const matchList = matches.map((match) => <p>{`${teams[match.team1 - 1].name} - ${teams[match.team2 - 1].name}`}</p>)
+        const matchList = matches.map(match =>
+            <p key={match.id}>{`${teams[match.team1 - 1].name} - ${teams[match.team2 - 1].name}`}</p>
+        )
         return matchList
     }
 
@@ -34,8 +45,7 @@ const Competition = () => {
         <div className='competition'>
             <h3 className='competition__title'>Rozgrywka</h3>
             <div className='competition__grid'>
-                {isLoading ? <p>ładuję...</p> : handleMatchList(sorted)}
-                {isLoading ? <p>ładuję...</p> : handleUserList(users)}
+                {isLoading ? <p>ładuję...</p> : handleGrid()}
             </div>
         </div>
     )

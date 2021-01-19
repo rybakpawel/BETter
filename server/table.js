@@ -1,31 +1,42 @@
-const api = require('../src/api/api.json')
-// const connection = require('./connection');
+const loadDB = require('./connection');
 
-// connection.connectMongo()
-// connection.getDb()
-
-const { a, b, c, d, e, f } = api.groups
-const allGroups = a.matches.concat(b.matches, c.matches, d.matches, e.matches, f.matches)
-
-const getGroup = (group) => {
-    const wholeGroup = api.teams.filter(team => {
-        return team.group === group
+const launchServer = async () => {
+    const db = await loadDB();
+    const groupsCollection = await db.collection('groups').find()
+    groupsCollection.toArray((err, res) => {
+        if (err) console.log("Błędne zapytanie o kolekcję 'groups'")
+        else {
+            const groups = res
+            const allGroups = groups[0].matches.concat(groups[1].matches, groups[2].matches, groups[3].matches, groups[4].matches, groups[5].matches)
+            module.exports.allGroups = allGroups
+        }
     })
-    return wholeGroup
+
+    const teamsCollection = await db.collection('teams').find()
+    teamsCollection.toArray((err, res) => {
+        if (err) console.log("Błędne zapytanie o kolekcję 'teams'")
+        else {
+            const teams = res
+            const getGroup = (group) => {
+                const wholeGroup = teams.filter(team => {
+                    return team.group === group
+                })
+                return wholeGroup
+            }
+            const compareTable = (a, b) => {
+                return b.points - a.points;
+            }
+            const groups = [
+                getGroup("a").sort(compareTable),
+                getGroup("b").sort(compareTable),
+                getGroup("c").sort(compareTable),
+                getGroup("d").sort(compareTable),
+                getGroup("e").sort(compareTable),
+                getGroup("f").sort(compareTable), 
+            ]
+            module.exports.groups = groups
+        }
+    })
 }
 
-const compareTable = (a, b) => {
-    return b.points - a.points;
-}
-
-const groups = [
-    getGroup("a").sort(compareTable),
-    getGroup("b").sort(compareTable),
-    getGroup("c").sort(compareTable),
-    getGroup("d").sort(compareTable),
-    getGroup("e").sort(compareTable),
-    getGroup("f").sort(compareTable), 
-]
-
-module.exports.groups = groups
-module.exports.allGroups = allGroups
+launchServer();

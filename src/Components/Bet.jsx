@@ -18,6 +18,7 @@ const Bet = () => {
         setIsLoading(false);
     }
 
+
     const nextMatch = (matches) => {
         const matchList = matches.map((match) => {
             return (

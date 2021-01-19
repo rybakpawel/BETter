@@ -27,7 +27,7 @@ const Table = () => {
         setSelected(e.target.value - 1)
     }
 
-    const handleTable = (team) => {
+    const handleTeam = (team) => {
         const teamMatches = allGroups.filter(match => {
             return match.team1 === team.id || match.team2 === team.id
         })
@@ -91,6 +91,17 @@ const Table = () => {
         )
     }
 
+    const handleTable = () => {
+        return (
+            <>
+                {handleTeam(groups[selected][0])}
+                {handleTeam(groups[selected][1])}
+                {handleTeam(groups[selected][2])}
+                {handleTeam(groups[selected][3])}
+            </>
+        )
+    }
+
     return (
         <div className='table'>
             <h3 className='table__title'>Tabela</h3>
@@ -115,10 +126,7 @@ const Table = () => {
                         <p className='table__wrapper__group__shortcuts__shortcut'>B</p>
                         <p className='table__wrapper__group__shortcuts__shortcut'>Pkt</p>
                     </div>
-                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][0])}
-                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][1])}
-                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][2])}
-                    {isLoading ? <p>poczekaj</p> : handleTable(groups[selected][3])}
+                    {isLoading ? <p>poczekaj</p> : handleTable()}
                 </div>
             </div>
             <Link to='/bet' className='table__link'>
