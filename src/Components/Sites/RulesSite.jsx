@@ -16,7 +16,7 @@ const RegisterSite = () => {
         <>
             <Rules />
             <Header isLogInClicked={handleIsLogIn} />
-            <Menu />
+            <Menu activeComponent={'rules'} />
             <Footer icons={true} />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

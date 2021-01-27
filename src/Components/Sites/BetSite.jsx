@@ -16,7 +16,7 @@ const BetSite = () => {
         <>
             <Bet />
             <Header isLogInClicked={handleIsLogIn} />
-            <Menu />
+            <Menu activeComponent={'bet'} />
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

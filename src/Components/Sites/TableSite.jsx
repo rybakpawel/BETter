@@ -15,7 +15,7 @@ const TableSite = () => {
         <>
             <Table />
             <Header isLogInClicked={handleIsLogIn} />
-            <Menu />
+            <Menu activeComponent={'table'} />
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>
