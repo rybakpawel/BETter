@@ -8,9 +8,15 @@ import Footer from '../Footer';
 
 const BetSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
+    // const [isMenu, setIsMenu] = useState(false)
+
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
     }
+
+    // const handleIsMenu = () => {
+    //     setIsMenu(!isMenu)
+    // } 
 
     return (
         <>

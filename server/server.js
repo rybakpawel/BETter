@@ -1,37 +1,24 @@
 const express = require('express');
+const path = require('path')
+
+const main = require('./routes/main')
+const bet = require('./routes/bet')
+const table = require('./routes/table')
+const competition = require('./routes/competition')
+const register = require('./routes/register')
 
 const app = express();
-const PORT = process.env.PORT || 3080;
-
-const path = require('path')
-const bet = require('./bet')
-const table = require('./table')
-const competition = require('./competition')
-    
+const PORT = process.env.PORT || 3080
+  
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}!`);
 })
 
-app.use(express.static(
-    path.join(__dirname, '../src')
-))
+app.use(express.static(path.join(__dirname, '../src')))
+app.use(express.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
-    res.json( {message: "BETter"})
-})
-
-app.get('/bet', (req, res) => {
-    res.send(bet)
-})
-
-app.get('/table', (req, res) => {
-    res.send({
-        groups: table.groups,
-        allGroups: table.allGroups
-    })
-})
-
-app.get('/competition', (req, res) => {
-    res.send(competition)
-})
-
+app.use('/', main)
+app.use('/bet', bet)
+app.use('/table', table)
+app.use('/competition', competition)
+app.use('/register', register)

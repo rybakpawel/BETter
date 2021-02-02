@@ -11,7 +11,7 @@ const Menu = (props) => {
     const [zIndex, setZIndex] = useState('');
     const [isAnimationActive, setIsAnimationActive] = useState('');
 
-    const blockComponent = e => {
+    const blockComponent = (e) => {
         e.preventDefault();
     }
 

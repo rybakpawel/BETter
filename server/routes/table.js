@@ -1,4 +1,5 @@
-const loadDB = require('./connection');
+const router = require('express').Router();
+const loadDB = require('../connection');
 
 const launchServer = async () => {
     const db = await loadDB();
@@ -40,3 +41,12 @@ const launchServer = async () => {
 }
 
 launchServer();
+
+router.get('/', (req, res) => {
+    res.send({
+        groups: router.groups,
+        allGroups: router.allGroups,
+    })
+})
+
+module.exports = router

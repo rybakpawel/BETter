@@ -12,11 +12,16 @@ const MainSite = () => {
         setIsLogIn(!isLogIn)
     }
 
+    const [isMenuActive, setIsMenuActive] = useState(false)
+    const toggleMenu = (menuState) => {
+        setIsMenuActive(menuState)
+    }
+
     return (
         <>
             <Main />
-            <Header isLogInClicked={handleIsLogIn} />
-            <Menu />
+            <Header isLogInClicked={handleIsLogIn} activeComponent={'main'} />
+            <Menu toggle={toggleMenu} isMenu={isMenuActive} />
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

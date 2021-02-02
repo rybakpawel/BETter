@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Register = () => {
 
@@ -19,6 +19,27 @@ const Register = () => {
         }
     );
 
+    useEffect(() => {
+        loadData();
+    }, [])
+
+    const loadData = async () => {
+        const response = await fetch('/user')
+        const data = await response.json()
+        if (data.errorMsg.input === 'login') {
+            setErrorMessage({
+                login: data.errorMsg.msg,
+                email: ''
+            })
+        } else if (data.errorMsg.input === 'email') {
+            setErrorMessage({
+                login: '',
+                email: data.errorMsg.msg
+            })
+        }
+
+    }
+
     const handleInput = (e) => {
         const { name, value } = e.target;
         setInputRegister({
@@ -28,7 +49,6 @@ const Register = () => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
         setErrorMessage(() => {
             let errorMessage = {}
             if (!inputRegister.email) errorMessage.email = "Wprowadź adres e-mail"
@@ -67,14 +87,13 @@ const Register = () => {
     return (
         <div className='register'>
             <h3 className='register__title'>Rejestracja</h3>
-            <form action="" className='register__form' onSubmit={handleSubmit} noValidate>
+            <form method='POST' action='http://localhost:3080/user' className='register__form' onSubmit={handleSubmit} noValidate>
                 {form('e-mail', 'email', 'email', inputRegister.email, errorMessage.email)}
                 {form('login', 'login', 'text', inputRegister.login, errorMessage.login)}
                 {form('hasło', 'password', 'password', inputRegister.password, errorMessage.password)}
                 {form('potwierdź hasło', 'confirmPassword', 'password', inputRegister.confirmPassword, errorMessage.confirmPassword)}
                 <button type="submit" className="register__form__button" onSubmit={handleSubmit}>Załóż konto</button>
             </form>
-
         </div>
     )
 }
