@@ -6,6 +6,7 @@ const bet = require('./routes/bet')
 const table = require('./routes/table')
 const competition = require('./routes/competition')
 const register = require('./routes/register')
+const login = require('./routes/login');
 
 const app = express();
 const PORT = process.env.PORT || 3080
@@ -22,3 +23,5 @@ app.use('/bet', bet)
 app.use('/table', table)
 app.use('/competition', competition)
 app.use('/register', register)
+app.use('/login', login)
+

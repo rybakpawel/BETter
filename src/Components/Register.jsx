@@ -24,7 +24,7 @@ const Register = () => {
     }, [])
 
     const loadData = async () => {
-        const response = await fetch('/user')
+        const response = await fetch('/register')
         const data = await response.json()
         if (data.errorMsg.input === 'login') {
             setErrorMessage({
@@ -87,7 +87,7 @@ const Register = () => {
     return (
         <div className='register'>
             <h3 className='register__title'>Rejestracja</h3>
-            <form method='POST' action='http://localhost:3080/user' className='register__form' onSubmit={handleSubmit} noValidate>
+            <form method='POST' action='http://localhost:3080/register' className='register__form' onSubmit={handleSubmit} noValidate>
                 {form('e-mail', 'email', 'email', inputRegister.email, errorMessage.email)}
                 {form('login', 'login', 'text', inputRegister.login, errorMessage.login)}
                 {form('hasło', 'password', 'password', inputRegister.password, errorMessage.password)}

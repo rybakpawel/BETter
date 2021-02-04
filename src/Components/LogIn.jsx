@@ -27,7 +27,7 @@ const LogIn = (props) => {
     return (
         <>
             <div className='login-wrapper' onClick={props.isLogInClicked}></div>
-            <form action="" className='login' ref={divRef}>
+            <form method='POST' action='http://localhost:3080/login' className='login' ref={divRef}>
                 <div className='login__form'>
                     <label className='login__form__label' htmlFor="">login</label>
                     <input className='login__form__input' name="login" type="text" value={inputLogin.login} onChange={handleInput} />
