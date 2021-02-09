@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom'
 
 const Competition = () => {
 
-    const users = [{ name: 'pawel', points: 20 }, { name: 'ema', points: 10 }, { name: 'paulina', points: 35 }]  // próbna tablica użytkowników, docelowa - do pobrania z Mongo
-
     const [isLoading, setIsLoading] = useState(true)
-    const [sorted, setSorted] = useState(null)
+    const [sortedMatches, setSortedMatches] = useState(null)
     const [teams, setTeams] = useState(null)
+    const [users, setUsers] = useState(null)
 
     useEffect(() => {
         loadData();
     }, [])
 
     const loadData = async () => {
-        const response = await fetch('/bet')
+        const response = await fetch('/competition')
         const data = await response.json()
-        setSorted(data.sortByDate)
+        setSortedMatches(data.sortByDate)
         setTeams(data.teams)
+        setUsers(data.users)
         setIsLoading(false);
     }
 
@@ -32,35 +32,19 @@ const Competition = () => {
         )
     }
 
-    const handlePoints = () => {
-        const userPoints = users.map(user =>
-            <p className='competition__grid__points__userPoints'>{user.points}</p>
-        )
-        return (
-            <div className='competition__grid__points'>
-                <p className='competition__grid__points__title'>Punkty</p>
-                {userPoints}
-            </div>
-        )
-    }
-
-    const handleUserList = users => {
+    const handleUsers = (users, field) => {
         const userList = users.map(user =>
-            <p className='competition__grid__user'>{user.name}</p>
+            <p className={`competition__grid__${field}__user`}>{user[field]}</p>
         )
         return (
-            <div className='competition__grid__userList'>
+            <div className={`competition__grid__${field}`}>
+                {field === 'points' ? <p className={`competition__grid__${field}__title`}>Punkty</p> : null}
                 {userList}
             </div>
         )
     }
 
     const handleResults = (matches, users) => {
-        // const userList = users.map(user => {
-        //     const matchesList = matches.map(match => {
-        //         <p></p>
-        //     })
-        // })
         return (
             <div className='competition__grid__results'>
 
@@ -69,12 +53,20 @@ const Competition = () => {
     }
 
     const handleGrid = () => {
+        const compare = (a, b) => {
+            if (a.points < b.points) return -1
+            if (a.points > b.points) return 1
+            return 0
+        }
+
+        const sortedUsers = users.sort(compare)
+
         return (
             <>
-                {handleMatchList(sorted)}
-                {handlePoints()}
-                {handleUserList(users)}
-                {handleResults(sorted, users)}
+                {handleMatchList(sortedMatches)}
+                {handleUsers(sortedUsers, 'points')}
+                {handleUsers(sortedUsers, 'name')}
+                {handleResults(sortedMatches, users)}
             </>
         )
     }

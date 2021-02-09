@@ -43,7 +43,8 @@ const launchServer = async () => {
                         usersCollection.insertOne({ 
                             name: login,
                             email,
-                            password: hashedPassword
+                            password: hashedPassword,
+                            points: 0
                         })
                         setErrorMessage(res, null)
                     }

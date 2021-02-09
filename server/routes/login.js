@@ -10,6 +10,13 @@ const session = require('express-session')
 const loadDB = require('../connection');
 const initializePassport = require('../passport');
 
+router.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
+
+
 const launchServer = async () => {
     const db = await loadDB();
     const usersCollection = await db.collection('users')
@@ -26,7 +33,7 @@ const launchServer = async () => {
     })
     
     router.post('/', passport.authenticate('local', {
-        successRedirect: 'http://localhost:3000/',
+        successRedirect: 'http://localhost:3080/login',
         failureRedirect: 'http://localhost:3000/register',
         failureFlash: true
     }))
@@ -34,19 +41,22 @@ const launchServer = async () => {
 
 launchServer();
 
+
+
 router.get('/', (req, res) => {
+    console.log(req.isAuthenticated())
     res.send({
             
         })
 })
 
-router.use(flash())
-router.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}))
+
+
 router.use(passport.initialize())
 router.use(passport.session())
+
+router.use(flash())
+
+
 
 module.exports = router

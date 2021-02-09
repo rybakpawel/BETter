@@ -47,19 +47,21 @@
                 border-bottom: 1px solid $main-color;
             }
 
-            &__userPoints {
+            &__user {
                 align-self: center;
                 justify-self: center;
             }
         }
 
-        &__userList {
+        &__name {
             display: grid;
             grid-template-rows: repeat(10, 1fr);
             justify-items: end;
             align-items: center;
             padding-right: 7px;
             border-right: 1px solid $main-color;
+
+            &__user {}
         }
 
         &__results {
