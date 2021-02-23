@@ -8,9 +8,11 @@ import Footer from '../Footer';
 
 const TableSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
+
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
     }
+
     return (
         <>
             <Table />

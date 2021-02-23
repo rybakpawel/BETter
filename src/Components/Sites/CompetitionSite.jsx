@@ -8,6 +8,7 @@ import Footer from '../Footer';
 
 const BetSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
+
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
     }

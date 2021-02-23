@@ -3,6 +3,8 @@ import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { LoginContext } from './context/loginContext'
+import MenuContext from './context/menuContext'
+
 import './Styles/Styles.css';
 
 import MainSite from './Components/Sites/MainSite';
@@ -15,12 +17,13 @@ import RulesSite from './Components/Sites/RulesSite';
 function App() {
 
   const [isLogged, setIsLogged] = useState(false)
+  const [isMenuActive, setIsMenuActive] = useState(false)
 
   const location = useLocation();
- 
   return (
     <>
       <LoginContext.Provider value={{ isLogged, setIsLogged }}>
+      <MenuContext.Provider value={{ isMenuActive, setIsMenuActive }}>
         <TransitionGroup>
           <CSSTransition 
             key={location.key}
@@ -36,6 +39,7 @@ function App() {
             </Switch>
           </CSSTransition>
         </TransitionGroup>
+        </MenuContext.Provider>
       </LoginContext.Provider>
     </>
   );

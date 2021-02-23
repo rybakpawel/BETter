@@ -8,6 +8,7 @@ import Footer from '../Footer';
 
 const RegisterSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
+
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
     }

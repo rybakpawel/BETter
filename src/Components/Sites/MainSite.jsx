@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import MenuContext from '../../context/menuContext'
 
 import Header from '../Header';
 import Main from '../Main';
@@ -8,20 +9,16 @@ import Footer from '../Footer';
 
 const MainSite = () => {
     const [isLogIn, setIsLogIn] = useState(false)
+
     const handleIsLogIn = () => {
         setIsLogIn(!isLogIn)
-    }
-
-    const [isMenuActive, setIsMenuActive] = useState(false)
-    const toggleMenu = (menuState) => {
-        setIsMenuActive(menuState)
     }
 
     return (
         <>
             <Main />
             <Header isLogInClicked={handleIsLogIn} activeComponent={'main'} />
-            <Menu toggle={toggleMenu} isMenu={isMenuActive} />
+            <Menu />
             <Footer />
             {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
         </>

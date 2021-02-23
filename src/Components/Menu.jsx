@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import MenuContext from '../context/menuContext'
 
 import { FaBars } from 'react-icons/fa'
 import { VscChromeClose } from 'react-icons/vsc'
 
 const Menu = (props) => {
 
+    const { isMenuActive, setIsMenuActive } = useContext(MenuContext)
+
     const [isMenuHover, setIsMenuHover] = useState('')
-    const [isMenuListActive, setIsMenuListActive] = useState(false);
     const [zIndex, setZIndex] = useState('');
     const [isAnimationActive, setIsAnimationActive] = useState('');
+
+    const toggleActiveMenu = () => {
+        setIsMenuActive(!isMenuActive)
+    }
 
     const blockComponent = (e) => {
         e.preventDefault();
@@ -20,9 +26,8 @@ const Menu = (props) => {
         else if (isMenuHover) setIsMenuHover('')
     }
 
-    const handleIsMenuListActive = () => {
-        setIsMenuListActive(!isMenuListActive);
-        if (!isMenuListActive) {
+    const menuAnimation = () => {
+        if (!isMenuActive) {
             setIsAnimationActive('navigation--animation-menu-in');
             setTimeout(() => {
                 setZIndex('navigation--active-z-index');
@@ -35,11 +40,16 @@ const Menu = (props) => {
         }
     }
 
+    const handleIsMenuListActive = () => {
+        toggleActiveMenu();
+        menuAnimation();
+    }
+
     return (
         <>
             <nav className={`navigation ${zIndex} ${isAnimationActive}`} onMouseEnter={handleIsMenuHover} onMouseLeave={handleIsMenuHover}>
                 <aside className='navigation__menu'>
-                    {isMenuListActive
+                    {isMenuActive
                         ?
                         <>
                             <Link className='navigation__menu__link' to='/bet' style={{ textDecoration: 'none' }}>

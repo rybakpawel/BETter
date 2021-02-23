@@ -72,6 +72,71 @@
                 @include resetButton;
                 color: $main-color;
                 font-size: 30px;
+
+                .detail {
+                    position: absolute;
+                    display: grid;
+                    grid-template-columns: 1fr 380px;
+                    grid-template-rows: 40px 1fr;
+                    height: 300px;
+                    width: 600px;
+                    background-color: $main-color;
+                    background-position: center;
+                    border: 2px $main-color solid;
+                    color: $text-color;
+                    font-size: 18px;
+                    overflow: visible;
+                    font-family: $main-font;
+
+                    &__teams {
+                        grid-column: 2;
+                        display: flex;
+                        justify-content: space-around;
+                        margin-top: 10px;
+
+                        &__one-team {
+                            background-color: $main-color;
+                            height: 30px;
+                            width: 150px;
+                            overflow: hidden;
+                            line-height: 30px;
+                            border: 1px solid $text-color;
+                        }
+                    }
+
+                    &__menu {
+                        grid-row: 2;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+
+                        &__section {
+                            background-color: $main-color;
+                            height: 30px;
+                            width: 170px;
+                            line-height: 30px;
+                            border: 1px solid $text-color;
+                        }
+                    }
+
+                    &__results {
+                        grid-row: 2;
+                        grid-column: 2;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+
+                        &__one-result {
+                            display: flex;
+                            justify-content: space-around;
+
+                            &__text {
+                                text-shadow: 0 0 3px #000, 0 0 5px $main-color;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

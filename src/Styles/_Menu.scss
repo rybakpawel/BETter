@@ -9,6 +9,7 @@
     height: calc(100% - 8%);
     background: linear-gradient(180deg, #a0acca 60%, #849BD5 90%);
     font-family: $main-font;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
 
     &__menu {
         display: flex;
