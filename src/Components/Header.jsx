@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import LoginContext from '../context/loginContext'
 import { useLoginContext } from '../context/loginContext'
 
 const Header = (props) => {
+
+    const { toggleActiveLogin } = useContext(LoginContext)
+
     const blockComponent = e => {
         e.preventDefault();
     }
@@ -11,7 +15,7 @@ const Header = (props) => {
         if (!isLogged) {
             return (
                 <div className='header__login'>
-                    <button className='header__login__button' onClick={props.isLogInClicked}>Zaloguj się</button>
+                    <button className='header__login__button' onClick={toggleActiveLogin}>Zaloguj się</button>
                     <span> / </span>
                     <Link to="/register">
                         <button className='header__login__button' onClick={props.activeComponent === 'register' ? blockComponent : null}>Zarejestruj się</button>

@@ -9,13 +9,7 @@ const session = require('express-session')
 
 const loadDB = require('../connection');
 const initializePassport = require('../passport');
-
-router.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-}))
-
+const checkAuthenticate = require('../checkAuthenticate');
 
 const launchServer = async () => {
     const db = await loadDB();
@@ -41,22 +35,22 @@ const launchServer = async () => {
 
 launchServer();
 
-
-
 router.get('/', (req, res) => {
-    console.log(req.isAuthenticated())
+    // console.log(req.user)
     res.send({
-            
+            user: req.isAuthenticated()
         })
 })
 
-
+router.use(flash())
+router.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
 
 router.use(passport.initialize())
 router.use(passport.session())
-
-router.use(flash())
-
 
 
 module.exports = router

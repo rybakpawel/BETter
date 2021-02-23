@@ -7,15 +7,11 @@ import { VscChromeClose } from 'react-icons/vsc'
 
 const Menu = (props) => {
 
-    const { isMenuActive, setIsMenuActive } = useContext(MenuContext)
+    const { isMenuActive, toggleActiveMenu } = useContext(MenuContext)
 
     const [isMenuHover, setIsMenuHover] = useState('')
-    const [zIndex, setZIndex] = useState('');
+    const [zIndex, setZIndex] = useState(isMenuActive ? 'navigation--active-z-index' : '');
     const [isAnimationActive, setIsAnimationActive] = useState('');
-
-    const toggleActiveMenu = () => {
-        setIsMenuActive(!isMenuActive)
-    }
 
     const blockComponent = (e) => {
         e.preventDefault();

@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+
+import LoginContext from '../../context/loginContext'
 
 import Header from '../Header';
 import Menu from '../Menu';
@@ -7,19 +9,16 @@ import LogIn from '../LogIn';
 import Footer from '../Footer';
 
 const TableSite = () => {
-    const [isLogIn, setIsLogIn] = useState(false)
 
-    const handleIsLogIn = () => {
-        setIsLogIn(!isLogIn)
-    }
+    const { isLoginActive } = useContext(LoginContext)
 
     return (
         <>
             <Table />
-            <Header isLogInClicked={handleIsLogIn} />
+            <Header />
             <Menu activeComponent={'table'} />
             <Footer />
-            {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
+            {isLoginActive ? <LogIn /> : null}
         </>
     )
 }

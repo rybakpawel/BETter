@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+
+import LoginContext from '../../context/loginContext'
 
 import Header from '../Header';
 import Register from '../Register';
@@ -7,19 +9,16 @@ import LogIn from '../LogIn';
 import Footer from '../Footer';
 
 const RegisterSite = () => {
-    const [isLogIn, setIsLogIn] = useState(false)
 
-    const handleIsLogIn = () => {
-        setIsLogIn(!isLogIn)
-    }
+    const { isLoginActive } = useContext(LoginContext)
 
     return (
         <>
             <Register />
-            <Header isLogInClicked={handleIsLogIn} activeComponent={'register'} />
+            <Header activeComponent={'register'} />
             <Menu />
             <Footer />
-            {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
+            {isLoginActive ? <LogIn /> : null}
         </>
     )
 }

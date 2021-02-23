@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react'
-import MenuContext from '../../context/menuContext'
+import React, { useContext } from 'react'
+
+import LoginContext from '../../context/loginContext'
 
 import Header from '../Header';
 import Main from '../Main';
@@ -8,19 +9,16 @@ import LogIn from '../LogIn';
 import Footer from '../Footer';
 
 const MainSite = () => {
-    const [isLogIn, setIsLogIn] = useState(false)
 
-    const handleIsLogIn = () => {
-        setIsLogIn(!isLogIn)
-    }
+    const { isLoginActive } = useContext(LoginContext)
 
     return (
         <>
             <Main />
-            <Header isLogInClicked={handleIsLogIn} activeComponent={'main'} />
+            <Header activeComponent={'main'} />
             <Menu />
             <Footer />
-            {isLogIn ? <LogIn isLogInClicked={handleIsLogIn} /> : null}
+            {isLoginActive ? <LogIn /> : null}
         </>
     )
 }

@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const LogIn = (props) => {
+import LoginContext from '../context/loginContext'
+
+const LogIn = () => {
+
+    const { toggleActiveLogin } = useContext(LoginContext)
 
     const [inputLogin, setInputLogin] = useState(
         {
@@ -26,7 +30,7 @@ const LogIn = (props) => {
 
     return (
         <>
-            <div className='login-wrapper' onClick={props.isLogInClicked}></div>
+            <div className='login-wrapper' onClick={toggleActiveLogin}></div>
             <form method='POST' action='http://localhost:3080/login' className='login' ref={divRef}>
                 <div className='login__form'>
                     <label className='login__form__label' htmlFor="">login</label>

@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
-import { LoginContext } from './context/loginContext'
+import LoginContext from './context/loginContext'
 import MenuContext from './context/menuContext'
-
-import './Styles/Styles.css';
 
 import MainSite from './Components/Sites/MainSite';
 import BetSite from './Components/Sites/BetSite';
@@ -14,31 +12,43 @@ import TableSite from './Components/Sites/TableSite';
 import CompetitionSite from './Components/Sites/CompetitionSite';
 import RulesSite from './Components/Sites/RulesSite';
 
+import './Styles/Styles.css';
+
 function App() {
 
   const [isLogged, setIsLogged] = useState(false)
   const [isMenuActive, setIsMenuActive] = useState(false)
+  const [isLoginActive, setIsLoginActive] = useState(false)
+
+  const toggleActiveMenu = () => {
+    setIsMenuActive(!isMenuActive)
+  }
+
+  const toggleActiveLogin = () => {
+    setIsLoginActive(!isLoginActive)
+  }
 
   const location = useLocation();
+  
   return (
     <>
-      <LoginContext.Provider value={{ isLogged, setIsLogged }}>
-      <MenuContext.Provider value={{ isMenuActive, setIsMenuActive }}>
-        <TransitionGroup>
-          <CSSTransition 
-            key={location.key}
-            timeout={300}
-            classNames='fade'>
-            <Switch location={location}>
-              <Route path="/" exact component={MainSite} />
-              <Route path="/bet" exact component={BetSite} />
-              <Route path="/register" exact component={RegisterSite} />
-              <Route path="/table" exact component={TableSite} />
-              <Route path="/competition" exact component={CompetitionSite} />
-              <Route path="/rules" exact component={RulesSite} />
-            </Switch>
-          </CSSTransition>
-        </TransitionGroup>
+      <LoginContext.Provider value={{ isLoginActive, toggleActiveLogin }}>
+        <MenuContext.Provider value={{ isMenuActive, toggleActiveMenu }}>
+          <TransitionGroup>
+            <CSSTransition 
+              key={location.key}
+              timeout={300}
+              classNames='fade'>
+              <Switch location={location}>
+                <Route path="/" exact component={MainSite} />
+                <Route path="/bet" exact component={BetSite} />
+                <Route path="/register" exact component={RegisterSite} />
+                <Route path="/table" exact component={TableSite} />
+                <Route path="/competition" exact component={CompetitionSite} />
+                <Route path="/rules" exact component={RulesSite} />
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
         </MenuContext.Provider>
       </LoginContext.Provider>
     </>

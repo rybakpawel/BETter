@@ -37,7 +37,16 @@ const launchServer = async () => {
 
             module.exports.sortByDate = sortByDate
         }
-    }) 
+    })
+    const stadiumsCollection = await db.collection('stadiums').find()
+    stadiumsCollection.toArray((err, res) => {
+        if (err) console.log("Błędne zapytanie o kolekcję 'stadiums'")
+        else {
+            const stadiums = res
+            
+            module.exports.stadiums = stadiums
+        }
+    })
 }
 
 launchServer();
@@ -46,6 +55,7 @@ router.get('/', (req, res) => {
     res.send({
         teams: router.teams,
         sortByDate: router.sortByDate,
+        stadiums: router.stadiums,
     })
 })
 
