@@ -20,8 +20,8 @@ const launchServer = async () => {
         else {
             const groups = res
             const allGroups = groups[0].matches.concat(groups[1].matches, groups[2].matches, groups[3].matches, groups[4].matches, groups[5].matches)
-            
-            const compareCompetition = (a, b) => {
+
+            const compareGroups = (a, b) => {
                 if (Number(a.date.slice(0, 3)) === Number(b.date.slice(0, 3))) {
                     return Number(a.date.slice(10, 12) - Number(b.date.slice(10, 12)))
                 }
@@ -30,7 +30,7 @@ const launchServer = async () => {
                 }
             }
             
-            const sortByDate = allGroups.sort(compareCompetition)
+            const sortByDate = allGroups.sort(compareGroups)
 
             module.exports.sortByDate = sortByDate
         }
@@ -42,7 +42,13 @@ const launchServer = async () => {
         else {
             const users = res
 
-            module.exports.users = users
+            const comparePoints = (a, b) => {
+                return (a.points > b.points) ? 1 : (a.points === b.points) ? ((a.name[0] > b.name[0]) ? 1 : -1) : -1
+            }
+
+            const usersByPoints = users.sort(comparePoints)
+
+            module.exports.users = usersByPoints
         }
     })
 }

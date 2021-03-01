@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../context/authContext'
 
 const Competition = () => {
+
+    const { isLogged } = useContext(AuthContext)
+
+    console.log(isLogged)
 
     const [isLoading, setIsLoading] = useState(true)
     const [sortedMatches, setSortedMatches] = useState(null)
@@ -38,16 +43,35 @@ const Competition = () => {
         )
         return (
             <div className={`competition__grid__${field}`}>
-                {field === 'points' ? <p className={`competition__grid__${field}__title`}>Punkty</p> : null}
+                {field === 'points' ? <p className={`competition__grid__${field}__title`}>Punkty</p> : <div className={`competition__grid__${field}__title`}></div>}
                 {userList}
             </div>
         )
     }
 
     const handleResults = (matches, users) => {
+        const userResult = users.map(user => {
+            const userBets = user.bets.map(bet => {
+                if (matches[bet.id - 1].result1 === -1) return <p className='grey'></p>
+
+                else if (matches[bet.id - 1].result1 === bet.result1 && matches[bet.id - 1].result2 === bet.result2) return <p className='green'></p>
+
+                else if (
+                    (matches[bet.id - 1].result1 > matches[bet.id - 1].result2 && bet.result1 > bet.result2)
+                    ||
+                    (matches[bet.id - 1].result1 < matches[bet.id - 1].result2 && bet.result1 < bet.result2)
+                    ||
+                    (matches[bet.id - 1].result1 === matches[bet.id - 1].result2 && bet.result1 === bet.result2)
+                ) return <p className='yellow'></p>
+
+                else return <p className='red'></p>
+            })
+            return <div className='competition__grid__results__user'>{userBets}</div>
+        })
+
         return (
             <div className='competition__grid__results'>
-
+                {userResult}
             </div>
         )
     }

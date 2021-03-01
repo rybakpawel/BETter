@@ -38,6 +38,7 @@ const launchServer = async () => {
             module.exports.sortByDate = sortByDate
         }
     })
+
     const stadiumsCollection = await db.collection('stadiums').find()
     stadiumsCollection.toArray((err, res) => {
         if (err) console.log("Błędne zapytanie o kolekcję 'stadiums'")
@@ -45,6 +46,27 @@ const launchServer = async () => {
             const stadiums = res
             
             module.exports.stadiums = stadiums
+        }
+    })
+
+    router.post('/', async (req, res) => {
+        try {
+            const { bet1, bet2 } = req.body
+            
+            const usersCollection = await db.collection('users')
+            usersCollection.find().toArray((err, res) => {
+                if (err) console.log("Błędne zapytanie o kolekcję 'users'")
+                else {
+                    const users = res
+                    console.log(users[0].bets)
+                    console.log(bet1)
+                    console.log(bet2)
+                }
+            })
+
+            res.redirect('http://localhost:3000/competition')      
+        } catch {
+            res.redirect('http://localhost:3000/error')
         }
     })
 }

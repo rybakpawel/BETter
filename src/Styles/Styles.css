@@ -392,8 +392,8 @@ body {
 .competition__grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 60px 1000px;
-      grid-template-columns: 60px 1000px;
+  -ms-grid-columns: 100px 1000px;
+      grid-template-columns: 100px 1000px;
   -ms-grid-rows: 100px 250px;
       grid-template-rows: 100px 250px;
   color: #2F384D;
@@ -453,23 +453,47 @@ body {
 .competition__grid__name {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: (1fr)[10];
-      grid-template-rows: repeat(10, 1fr);
+  -ms-grid-rows: 100px (1fr)[10];
+      grid-template-rows: 100px repeat(10, 1fr);
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 10;
+  grid-row: 1 /11;
+  -ms-grid-column: 1;
+  grid-column: 1;
   justify-items: end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-right: 7px;
   border-right: 1px solid #2F384D;
+}
+
+.competition__grid__name__title {
+  width: 100%;
+  border-bottom: 1px solid #2F384D;
+}
+
+.competition__grid__name__user {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  padding-right: 7px;
 }
 
 .competition__grid__results {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[36];
-      grid-template-columns: repeat(36, 1fr);
   -ms-grid-rows: (1fr)[10];
       grid-template-rows: repeat(10, 1fr);
+}
+
+.competition__grid__results__user {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[36];
+      grid-template-columns: repeat(36, 1fr);
+}
+
+.competition__grid__results__user .grey {
+  background-color: #E5E5E5;
+  border: 1px dotted #2F384D;
+  margin: 2px;
 }
 
 .footer {
@@ -547,7 +571,7 @@ body {
   right: 35px;
 }
 
-.header__login__button,
+.header__login__button, .header__login__welcome,
 .header__login span {
   background-color: transparent;
   border: none;
@@ -559,19 +583,24 @@ body {
   transition: 0.4s;
 }
 
-.header__login__button:hover,
+.header__login__button:hover, .header__login__welcome:hover,
 .header__login span:hover {
   cursor: pointer;
 }
 
-.header__login__button:focus,
+.header__login__button:focus, .header__login__welcome:focus,
 .header__login span:focus {
   outline: none;
 }
 
-.header__login__button:hover,
+.header__login__button:hover, .header__login__welcome:hover,
 .header__login span:hover {
   opacity: 0.7;
+}
+
+.header__login__welcome {
+  display: inline;
+  margin-right: 20px;
 }
 
 @media (max-width: 1600px) {

@@ -51,17 +51,17 @@ const Menu = (props) => {
                             <Link className='navigation__menu__link' to='/bet' style={{ textDecoration: 'none' }}>
                                 <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'bet' ? blockComponent : null}>Wytypuj wyniki!</button>
                             </Link>
-                            <Link className='navigation__menu__link' to='/table' style={{ textDecoration: 'none' }}>
-                                <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'table' ? blockComponent : null}>Tabela</button>
-                            </Link>
-                            <Link className='navigation__menu__link' to='/calendar' style={{ textDecoration: 'none' }}>
-                                <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'calendar' ? blockComponent : null}>Terminarz</button>
-                            </Link>
                             <Link className='navigation__menu__link' to='/competition' style={{ textDecoration: 'none' }}>
                                 <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'competition' ? blockComponent : null}>Rozgrywka</button>
                             </Link>
+                            <Link className='navigation__menu__link' to='/table' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'table' ? blockComponent : null}>Tabela</button>
+                            </Link>
                             <Link className='navigation__menu__link' to='/rules' style={{ textDecoration: 'none' }}>
                                 <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'rules' ? blockComponent : null}>Zasady</button>
+                            </Link>
+                            <Link className='navigation__menu__link' to='/account' style={{ textDecoration: 'none' }}>
+                                <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'account' ? blockComponent : null}>Konto</button>
                             </Link>
                             <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><VscChromeClose /></button>
                         </>

@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AuthContext from '../context/authContext'
 import LoginContext from '../context/loginContext'
-import { useLoginContext } from '../context/loginContext'
 
 const Header = (props) => {
 
+    const { isLogged } = useContext(AuthContext)
     const { toggleActiveLogin } = useContext(LoginContext)
 
     const blockComponent = e => {
@@ -25,6 +26,7 @@ const Header = (props) => {
         } else {
             return (
                 <div className='header__login'>
+                    <h4 className='header__login__welcome'>Witaj (name)!</h4>
                     <button className='header__login__button'>Wyloguj się</button>
                 </div>
             )
@@ -37,7 +39,7 @@ const Header = (props) => {
                 <Link to="/">
                     <button className='header__logo' onClick={props.activeComponent === 'main' ? blockComponent : null}>BETter</button>
                 </Link>
-                {handleLogin(false)}
+                {handleLogin(isLogged)}
             </div>
         </>
     )

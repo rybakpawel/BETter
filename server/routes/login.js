@@ -33,24 +33,27 @@ const launchServer = async () => {
     }))
 }
 
-launchServer();
-
 router.get('/', (req, res) => {
-    // console.log(req.user)
+
+    const auth = req.isAuthenticated()
+    console.log(req.isAuthenticated())
+    
     res.send({
-            user: req.isAuthenticated()
+            user: auth
         })
+    
 })
 
 router.use(flash())
 router.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
 }))
 
 router.use(passport.initialize())
 router.use(passport.session())
 
+launchServer();
 
 module.exports = router

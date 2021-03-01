@@ -34,11 +34,14 @@ const Bet = () => {
 
     const loadData = async () => {
         const response = await fetch('/bet')
+        const response2 = await fetch('/login')
         const data = await response.json()
+        const auth = await response2.json()
         setSorted(data.sortByDate)
         setTeams(data.teams)
         setStadiums(data.stadiums)
         setIsLoading(false);
+        console.log(auth)
     }
 
     const handleClick = (e) => {
@@ -109,7 +112,7 @@ const Bet = () => {
                     </div>
                     <div className='detail__results__one-result'>
                         <p className='detail__results__one-result__text'>miejsce 1 (punktów 1)</p>
-                        <p className='detail__results__one-result__text'>miejsce 2 (punktów 2)</p>
+                        <p className='detail__results__one-result__text'>miejsce 2 (punktów 1)</p>
                     </div>
                     <div className='detail__results__one-result'>
                         <p className='detail__results__one-result__text'>forma 1</p>
@@ -131,9 +134,9 @@ const Bet = () => {
                 <div className='matches bet__form__matches' key={match.id}>
                     <div className='matches__one-match'>
                         <label className='matches__one-match__team' htmlFor="">{teams[match.team1 - 1].name}</label>
-                        <input className='matches__one-match__result' type="number" />
+                        <input className='matches__one-match__result' type="number" name="bet1" />
                         :
-                    <input className='matches__one-match__result' type="number" />
+                        <input className='matches__one-match__result' type="number" name="bet2" />
                         <label className='matches__one-match__team' htmlFor="">{teams[match.team2 - 1].name}</label>
                     </div>
                     <p className='matches__date'>{match.date}</p>
@@ -158,13 +161,13 @@ const Bet = () => {
         )
     } else {
         return (
-            <div className='bet'>
+            <form method='POST' action='http://localhost:3080/bet' className='bet'>
                 <h3 className='bet__title'>Najbliższe mecze</h3>
-                <form className='bet__form'>
+                <div className='bet__form'>
                     {isLoading ? <p>ładowanie..</p> : nextMatch(sorted)}
-                </form>
+                </div>
                 <button className="bet__submit" type="submit">Zatwierdź</button>
-            </div>
+            </form>
         )
     }
 }
