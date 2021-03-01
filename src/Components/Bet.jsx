@@ -1,6 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import AuthContext from '../context/authContext'
+import LoginContext from '../context/loginContext'
 
 const Bet = () => {
+
+    const { isLogged } = useContext(AuthContext)
+    const { toggleActiveLogin } = useContext(LoginContext)
 
     const [isLoading, setIsLoading] = useState(true)
     const [sorted, setSorted] = useState(null)
@@ -155,21 +160,15 @@ const Bet = () => {
         return matchList
     }
 
-    if (isLoading) {
-        return (
-            <div>ładuję</div>
-        )
-    } else {
-        return (
-            <form method='POST' action='http://localhost:3080/bet' className='bet'>
-                <h3 className='bet__title'>Najbliższe mecze</h3>
-                <div className='bet__form'>
-                    {isLoading ? <p>ładowanie..</p> : nextMatch(sorted)}
-                </div>
-                <button className="bet__submit" type="submit">Zatwierdź</button>
-            </form>
-        )
-    }
+    return (
+        <form method='POST' action='http://localhost:3080/bet' className='bet'>
+            <h3 className='bet__title'>Najbliższe mecze</h3>
+            <div className='bet__form'>
+                {isLoading ? <p>ładowanie..</p> : nextMatch(sorted)}
+            </div>
+            <button className="bet__submit" type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : toggleActiveLogin}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
+        </form>
+    )
 }
 
 export default Bet

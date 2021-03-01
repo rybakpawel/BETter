@@ -53,6 +53,722 @@ body {
   transition: opacity 300ms linear;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  background-color: #849BD5;
+  text-align: center;
+  font-family: "Questrial", sans-serif;
+  z-index: 2;
+}
+
+.footer .footer__iconsDescription {
+  padding: 5px 0;
+}
+
+.footer .footer__iconsDescription .footer__iconsDescription__link {
+  text-decoration: none;
+}
+
+.footer .footer__iconsDescription .footer__iconsDescription__link:visited {
+  color: "Questrial", sans-serif;
+}
+
+.footer .footer__copyright {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 18px;
+}
+
+.footer .footer__copyright .footer__copyright__logo {
+  font-family: "Quantify", "Helvetica", sans-serif;
+}
+
+.header {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-family: "Questrial", sans-serif;
+}
+
+.header__logo {
+  background-color: transparent;
+  border: none;
+  color: #E5E5E5;
+  position: fixed;
+  top: 40px;
+  left: 50px;
+  font-family: "Quantify", "Helvetica", sans-serif;
+  font-size: 75px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.header__logo:hover {
+  cursor: pointer;
+}
+
+.header__logo:focus {
+  outline: none;
+}
+
+.header__login {
+  position: fixed;
+  top: 35px;
+  right: 35px;
+}
+
+.header__login__button, .header__login__welcome,
+.header__login span {
+  background-color: transparent;
+  border: none;
+  color: #E5E5E5;
+  font-size: 28px;
+  font-family: 'Questrial', sans-serif;
+  cursor: pointer;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.header__login__button:hover, .header__login__welcome:hover,
+.header__login span:hover {
+  cursor: pointer;
+}
+
+.header__login__button:focus, .header__login__welcome:focus,
+.header__login span:focus {
+  outline: none;
+}
+
+.header__login__button:hover, .header__login__welcome:hover,
+.header__login span:hover {
+  opacity: 0.7;
+}
+
+.header__login__welcome {
+  display: inline;
+  margin-right: 20px;
+}
+
+@media (max-width: 1600px) {
+  .header .logIn button,
+  .header .logIn span {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 1600px) and (max-height: 900px) {
+  .header .logo {
+    top: 25px;
+  }
+  .header .logIn {
+    top: 25px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .header .logo {
+    top: 35px;
+  }
+  .header .logIn {
+    top: 30px;
+  }
+}
+
+@media (max-width: 1450px) and (max-height: 900px) {
+  .header .logo {
+    top: 25px;
+  }
+  .header .logIn {
+    top: 25px;
+  }
+  .header .logIn button,
+  .header .logIn span {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1450px) and (max-height: 800px) {
+  .header .logo {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 800px) {
+  .header .logIn button,
+  .header .logIn span {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 600px) {
+  .header .logo {
+    top: 15px;
+    left: 30px;
+    font-size: 50px;
+  }
+  .header .logIn {
+    top: 18px;
+  }
+  .header .logIn button,
+  .header .logIn span {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 860px) and (orientation: landscape) {
+  .header .logo {
+    top: 8px;
+    left: 20px;
+    font-size: 40px;
+  }
+  .header .logIn {
+    top: 12px;
+  }
+  .header .logIn button,
+  .header .logIn span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 650px) and (orientation: landscape) {
+  .header .logo {
+    font-size: 35px;
+  }
+  .header .logIn {
+    top: 6px;
+    right: 20px;
+  }
+  .header .logIn button,
+  .header .logIn span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 570px) and (orientation: landscape) {
+  .header .logIn {
+    top: 5px;
+  }
+}
+
+.login-wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 336px;
+  height: 426px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 22px 28.5px 27px 28.5px;
+  background-color: #2F384D;
+  border: 2px #E5E5E5 solid;
+  font-family: 'Questrial', sans-serif;
+  opacity: 0;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+  z-index: 2;
+}
+
+.login__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.login__form__label {
+  padding-left: 3px;
+  color: #E5E5E5;
+  font-size: 14px;
+}
+
+.login__form__input {
+  height: 40px;
+  padding-left: 5px;
+  font-size: 20px;
+  background-color: #E5E5E5;
+}
+
+.login__form__button {
+  background-color: transparent;
+  border: none;
+  color: #E5E5E5;
+  font-size: 14px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-family: 'Questrial', sans-serif;
+}
+
+.login__form__button:hover {
+  cursor: pointer;
+}
+
+.login__form__button:focus {
+  outline: none;
+}
+
+.login__login-button {
+  background-color: transparent;
+  border: none;
+  color: #E5E5E5;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 5% 0 0 0;
+  width: 200px;
+  line-height: 50px;
+  border-bottom: 1px #E5E5E5 solid;
+  color: #E5E5E5;
+  font-family: inherit;
+  font-size: 25px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin: 110px 0 60px 0;
+  font-family: 'Questrial', sans-serif;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.login__login-button:hover {
+  cursor: pointer;
+}
+
+.login__login-button:focus {
+  outline: none;
+}
+
+.login__login-button::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #E5E5E5;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 198px;
+  height: 60px;
+}
+
+.login__login-button::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 49px;
+}
+
+.login__login-button:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.login__login-button:hover::after {
+  width: 200px;
+  color: #E5E5E5;
+}
+
+.login__register-button {
+  background-color: transparent;
+  border: none;
+  color: #E5E5E5;
+  font-family: 'Questrial', sans-serif;
+  font-size: 15px;
+}
+
+.login__register-button:hover {
+  cursor: pointer;
+}
+
+.login__register-button:focus {
+  outline: none;
+}
+
+@media (max-width: 1024px) and (max-height: 600px) {
+  .loginForm {
+    width: 270px;
+    height: 360px;
+  }
+  .loginForm div {
+    padding-bottom: 5px;
+  }
+  .loginForm div label {
+    padding-left: 2px;
+    font-size: 12px;
+  }
+  .loginForm div input {
+    height: 25px;
+  }
+  .loginForm div button {
+    font-size: 12px;
+  }
+  .loginForm .logButton {
+    width: 150px;
+    padding: 13px 40px;
+    margin: 110px 0 40px 0;
+    font-size: 20px;
+  }
+  .loginForm button {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 650px) and (orientation: landscape) {
+  .loginForm {
+    width: 400px;
+    height: 300px;
+  }
+  .loginForm .logButton {
+    width: 175px;
+    margin: 60px 0 40px 0;
+    font-size: 20px;
+  }
+  .loginForm button {
+    font-size: 13px;
+  }
+}
+
+.navigation {
+  position: absolute;
+  top: 8%;
+  right: 4%;
+  width: 28%;
+  height: calc(100% - 8%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, #a0acca), color-stop(90%, #849BD5));
+  background: linear-gradient(180deg, #a0acca 60%, #849BD5 90%);
+  font-family: "Questrial", sans-serif;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+.navigation__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100%;
+}
+
+.navigation__menu__link {
+  margin-top: 40px;
+}
+
+.navigation__menu__link:nth-child(1) {
+  margin-top: 130px;
+}
+
+.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item {
+  color: #9F0D0D;
+  border-color: #9F0D0D;
+}
+
+.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item::before {
+  color: #9F0D0D;
+}
+
+.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item::after {
+  color: #9F0D0D;
+}
+
+.navigation__menu__link__list-item {
+  background-color: transparent;
+  border: none;
+  color: #E5E5E5;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 5% 0 0 0;
+  width: 300px;
+  line-height: 60px;
+  border-bottom: 1px #2F384D solid;
+  color: #2F384D;
+  font-family: inherit;
+  font-size: 30px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.navigation__menu__link__list-item:hover {
+  cursor: pointer;
+}
+
+.navigation__menu__link__list-item:focus {
+  outline: none;
+}
+
+.navigation__menu__link__list-item::before {
+  content: '';
+  position: absolute;
+  display: block;
+  color: #2F384D;
+  border-left: solid 1px;
+  border-right: solid 1px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 298px;
+  height: 60px;
+}
+
+.navigation__menu__link__list-item::after {
+  content: '';
+  position: absolute;
+  display: block;
+  color: transparent;
+  border-top: solid 1px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 0;
+  height: 59px;
+}
+
+.navigation__menu__link__list-item:hover::before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.navigation__menu__link__list-item:hover::after {
+  width: 300px;
+  color: #2F384D;
+}
+
+.navigation__menu__hamburger {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: transparent;
+  font-size: 60px;
+  border: none;
+  color: #2F384D;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.navigation__menu__hamburger:focus {
+  outline: none;
+}
+
+.navigation__menu__hamburger--active {
+  font-size: 70px;
+}
+
+.navigation--animation-menu-in {
+  -webkit-animation: slideMenuIn 0.6s;
+          animation: slideMenuIn 0.6s;
+}
+
+.navigation--animation-menu-out {
+  -webkit-animation: slideMenuOut 0.6s;
+          animation: slideMenuOut 0.6s;
+}
+
+.navigation--active-z-index {
+  z-index: 1;
+}
+
+@-webkit-keyframes slideMenuIn {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+  50% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+}
+
+@keyframes slideMenuIn {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+  50% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+}
+
+@-webkit-keyframes slideMenuOut {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+  50% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+}
+
+@keyframes slideMenuOut {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+  50% {
+    -webkit-transform: translateX(50%);
+            transform: translateX(50%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1450px) {
+  .menu aside a {
+    margin-top: 30px;
+  }
+  .menu aside a .menuList {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 800px) {
+  .menu aside .hamburger {
+    top: 20px;
+    right: 20px;
+    font-size: 50px;
+  }
+  .menu aside a {
+    margin-top: 20px;
+  }
+  .menu aside a .menuList {
+    font-size: 20px;
+    line-height: 45px;
+  }
+}
+
+@media (max-width: 1024px) and (max-height: 600px) {
+  .menu aside .hamburger {
+    font-size: 40px;
+  }
+  .menu aside a:nth-child(1) {
+    margin-top: 80px;
+  }
+  .menu aside a .menuList {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 860px) and (orientation: landscape) {
+  .menu aside .hamburger {
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+  }
+  .menu aside a:nth-child(1) {
+    margin-top: 50px;
+  }
+  .menu aside a .menuList {
+    font-size: 15px;
+    line-height: 40px;
+  }
+}
+
+@media (max-width: 650px) and (orientation: landscape) {
+  .menu aside .hamburger {
+    top: 12px;
+    right: 12px;
+    font-size: 24px;
+  }
+  .menu aside a:nth-child(1) {
+    margin-top: 40px;
+  }
+  .menu aside a .menuList {
+    font-size: 12px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 570px) and (orientation: landscape) {
+  .menu aside .hamburger {
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+  }
+  .menu aside a .menuList {
+    font-size: 10px;
+    line-height: 25px;
+  }
+}
+
 .bet {
   position: absolute;
   top: 50%;
@@ -496,424 +1212,6 @@ body {
   margin: 2px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 5%;
-  background-color: #849BD5;
-  text-align: center;
-  font-family: "Questrial", sans-serif;
-  z-index: 2;
-}
-
-.footer .footer__iconsDescription {
-  padding: 5px 0;
-}
-
-.footer .footer__iconsDescription .footer__iconsDescription__link {
-  text-decoration: none;
-}
-
-.footer .footer__iconsDescription .footer__iconsDescription__link:visited {
-  color: "Questrial", sans-serif;
-}
-
-.footer .footer__copyright {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  font-size: 18px;
-}
-
-.footer .footer__copyright .footer__copyright__logo {
-  font-family: "Quantify", "Helvetica", sans-serif;
-}
-
-.header {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  font-family: "Questrial", sans-serif;
-}
-
-.header__logo {
-  background-color: transparent;
-  border: none;
-  color: #E5E5E5;
-  position: fixed;
-  top: 40px;
-  left: 50px;
-  font-family: "Quantify", "Helvetica", sans-serif;
-  font-size: 75px;
-  font-weight: normal;
-  cursor: pointer;
-}
-
-.header__logo:hover {
-  cursor: pointer;
-}
-
-.header__logo:focus {
-  outline: none;
-}
-
-.header__login {
-  position: fixed;
-  top: 35px;
-  right: 35px;
-}
-
-.header__login__button, .header__login__welcome,
-.header__login span {
-  background-color: transparent;
-  border: none;
-  color: #E5E5E5;
-  font-size: 28px;
-  font-family: 'Questrial', sans-serif;
-  cursor: pointer;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.header__login__button:hover, .header__login__welcome:hover,
-.header__login span:hover {
-  cursor: pointer;
-}
-
-.header__login__button:focus, .header__login__welcome:focus,
-.header__login span:focus {
-  outline: none;
-}
-
-.header__login__button:hover, .header__login__welcome:hover,
-.header__login span:hover {
-  opacity: 0.7;
-}
-
-.header__login__welcome {
-  display: inline;
-  margin-right: 20px;
-}
-
-@media (max-width: 1600px) {
-  .header .logIn button,
-  .header .logIn span {
-    font-size: 25px;
-  }
-}
-
-@media (max-width: 1600px) and (max-height: 900px) {
-  .header .logo {
-    top: 25px;
-  }
-  .header .logIn {
-    top: 25px;
-  }
-}
-
-@media (max-width: 1450px) {
-  .header .logo {
-    top: 35px;
-  }
-  .header .logIn {
-    top: 30px;
-  }
-}
-
-@media (max-width: 1450px) and (max-height: 900px) {
-  .header .logo {
-    top: 25px;
-  }
-  .header .logIn {
-    top: 25px;
-  }
-  .header .logIn button,
-  .header .logIn span {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 1450px) and (max-height: 800px) {
-  .header .logo {
-    font-size: 60px;
-  }
-}
-
-@media (max-width: 1024px) and (max-height: 800px) {
-  .header .logIn button,
-  .header .logIn span {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 1024px) and (max-height: 600px) {
-  .header .logo {
-    top: 15px;
-    left: 30px;
-    font-size: 50px;
-  }
-  .header .logIn {
-    top: 18px;
-  }
-  .header .logIn button,
-  .header .logIn span {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 860px) and (orientation: landscape) {
-  .header .logo {
-    top: 8px;
-    left: 20px;
-    font-size: 40px;
-  }
-  .header .logIn {
-    top: 12px;
-  }
-  .header .logIn button,
-  .header .logIn span {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 650px) and (orientation: landscape) {
-  .header .logo {
-    font-size: 35px;
-  }
-  .header .logIn {
-    top: 6px;
-    right: 20px;
-  }
-  .header .logIn button,
-  .header .logIn span {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 570px) and (orientation: landscape) {
-  .header .logIn {
-    top: 5px;
-  }
-}
-
-.login-wrapper {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  -webkit-backdrop-filter: blur(6px);
-          backdrop-filter: blur(6px);
-  z-index: 1;
-}
-
-.login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 336px;
-  height: 426px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  padding: 22px 28.5px 27px 28.5px;
-  background-color: #2F384D;
-  border: 2px #E5E5E5 solid;
-  font-family: 'Questrial', sans-serif;
-  opacity: 0;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
-  z-index: 2;
-}
-
-.login__form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 100%;
-  padding-bottom: 8px;
-}
-
-.login__form__label {
-  padding-left: 3px;
-  color: #E5E5E5;
-  font-size: 14px;
-}
-
-.login__form__input {
-  height: 40px;
-  padding-left: 5px;
-  font-size: 20px;
-  background-color: #E5E5E5;
-}
-
-.login__form__button {
-  background-color: transparent;
-  border: none;
-  color: #E5E5E5;
-  font-size: 14px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  font-family: 'Questrial', sans-serif;
-}
-
-.login__form__button:hover {
-  cursor: pointer;
-}
-
-.login__form__button:focus {
-  outline: none;
-}
-
-.login__login-button {
-  background-color: transparent;
-  border: none;
-  color: #E5E5E5;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  margin: 5% 0 0 0;
-  width: 200px;
-  line-height: 50px;
-  border-bottom: 1px #E5E5E5 solid;
-  color: #E5E5E5;
-  font-family: inherit;
-  font-size: 25px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  margin: 110px 0 60px 0;
-  font-family: 'Questrial', sans-serif;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-}
-
-.login__login-button:hover {
-  cursor: pointer;
-}
-
-.login__login-button:focus {
-  outline: none;
-}
-
-.login__login-button::before {
-  content: '';
-  position: absolute;
-  display: block;
-  color: #E5E5E5;
-  border-left: solid 1px;
-  border-right: solid 1px;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  width: 198px;
-  height: 60px;
-}
-
-.login__login-button::after {
-  content: '';
-  position: absolute;
-  display: block;
-  color: transparent;
-  border-top: solid 1px;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  width: 0;
-  height: 49px;
-}
-
-.login__login-button:hover::before {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
-.login__login-button:hover::after {
-  width: 200px;
-  color: #E5E5E5;
-}
-
-.login__register-button {
-  background-color: transparent;
-  border: none;
-  color: #E5E5E5;
-  font-family: 'Questrial', sans-serif;
-  font-size: 15px;
-}
-
-.login__register-button:hover {
-  cursor: pointer;
-}
-
-.login__register-button:focus {
-  outline: none;
-}
-
-@media (max-width: 1024px) and (max-height: 600px) {
-  .loginForm {
-    width: 270px;
-    height: 360px;
-  }
-  .loginForm div {
-    padding-bottom: 5px;
-  }
-  .loginForm div label {
-    padding-left: 2px;
-    font-size: 12px;
-  }
-  .loginForm div input {
-    height: 25px;
-  }
-  .loginForm div button {
-    font-size: 12px;
-  }
-  .loginForm .logButton {
-    width: 150px;
-    padding: 13px 40px;
-    margin: 110px 0 40px 0;
-    font-size: 20px;
-  }
-  .loginForm button {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 650px) and (orientation: landscape) {
-  .loginForm {
-    width: 400px;
-    height: 300px;
-  }
-  .loginForm .logButton {
-    width: 175px;
-    margin: 60px 0 40px 0;
-    font-size: 20px;
-  }
-  .loginForm button {
-    font-size: 13px;
-  }
-}
-
 .main {
   position: absolute;
   top: 50%;
@@ -1010,304 +1308,6 @@ body {
   .tutorialButton {
     padding: 10px 30px;
     font-size: 12px;
-  }
-}
-
-.navigation {
-  position: absolute;
-  top: 8%;
-  right: 4%;
-  width: 28%;
-  height: calc(100% - 8%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(60%, #a0acca), color-stop(90%, #849BD5));
-  background: linear-gradient(180deg, #a0acca 60%, #849BD5 90%);
-  font-family: "Questrial", sans-serif;
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
-}
-
-.navigation__menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  height: 100%;
-}
-
-.navigation__menu__link {
-  margin-top: 40px;
-}
-
-.navigation__menu__link:nth-child(1) {
-  margin-top: 130px;
-}
-
-.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item {
-  color: #9F0D0D;
-  border-color: #9F0D0D;
-}
-
-.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item::before {
-  color: #9F0D0D;
-}
-
-.navigation__menu__link:nth-child(1) .navigation__menu__link__list-item::after {
-  color: #9F0D0D;
-}
-
-.navigation__menu__link__list-item {
-  background-color: transparent;
-  border: none;
-  color: #E5E5E5;
-  position: relative;
-  display: block;
-  overflow: hidden;
-  margin: 5% 0 0 0;
-  width: 300px;
-  line-height: 60px;
-  border-bottom: 1px #2F384D solid;
-  color: #2F384D;
-  font-family: inherit;
-  font-size: 30px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  position: relative;
-  display: block;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.navigation__menu__link__list-item:hover {
-  cursor: pointer;
-}
-
-.navigation__menu__link__list-item:focus {
-  outline: none;
-}
-
-.navigation__menu__link__list-item::before {
-  content: '';
-  position: absolute;
-  display: block;
-  color: #2F384D;
-  border-left: solid 1px;
-  border-right: solid 1px;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  width: 298px;
-  height: 60px;
-}
-
-.navigation__menu__link__list-item::after {
-  content: '';
-  position: absolute;
-  display: block;
-  color: transparent;
-  border-top: solid 1px;
-  -webkit-transform: translateY(-100%);
-          transform: translateY(-100%);
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  width: 0;
-  height: 59px;
-}
-
-.navigation__menu__link__list-item:hover::before {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-
-.navigation__menu__link__list-item:hover::after {
-  width: 300px;
-  color: #2F384D;
-}
-
-.navigation__menu__hamburger {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  background-color: transparent;
-  font-size: 60px;
-  border: none;
-  color: #2F384D;
-  cursor: pointer;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.navigation__menu__hamburger:focus {
-  outline: none;
-}
-
-.navigation__menu__hamburger--active {
-  font-size: 70px;
-}
-
-.navigation--animation-menu-in {
-  -webkit-animation: slideMenuIn 0.6s;
-          animation: slideMenuIn 0.6s;
-}
-
-.navigation--animation-menu-out {
-  -webkit-animation: slideMenuOut 0.6s;
-          animation: slideMenuOut 0.6s;
-}
-
-.navigation--active-z-index {
-  z-index: 1;
-}
-
-@-webkit-keyframes slideMenuIn {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-  50% {
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-}
-
-@keyframes slideMenuIn {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-  50% {
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-}
-
-@-webkit-keyframes slideMenuOut {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-  50% {
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-}
-
-@keyframes slideMenuOut {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-  50% {
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
-  }
-  100% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    overflow: hidden;
-  }
-}
-
-@media (max-width: 1450px) {
-  .menu aside a {
-    margin-top: 30px;
-  }
-  .menu aside a .menuList {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 1024px) and (max-height: 800px) {
-  .menu aside .hamburger {
-    top: 20px;
-    right: 20px;
-    font-size: 50px;
-  }
-  .menu aside a {
-    margin-top: 20px;
-  }
-  .menu aside a .menuList {
-    font-size: 20px;
-    line-height: 45px;
-  }
-}
-
-@media (max-width: 1024px) and (max-height: 600px) {
-  .menu aside .hamburger {
-    font-size: 40px;
-  }
-  .menu aside a:nth-child(1) {
-    margin-top: 80px;
-  }
-  .menu aside a .menuList {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 860px) and (orientation: landscape) {
-  .menu aside .hamburger {
-    top: 15px;
-    right: 15px;
-    font-size: 30px;
-  }
-  .menu aside a:nth-child(1) {
-    margin-top: 50px;
-  }
-  .menu aside a .menuList {
-    font-size: 15px;
-    line-height: 40px;
-  }
-}
-
-@media (max-width: 650px) and (orientation: landscape) {
-  .menu aside .hamburger {
-    top: 12px;
-    right: 12px;
-    font-size: 24px;
-  }
-  .menu aside a:nth-child(1) {
-    margin-top: 40px;
-  }
-  .menu aside a .menuList {
-    font-size: 12px;
-    line-height: 30px;
-  }
-}
-
-@media (max-width: 570px) and (orientation: landscape) {
-  .menu aside .hamburger {
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-  }
-  .menu aside a .menuList {
-    font-size: 10px;
-    line-height: 25px;
   }
 }
 
