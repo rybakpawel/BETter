@@ -2,8 +2,7 @@
 @import '../utilities/mixins';
 
 .rules {
-    @include mainContainer;
-    padding: 5% 0 6% 0;
+    @include mainContainer(false);
 
     &__title {
         @include pageTitle;
@@ -11,40 +10,165 @@
 
     &__rule {
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
         width: 80%;
-        height: 100%;
+        height: 70%;
+
+        @media (min-width: 360px) and (orientation: portrait) {
+            height: 60%;
+        }
+
+        @media (min-width: 400px) and (orientation: landscape) {
+            flex-direction: row;
+        }
+
+        @media (min-width: 550px) and (orientation: landscape) {
+            width: 70%;
+        }
+
+        @media (min-width: 700px) and (orientation: landscape) {
+            width: 60%;
+        }
+
+        @media (min-width: 950px) and (orientation: landscape) {
+            width: 70%;
+        }
 
         &__card {
             @include resetButton;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 20px 20px 40px 20px;
-            font-size: 40px;
+            width: 70%;
+            padding: 2% 0;
+            font-size: 20px;
             font-family: $main-font;
             border: 3px solid $main-color;
-            border-radius: 5%;
             background-color: $main-color;
-            transform: perspective(50px) rotateY(1.5deg);
-            transition: 0.3s;
+            // transition: 0.3s;
+
+            @media (min-width: 360px) and (orientation: portrait) {
+                width: 80%;
+                font-size: 24px;
+            }
+
+            @media (min-width: 400px) and (orientation: portrait) {
+                font-size: 30px;
+            }
+
+            @media (min-width: 600px) and (orientation: portrait) {
+                font-size: 36px;
+                width: 70%;
+            }
+
+            @media (min-width: 750px) and (orientation: portrait) {
+                font-size: 40px;
+                width: 60%;
+            }
+
+            @media (min-width: 1000px) and (orientation: portrait) {
+                width: 55%;
+                font-size: 45px;
+            }
+
+            @media (min-width: 400px) and (orientation: landscape) {
+                flex-direction: column;
+                width: 25%;
+                padding: 5% 0 10% 0;
+                font-size: 18px;
+                border-radius: 5%;
+                transform: perspective(50px) rotateY(1.5deg);
+            }
+
+            @media (min-width: 550px) and (orientation: landscape) {
+                width: 22%;
+            }
+
+            @media (min-width: 640px) and (orientation: landscape) {
+                padding: 6% 0 12% 0;
+            }
+
+            @media (min-width: 700px) and (orientation: landscape) {
+                padding: 5% 0 10% 0;
+            }
+
+            @media (min-width: 850px) and (orientation: landscape) {
+                font-size: 20px;
+            }
+
+            @media (min-width: 1200px) and (orientation: landscape) {
+                font-size: 24px;
+            }
+
+            @media (min-width: 1350px) and (orientation: landscape) {
+                font-size: 28px;
+            }
+
+            @media (min-width: 1700px) and (orientation: landscape) {
+                font-size: 38px;
+            }
 
             &:hover {
                 transform: perspective(0) rotateY(0);
             }
 
             .rules__rule__card__icon::before {
-                margin-left: 0;
+                margin-left: 50%;
                 color: $bet-color;
-                font-size: 200px;
+                font-size: 35px;
+
+                @media (min-width: 360px) and (orientation: portrait) {
+                    font-size: 40px;
+                }
+
+                @media (min-width: 400px) and (orientation: portrait) {
+                    font-size: 50px;
+                }
+
+                @media (min-width: 600px) and (orientation: portrait) {
+                    font-size: 60px;
+                }
+
+                @media (min-width: 750px) and (orientation: portrait) {
+                    font-size: 70px;
+                }
+
+                @media (min-width: 400px) and (orientation: landscape) {
+                    margin-left: 0;
+                }
+
+                @media (min-width: 700px) and (orientation: landscape) {
+                    font-size: 50px;
+                }
+
+                @media (min-width: 850px) and (orientation: landscape) {
+                    font-size: 60px;
+                }
+
+                @media (min-width: 1200px) and (orientation: landscape) {
+                    font-size: 70px;
+                }
+
+                @media (min-width: 1350px) and (orientation: landscape) {
+                    font-size: 80px;
+                }
+
+                @media (min-width: 1700px) and (orientation: landscape) {
+                    font-size: 110px;
+                }
             }
 
             &__title {
-                margin-top: 20px;
+                margin-right: 5%;
                 font-weight: normal;
                 color: $bet-color;
+
+                @media (min-width: 400px) and (orientation: landscape) {
+                    margin-top: 5%;
+                    margin-right: 0;
+                }
             }
         }
 
@@ -54,24 +178,62 @@
             // &:hover {
             //     transform: perspective(0) rotateY(0) translateX(-500px);
             // }
+
+            display: none;
+            // 
+            // transition: 0.3s;
+
+            @media (min-width: 600px) and (orientation: portrait) {
+                display: flex;
+                // margin-bottom: 80%;
+            }
         }
 
         &--not-active {
-            opacity: 0;
+            display: none;
+            // opacity: 0;
             order: 1;
             // transform: scale(0.5) translate(5px);
         }
 
         &__description {
-            position: absolute;
-            top: 50%;
-            left: 40%;
-            width: 50%;
-            font-size: 30px;
+            // position: absolute;
+            // top: 50%;
+            // left: 40%;
+            // width: 50%;
+            // font-size: 30px;
+            // letter-spacing: 1px;
+            // line-height: 35px;
+            // transform: translateY(-50%);
+            // transition: 0.3s;
+
+            width: 100%;
+            font-size: 12px;
             letter-spacing: 1px;
-            line-height: 35px;
-            transform: translateY(-50%);
+            line-height: 16px;
             transition: 0.3s;
+
+            @media (min-width: 360px) and (orientation: portrait) {
+                font-size: 16px;
+                line-height: 20px;
+            }
+
+            @media (min-width: 400px) and (orientation: portrait) {
+                font-size: 18px;
+                line-height: 22px;
+            }
+
+            @media (min-width: 480px) and (orientation: portrait) {
+                font-size: 22px;
+                line-height: 26px;
+            }
+
+            @media (min-width: 600px) and (orientation: portrait) {
+                // position: absolute;
+                // top: 35%;
+                // left: 5%;
+                // width: 90%;
+            }
 
             &__better {
                 font-family: 'Quantify', 'Helvetica', sans-serif;
@@ -81,15 +243,28 @@
         &__close {
             @include resetButton;
             @include rulesIcons;
-            top: 25%;
-            right: 10%;
+            // top: 25%;
+            // right: 10%;
+            top: 73%;
+            right: 5%;
+
+            @media (min-width: 360px) and (orientation: portrait) {
+                top: 80%;
+            }
         }
 
         &__next {
             @include resetButton;
             @include rulesIcons;
-            top: 70%;
-            right: 10%;
+            // top: 70%;
+            // right: 10%;
+
+            top: 80%;
+            right: 5%;
+
+            @media (min-width: 360px) and (orientation: portrait) {
+                top: 85%;
+            }
         }
     }
 
@@ -97,28 +272,5 @@
         @include resetButton;
         @include submitButton;
         margin: 0;
-
-        &::before {
-            @include pseudoElementBeforeButton;
-            width: 298px;
-            height: 60px;
-        }
-
-        &::after {
-            @include pseudoElementAfterButton;
-            width: 0;
-            height: 59px;
-        }
-
-        &:hover {
-            &::before {
-                transform: translateY(0);
-            }
-
-            &::after {
-                width: 300px;
-                color: $main-color;
-            }
-        }
     }
 }

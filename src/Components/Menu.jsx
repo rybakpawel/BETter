@@ -1,5 +1,7 @@
-import React, { useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+
+import DeviceContext from '../context/deviceContext'
 import MenuContext from '../context/menuContext'
 
 import { FaBars } from 'react-icons/fa'
@@ -7,11 +9,14 @@ import { VscChromeClose } from 'react-icons/vsc'
 
 const Menu = (props) => {
 
-    const { isMenuActive, toggleActiveMenu } = useContext(MenuContext)
+    const { isMenuActive, toggleActiveMenu, zIndex, isAnimationActive } = useContext(MenuContext)
+    const { orientation, changeOrientation } = useContext(DeviceContext)
 
     const [isMenuHover, setIsMenuHover] = useState('')
-    const [zIndex, setZIndex] = useState(isMenuActive ? 'navigation--active-z-index' : '');
-    const [isAnimationActive, setIsAnimationActive] = useState('');
+
+    useEffect(() => {
+        window.addEventListener("resize", changeOrientation);
+    }, []);
 
     const blockComponent = (e) => {
         e.preventDefault();
@@ -20,25 +25,6 @@ const Menu = (props) => {
     const handleIsMenuHover = () => {
         if (!isMenuHover) setIsMenuHover('navigation__menu__hamburger--active')
         else if (isMenuHover) setIsMenuHover('')
-    }
-
-    const menuAnimation = () => {
-        if (!isMenuActive) {
-            setIsAnimationActive('navigation--animation-menu-in');
-            setTimeout(() => {
-                setZIndex('navigation--active-z-index');
-            }, 250);
-        } else {
-            setIsAnimationActive('navigation--animation-menu-out');
-            setTimeout(() => {
-                setZIndex('')
-            }, 250);
-        }
-    }
-
-    const handleIsMenuListActive = () => {
-        toggleActiveMenu();
-        menuAnimation();
     }
 
     return (
@@ -63,10 +49,15 @@ const Menu = (props) => {
                             <Link className='navigation__menu__link' to='/account' style={{ textDecoration: 'none' }}>
                                 <button className='navigation__menu__link__list-item' onClick={props.activeComponent === 'account' ? blockComponent : null}>Konto</button>
                             </Link>
-                            <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><VscChromeClose /></button>
+                            {orientation === 'portrait'
+                                ? null
+                                : <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={toggleActiveMenu}><VscChromeClose /></button>
+                            }
                         </>
                         :
-                        <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={handleIsMenuListActive}><FaBars /></button>}
+                        orientation === 'portrait'
+                            ? null
+                            : <button className={`navigation__menu__hamburger ${isMenuHover}`} onClick={toggleActiveMenu}><FaBars /></button>}
                 </aside>
             </nav>
         </>

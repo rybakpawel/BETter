@@ -18,8 +18,8 @@ const Main = () => {
     return (
         <div className='main'>
             <img className='main__hero' src={heroImage} alt="mainImage" />
-            <h2 className='main__quote'>Football,<br></br>bloody hell!</h2>
-            {isTutorialClicked ? showTutorial() : <button className='main__button' onClick={handleTutorialClick}>Samouczek</button>}
+            <h2 className='main__quote'>Obstawiaj..<br></br>oglądaj..<br></br>wygrywaj!</h2>
+            {isTutorialClicked ? showTutorial() : <button className='main__button' onClick={handleTutorialClick}>Rozpocznij</button>}
         </div>
     )
 }

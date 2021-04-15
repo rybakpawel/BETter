@@ -74,7 +74,7 @@ const Table = () => {
         tablePosition++;
 
         return (
-            <div className='table__wrapper__group__position'>
+            <div className='table__group__position'>
                 <div>
                     <p>{`${tablePosition}.`}</p>
                     <p>{team.name}</p>
@@ -105,29 +105,28 @@ const Table = () => {
     return (
         <div className='table'>
             <h3 className='table__title'>Tabela</h3>
-            <div className='table__wrapper'>
-                <form action="" className='table__wrapper__form'>
-                    <select className='table__wrapper__form__select-group' value={selected + 1} name="groups" id="groups" onChange={handleOption}>
-                        <option value={1}>Grupa A</option>
-                        <option value={2}>Grupa B</option>
-                        <option value={3}>Grupa C</option>
-                        <option value={4}>Grupa D</option>
-                        <option value={5}>Grupa E</option>
-                        <option value={6}>Grupa F</option>
-                    </select>
-                    <p className='table__wrapper__form__legend'>M - mecze, Z - zwycięstwa, R - remisy, P - porażki, B - bramki, Pkt - punkty</p>
-                </form>
-                <div className='table__wrapper__group'>
-                    <div className='table__wrapper__group__shortcuts'>
-                        <p className='table__wrapper__group__shortcuts__shortcut'>M</p>
-                        <p className='table__wrapper__group__shortcuts__shortcut'>Z</p>
-                        <p className='table__wrapper__group__shortcuts__shortcut'>R</p>
-                        <p className='table__wrapper__group__shortcuts__shortcut'>P</p>
-                        <p className='table__wrapper__group__shortcuts__shortcut'>B</p>
-                        <p className='table__wrapper__group__shortcuts__shortcut'>Pkt</p>
+            <div className='table__group'>
+                <div className='table__group__form-shortcuts form-shortcuts'>
+                    <form action="" className='form-shortcuts__form'>
+                        <select className='form-shortcuts__form__select-group' value={selected + 1} name="groups" id="groups" onChange={handleOption}>
+                            <option value={1}>Grupa A</option>
+                            <option value={2}>Grupa B</option>
+                            <option value={3}>Grupa C</option>
+                            <option value={4}>Grupa D</option>
+                            <option value={5}>Grupa E</option>
+                            <option value={6}>Grupa F</option>
+                        </select>
+                    </form>
+                    <div className='form-shortcuts__shortcuts'>
+                        <p className='form-shortcuts__shortcuts__shortcut'>M</p>
+                        <p className='form-shortcuts__shortcuts__shortcut'>Z</p>
+                        <p className='form-shortcuts__shortcuts__shortcut'>R</p>
+                        <p className='form-shortcuts__shortcuts__shortcut'>P</p>
+                        <p className='form-shortcuts__shortcuts__shortcut'>B</p>
+                        <p className='form-shortcuts__shortcuts__shortcut'>Pkt</p>
                     </div>
-                    {isLoading ? <p>poczekaj</p> : handleTable()}
                 </div>
+                {isLoading ? <p>poczekaj</p> : handleTable()}
             </div>
             <Link to='/bet' className='table__link'>
                 <button className='table__link__button' type='button'>Przejdź do typowania!</button>

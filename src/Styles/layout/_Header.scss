@@ -4,180 +4,196 @@
 .header {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     font-family: $main-font;
 
-    &__logo {
-        @include resetButton;
-        position: fixed;
-        top: 40px;
-        left: 50px;
-        font-family: $logo-font;
-        font-size: 75px;
-        font-weight: normal;
-        cursor: pointer;
+    @media (orientation: landscape) {
+        flex-direction: row;
+    }
+
+    @media (min-width: 600px) and (orientation: portrait) {
+        flex-direction: row;
+    }
+
+    &__link {
+        text-decoration: none;
+
+        &__logo {
+            @include resetButton;
+            display: block;
+            margin: 0 auto;
+            padding: 3% 0;
+            font-family: $logo-font;
+            font-size: 60px;
+            font-weight: normal;
+            cursor: pointer;
+
+            @media (min-width: 400px) and (orientation: portrait) {
+                font-size: 70px;
+            }
+
+            @media (min-width: 480px) and (orientation: portrait) {
+                font-size: 80px;
+            }
+
+            @media (min-width: 600px) and (orientation: portrait) {
+                font-size: 90px;
+                padding-left: 5%;
+            }
+
+            @media (min-width: 800px) and (orientation: portrait) {
+                font-size: 110px;
+                padding-left: 5%;
+            }
+
+            @media (min-width: 1000px) and (orientation: portrait) {
+                font-size: 130px;
+            }
+
+            @media (min-width: 400px) and (orientation: landscape) {
+                font-size: 50px;
+                padding-left: 5%;
+            }
+
+            @media (min-width: 700px) and (orientation: landscape) {
+                font-size: 60px;
+            }
+
+            @media (min-width: 1000px) and (orientation: landscape) {
+                font-size: 80px;
+            }
+
+            @media (min-width: 1300px) and (orientation: landscape) {
+                font-size: 90px;
+            }
+
+            @media (min-width: 1700px) and (orientation: landscape) {
+                font-size: 110px;
+            }
+        }
     }
 
     &__login {
-        position: fixed;
-        top: 35px;
-        right: 35px;
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
 
-        &__button,
-        &__welcome,
-        span {
-            @include resetButton;
-            font-size: 28px;
-            font-family: 'Questrial', sans-serif;
-            cursor: pointer;
-            transition: 0.4s;
-
-            &:hover {
-                opacity: 0.7;
-            }
+        @media (min-width: 400px) and (orientation: portrait) {
+            height: 55px;
         }
 
-        &__welcome {
-            display: inline;
-            margin-right: 20px;
-            // font-weight: normal;
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1600) {
-    .header {
-        .logIn {
-
-            button,
-            span {
-                font-size: 25px;
-            }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1600) and (max-height: $breakpoint-900) {
-    .header {
-        .logo {
-            top: 25px;
+        @media (min-width: 480px) and (orientation: portrait) {
+            height: 60px;
         }
 
-        .logIn {
-            top: 25px;
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1450) {
-    .header {
-        .logo {
-            top: 35px;
+        @media (min-width: 600px) and (orientation: portrait) {
+            margin-top: 3%;
+            height: 70px;
         }
 
-        .logIn {
-            top: 30px;
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1450) and (max-height: $breakpoint-900) {
-    .header {
-        .logo {
-            top: 25px;
+        @media (min-width: 800px) and (orientation: portrait) {
+            height: 80px;
         }
 
-        .logIn {
-            top: 25px;
-
-            button,
-            span {
-                font-size: 22px;
-            }
+        @media (min-width: 400px) and (orientation: landscape) {
+            height: 45px;
         }
-    }
-}
 
-@media (max-width: $breakpoint-1450) and (max-height: $breakpoint-800) {
-    .header {
-        .logo {
-            font-size: 60px;
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-800) {
-    .header {
-        .logIn {
-
-            button,
-            span {
-                font-size: 20px;
-            }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-600) {
-    .header {
-        .logo {
-            top: 15px;
-            left: 30px;
+        &__hamburger {
+            position: relative;
+            background-color: transparent;
+            margin-left: 5%;
             font-size: 50px;
+            border: none;
+            color: $text-color;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 5;
+
+            &:focus {
+                outline: none;
+            }
+
+            @media (min-width: 400px) and (orientation: portrait) {
+                font-size: 55px;
+            }
+
+            @media (min-width: 480px) and (orientation: portrait) {
+                font-size: 60px;
+            }
         }
 
-        .logIn {
-            top: 18px;
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            margin-right: 20px;
 
-            button,
-            span {
+            @media (orientation: landscape) {
+                flex-direction: row;
+            }
+
+            &__button,
+            &__welcome,
+            &__span {
+
+                @include resetButton;
+                text-align: right;
                 font-size: 16px;
+                font-family: 'Questrial', sans-serif;
+                cursor: pointer;
+                transition: 0.4s;
+
+                &:hover {
+                    opacity: 0.7;
+                }
+
+                @media (min-width: 400px) and (orientation: portrait) {
+                    font-size: 18px;
+                }
+
+                @media (min-width: 480px) and (orientation: portrait) {
+                    font-size: 20px;
+                }
+
+                @media (min-width: 600px) and (orientation: portrait) {
+                    font-size: 22px;
+                }
+
+                @media (min-width: 800px) and (orientation: portrait) {
+                    height: 100%;
+                    font-size: 28px;
+                }
+
+                @media (min-width: 1000px) and (orientation: portrait) {
+                    font-size: 32px;
+                }
+
+                @media (min-width: 400px) and (orientation: landscape) {
+                    font-size: 16px;
+                    line-height: 45px;
+                }
+
+                @media (min-width: 1000px) and (orientation: landscape) {
+                    font-size: 22px;
+                }
+
+                @media (min-width: 1700px) and (orientation: landscape) {
+                    font-size: 28px;
+                }
             }
-        }
-    }
-}
 
-@media (max-width: $breakpoint-860) and (orientation: landscape) {
-    .header {
-        .logo {
-            top: 8px;
-            left: 20px;
-            font-size: 40px;
-        }
+            &__span {
+                // line-height: 70px;
 
-        .logIn {
-            top: 12px;
-
-            button,
-            span {
-                font-size: 14px;
+                @media (min-width: 400px) and (orientation: landscape) {}
             }
-        }
-    }
-}
 
-@media (max-width: $breakpoint-650) and (orientation: landscape) {
-    .header {
-        .logo {
-            font-size: 35px;
-        }
-
-        .logIn {
-            top: 6px;
-            right: 20px;
-
-            button,
-            span {
-                font-size: 12px;
+            &__welcome {
+                // display: inline;
+                // margin-right: 20px;
             }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-570) and (orientation: landscape) {
-    .header {
-        .logIn {
-            top: 5px;
         }
     }
 }

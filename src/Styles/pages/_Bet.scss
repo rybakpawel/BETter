@@ -2,34 +2,77 @@
 @import '../utilities/mixins';
 
 .bet {
-    @include mainContainer;
-    padding: 5% 0 6% 0;
+    @include mainContainer(false);
 
     &__title {
         @include pageTitle;
-        padding-bottom: 5%;
     }
 
     &__form {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        max-height: 55%;
-        width: 80%;
+        max-height: 65%;
+        width: 100%;
         overflow: auto;
+
+        @media (min-width: 400px) and (max-height: 400px) and (orientation: landscape) {
+            max-height: 55%;
+        }
+
+        @media (min-width: 600px) and (max-height: 400px) and (orientation: landscape) {
+            max-height: 60%;
+        }
 
         .matches {
             display: flex;
             align-items: center;
-            padding-bottom: 20px;
-            font-size: 30px;
+            padding-bottom: 2%;
+            font-size: 14px;
+            width: 100%;
+
+            @media (min-width: 480px) and (orientation: portrait) {
+                font-size: 18px;
+            }
+
+            @media (min-width: 600px) and (orientation: portrait) {
+                font-size: 20px;
+            }
+
+            @media (min-width: 800px) and (orientation: portrait) {
+                font-size: 24px;
+            }
+
+            @media (min-width: 1000px) and (orientation: portrait) {
+                font-size: 30px;
+            }
+
+            @media (min-width: 600px) and (orientation: landscape) {
+                padding-bottom: 1%;
+            }
+
+            @media (min-width: 1250px) and (orientation: landscape) {
+                font-size: 18px;
+            }
+
+            @media (min-width: 1350px) and (orientation: landscape) {
+                font-size: 22px;
+            }
+
+            @media (min-width: 1700px) and (orientation: landscape) {
+                font-size: 30px;
+            }
 
             &__one-match {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 600px;
+                width: 100%;
                 padding: 0;
+
+                @media (min-width: 950px) and (orientation: landscape) {
+                    width: 50%;
+                }
 
                 &__team {
                     width: 100%;
@@ -37,70 +80,152 @@
                     &:nth-of-type(1) {
                         display: flex;
                         justify-content: flex-end;
-                        padding-right: 30px;
+                        padding-right: 2%;
                     }
 
                     &:nth-last-of-type(1) {
-                        padding-left: 30px;
+                        padding-left: 2%;
                     }
                 }
 
                 &__result {
                     background-color: $text-color;
                     border: 1px $main-color solid;
-                    width: 40px;
-                    height: 40px;
-                    font-size: 30px;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 14px;
                     text-align: center;
                     color: $main-color;
 
+                    @media (min-width: 480px) and (orientation: portrait) {
+                        width: 25px;
+                        height: 25px;
+                        font-size: 18px;
+                    }
+
+                    @media (min-width: 600px) and (orientation: portrait) {
+                        font-size: 20px;
+                    }
+
+                    @media (min-width: 800px) and (orientation: portrait) {
+                        width: 30px;
+                        height: 30px;
+                        font-size: 24px;
+                    }
+
+                    @media (min-width: 1000px) and (orientation: portrait) {
+                        width: 35px;
+                        height: 35px;
+                        font-size: 30px;
+                    }
+
+                    @media (min-width: 1250px) and (orientation: landscape) {
+                        font-size: 18px;
+                    }
+
+                    @media (min-width: 1350px) and (orientation: landscape) {
+                        width: 25px;
+                        height: 25px;
+                        font-size: 22px;
+                    }
+
+                    @media (min-width: 1700px) and (orientation: landscape) {
+                        width: 35px;
+                        height: 35px;
+                        font-size: 30px;
+                    }
+
                     &:nth-of-type(1) {
-                        margin-right: 10px;
+                        margin-right: 2%;
                     }
 
                     &:nth-of-type(2) {
-                        margin-left: 10px;
+                        margin-left: 2%;
                     }
                 }
             }
 
             &__date {
-                padding-right: 100px;
+                width: 50%;
+
+                @media (min-width: 950px) and (orientation: landscape) {
+                    width: 25%;
+                }
             }
 
             &__details {
                 @include resetButton;
                 color: $main-color;
-                font-size: 30px;
+                font-size: 14px;
+
+                @media (min-width: 1250px) and (orientation: landscape) {
+                    font-size: 18px;
+                }
+
+                @media (min-width: 1350px) and (orientation: landscape) {
+                    font-size: 22px;
+                }
+
+                @media (min-width: 1700px) and (orientation: landscape) {
+                    font-size: 30px;
+                }
 
                 .detail {
                     position: absolute;
                     display: grid;
-                    grid-template-columns: 1fr 380px;
-                    grid-template-rows: 40px 1fr;
-                    height: 300px;
-                    width: 600px;
+                    grid-template-columns: 1fr 190px;
+                    grid-template-rows: 20px 1fr;
+                    height: 150px;
+                    width: 300px;
                     background-color: $main-color;
                     background-position: center;
                     border: 2px $main-color solid;
                     color: $text-color;
-                    font-size: 18px;
+                    font-size: 9px;
                     overflow: visible;
                     font-family: $main-font;
+
+                    @media (min-width: 1200px) and (orientation: landscape) {
+                        grid-template-columns: 1fr 255px;
+                        grid-template-rows: 27px 1fr;
+                        height: 200px;
+                        width: 400px;
+                        font-size: 12px;
+                    }
+
+                    @media (min-width: 1700px) and (orientation: landscape) {
+                        grid-template-columns: 1fr 380px;
+                        grid-template-rows: 40px 1fr;
+                        height: 300px;
+                        width: 600px;
+                        font-size: 18px;
+                    }
 
                     &__teams {
                         grid-column: 2;
                         display: flex;
                         justify-content: space-around;
-                        margin-top: 10px;
+                        margin-top: 3%;
 
                         &__one-team {
                             background-color: $main-color;
-                            height: 30px;
-                            width: 150px;
+                            height: 15px;
+                            width: 75px;
                             overflow: hidden;
-                            line-height: 30px;
+                            line-height: 15px;
                             border: 1px solid $text-color;
+
+                            @media (min-width: 1200px) and (orientation: landscape) {
+                                height: 20px;
+                                width: 100px;
+                                line-height: 20px;
+                            }
+
+                            @media (min-width: 1700px) and (orientation: landscape) {
+                                height: 30px;
+                                width: 150px;
+                                line-height: 30px;
+                            }
                         }
                     }
 
@@ -113,10 +238,22 @@
 
                         &__section {
                             background-color: $main-color;
-                            height: 30px;
-                            width: 170px;
-                            line-height: 30px;
+                            height: 15px;
+                            width: 85px;
+                            line-height: 15px;
                             border: 1px solid $text-color;
+
+                            @media (min-width: 1200px) and (orientation: landscape) {
+                                height: 20px;
+                                width: 105px;
+                                line-height: 20px;
+                            }
+
+                            @media (min-width: 1700px) and (orientation: landscape) {
+                                height: 30px;
+                                width: 170px;
+                                line-height: 30px;
+                            }
                         }
                     }
 
@@ -144,40 +281,5 @@
     &__submit {
         @include resetButton;
         @include submitButton;
-
-        &::before {
-            @include pseudoElementBeforeButton;
-            width: 298px;
-            height: 60px;
-        }
-
-        &::after {
-            @include pseudoElementAfterButton;
-            width: 0;
-            height: 59px;
-        }
-
-        &:hover {
-            &::before {
-                transform: translateY(0);
-            }
-
-            &::after {
-                width: 300px;
-                color: $main-color;
-            }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-1600) {
-    .betForm {
-        width: 100%;
-    }
-}
-
-@media (max-width: $breakpoint-1280) {
-    .betForm {
-        width: 100%;
     }
 }

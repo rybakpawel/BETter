@@ -1,21 +1,49 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import AuthContext from '../context/authContext'
+
+import DeviceContext from '../context/deviceContext'
 
 const Competition = () => {
 
-    const { isLogged } = useContext(AuthContext)
-
-    console.log(isLogged)
+    const { orientation } = useContext(DeviceContext)
 
     const [isLoading, setIsLoading] = useState(true)
     const [sortedMatches, setSortedMatches] = useState(null)
     const [teams, setTeams] = useState(null)
     const [users, setUsers] = useState(null)
+    const [activeDetails, setActiveDetails] = useState(
+        {
+            match: null,
+            bet: null,
+        }
+    )
+    const [mousePosition, setMousePosition] = useState(
+        {
+            x: null,
+            y: null,
+        }
+    )
+
+    const buttonRef = useRef();
+    const detailRef = useRef();
+    const usersInTable = () => {
+        return users.length < 10 ? 10 : users.length
+    }
 
     useEffect(() => {
         loadData();
     }, [])
+
+    useEffect(() => {
+        if (activeDetails.match) {
+            detailRef.current.style.top = `${mousePosition.y}px`;
+            detailRef.current.style.left = `${mousePosition.x}px`;
+        }
+    })
+
+    const updateMousePosition = e => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+    };
 
     const loadData = async () => {
         const response = await fetch('/competition')
@@ -24,6 +52,14 @@ const Competition = () => {
         setTeams(data.teams)
         setUsers(data.users)
         setIsLoading(false);
+    }
+
+    const handleDetails = (match, bet) => {
+        window.addEventListener("mousemove", updateMousePosition);
+        setActiveDetails({
+            match,
+            bet
+        })
     }
 
     const handleMatchList = matches => {
@@ -42,19 +78,60 @@ const Competition = () => {
             <p className={`competition__grid__${field}__user`}>{user[field]}</p>
         )
         return (
-            <div className={`competition__grid__${field}`}>
+            <div className={`competition__grid__${field}`}
+                style={{
+                    gridTemplateColumns: orientation === 'portrait' || orientation === 'portrait-tablet' ? `22% repeat(${usersInTable()}, 1fr)` : null
+                }}>
                 {field === 'points' ? <p className={`competition__grid__${field}__title`}>Punkty</p> : <div className={`competition__grid__${field}__title`}></div>}
                 {userList}
             </div>
         )
     }
 
+    const showDetails = (match, bet) => {
+        return (
+            <div className='result__details' ref={detailRef}>
+                <div className='result__details__teams'>
+                    <p className='result__details__teams__team1'>{match.team1}</p>
+                    <p className='result__details__teams__team2'>{match.team2}</p>
+                </div>
+                <div className='result__details__real'>
+                    <p>Wynik</p>
+                    <p>{match.result1 === -1 ? '-' : match.result1}</p>
+                    <p>{match.result2 === -1 ? '-' : match.result2}</p>
+                </div>
+                <div className='result__details__user'>
+                    <p>Typ</p>
+                    <p>{bet.result1 === null ? '-' : bet.result1}</p>
+                    <p>{bet.result2 === null ? '-' : bet.result2}</p>
+                </div>
+            </div>
+        )
+    }
+
+    const showResult = (color, match, bet) => {
+        return (
+            <>
+                <p
+                    className={`result result--${color}`}
+                    onMouseEnter={() => handleDetails(match, bet)}
+                    onMouseLeave={() => handleDetails(null, null)}
+                    ref={buttonRef}
+                >
+
+                </p>
+                {(activeDetails.match === match && activeDetails.bet === bet) ? showDetails(match, bet) : null}
+            </>
+        )
+    }
+
     const handleResults = (matches, users) => {
         const userResult = users.map(user => {
             const userBets = user.bets.map(bet => {
-                if (matches[bet.id - 1].result1 === -1) return <p className='grey'></p>
-
-                else if (matches[bet.id - 1].result1 === bet.result1 && matches[bet.id - 1].result2 === bet.result2) return <p className='green'></p>
+                if (matches[bet.id - 1].result1 === -1)
+                    return showResult('grey', matches[bet.id - 1], bet)
+                else if (matches[bet.id - 1].result1 === bet.result1 && matches[bet.id - 1].result2 === bet.result2)
+                    return showResult('green', matches[bet.id - 1], bet)
 
                 else if (
                     (matches[bet.id - 1].result1 > matches[bet.id - 1].result2 && bet.result1 > bet.result2)
@@ -62,15 +139,20 @@ const Competition = () => {
                     (matches[bet.id - 1].result1 < matches[bet.id - 1].result2 && bet.result1 < bet.result2)
                     ||
                     (matches[bet.id - 1].result1 === matches[bet.id - 1].result2 && bet.result1 === bet.result2)
-                ) return <p className='yellow'></p>
+                )
+                    return showResult('yellow', matches[bet.id - 1], bet)
 
-                else return <p className='red'></p>
+                else
+                    return showResult('red', matches[bet.id - 1], bet)
             })
             return <div className='competition__grid__results__user'>{userBets}</div>
         })
 
         return (
-            <div className='competition__grid__results'>
+            <div className='competition__grid__results'
+                style={{
+                    gridTemplateColumns: orientation === 'portrait' || orientation === 'portrait-tablet' ? `repeat(${usersInTable()}, 1fr)` : null
+                }}>
                 {userResult}
             </div>
         )
@@ -82,6 +164,8 @@ const Competition = () => {
             if (a.points > b.points) return 1
             return 0
         }
+
+        console.log(users.length)
 
         const sortedUsers = users.sort(compare)
 
@@ -101,8 +185,8 @@ const Competition = () => {
             <div className='competition__grid'>
                 {isLoading ? <p>ładuję...</p> : handleGrid()}
             </div>
-            <Link to='/bet' className='table__link'>
-                <button className='table__link__button' type='button'>Przejdź do typowania!</button>
+            <Link to='/bet' className='competition__link'>
+                <button className='competition__link__button' type='button'>Przejdź do typowania!</button>
             </Link>
         </div>
     )

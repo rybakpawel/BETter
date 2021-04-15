@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import AuthContext from '../context/authContext'
 import LoginContext from '../context/loginContext'
+import DeviceContext from '../context/deviceContext'
+import mousePosition from './helpers/mousePosition'
 
 const Bet = () => {
 
     const { isLogged } = useContext(AuthContext)
     const { toggleActiveLogin } = useContext(LoginContext)
+    const { orientation, changeOrientation } = useContext(DeviceContext)
 
     const [isLoading, setIsLoading] = useState(true)
     const [sorted, setSorted] = useState(null)
@@ -23,12 +26,18 @@ const Bet = () => {
     const detailRef = useRef();
 
     useEffect(() => {
+        window.addEventListener("resize", changeOrientation);
+
+        return () => window.removeEventListener("resize", changeOrientation);
+    }, []);
+
+    useEffect(() => {
         loadData();
     }, [])
 
     useEffect(() => {
         if (activeDetails) {
-            detailRef.current.style.top = `${mousePosition.y}px`;
+            detailRef.current.style.top = `${mousePosition.y - 100}px`;
             detailRef.current.style.left = `${mousePosition.x}px`;
         }
     })
@@ -145,15 +154,17 @@ const Bet = () => {
                         <label className='matches__one-match__team' htmlFor="">{teams[match.team2 - 1].name}</label>
                     </div>
                     <p className='matches__date'>{match.date}</p>
-                    <button
-                        className='matches__details'
-                        onClick={handleClick}
-                        onMouseEnter={() => handleDetails(match.id)}
-                        onMouseLeave={() => handleDetails(null)}
-                        ref={buttonRef}>
-                        szczegóły
+                    { orientation === 'portrait' || orientation === 'portrait-tablet' || window.innerWidth < 860 ? null :
+                        <button
+                            className='matches__details'
+                            onClick={handleClick}
+                            onMouseEnter={() => handleDetails(match.id)}
+                            onMouseLeave={() => handleDetails(null)}
+                            ref={buttonRef}>
+                            szczegóły
                         {activeDetails === match.id ? showDetails(match) : null}
-                    </button>
+                        </button>
+                    }
                 </div>
             )
         })

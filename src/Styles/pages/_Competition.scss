@@ -2,49 +2,127 @@
 @import '../utilities/mixins';
 
 .competition {
-    @include mainContainer;
-    padding: 5% 0 6% 0;
+    @include mainContainer(false);
+
 
     &__title {
         @include pageTitle;
         padding-bottom: 5%;
+
+        @media (min-width: 400px) and (orientation: landscape) {
+            padding-bottom: 3%;
+        }
     }
 
     &__grid {
         display: grid;
-        grid-template-columns: 100px 1000px;
-        grid-template-rows: 100px 250px;
+        grid-template-columns: 22% 1fr;
+        grid-template-rows: 1fr;
+        width: 90%;
+        margin-bottom: 8%;
+        font-size: 12px;
         color: $main-color;
+        overflow: scroll;
+
+        @media (min-width: 600px) and (orientation: portrait) {
+            font-size: 16px;
+        }
+
+        @media (min-width: 1000px) and (orientation: portrait) {
+            font-size: 20px;
+        }
+
+        @media (min-width: 400px) and (orientation: landscape) {
+            grid-template-columns: auto 1fr;
+            grid-template-rows: 55px 1fr;
+            margin-bottom: 3%;
+            font-size: 9px;
+        }
+
+        @media (min-width: 600px) and (orientation: landscape) {
+            font-size: 10px;
+        }
+
+        @media (min-width: 850px) and (orientation: landscape) {
+            grid-template-rows: 65px 1fr;
+            font-size: 12px;
+        }
+
+        @media (min-width: 1200px) and (orientation: landscape) {
+            grid-template-rows: 75px 1fr;
+            font-size: 14px;
+        }
+
+        @media (min-width: 1400px) and (orientation: landscape) {
+            grid-template-rows: 80px 1fr;
+            font-size: 16px;
+        }
 
         &__matchList {
             display: grid;
-            grid-template-columns: repeat(36, 1fr);
-            grid-column: 2;
-            justify-items: center;
-            align-items: end;
-            padding-bottom: 7px;
-            border-bottom: 1px solid $main-color;
+            grid-auto-rows: 1fr;
+            grid-row: 3;
+            justify-items: end;
+            align-items: center;
+            padding-right: 5%;
 
+            @media (min-width: 400px) and (orientation: landscape) {
+                grid-template-columns: repeat(36, 1fr);
+                grid-column: 2;
+                grid-row: auto;
+                justify-items: center;
+                align-items: flex-end;
+                margin-bottom: 2px;
+                padding-right: 0;
+            }
 
             &__match {
-                writing-mode: vertical-rl;
-                transform: rotate(180deg);
+                padding: 5% 0;
+
+                @media (min-width: 400px) and (orientation: landscape) {
+                    writing-mode: vertical-rl;
+                    transform: rotate(180deg);
+                }
             }
         }
 
         &__points {
             display: grid;
-            grid-template-rows: 100px repeat(11, 1fr);
-            grid-row: 1 /11;
-            grid-column: -1;
-            border-left: 1px solid $main-color;
+            grid-row: 2;
+            grid-column: 1/12;
+            padding: 1% 0;
+            border-bottom: 1px solid $main-color;
+
+            @media (min-width: 400px) and (orientation: landscape) {
+                grid-template-rows: 55px;
+                grid-auto-rows: 1fr;
+                grid-row: 1 / -1;
+                grid-column: -1;
+                padding: 0 10%;
+                border-bottom: none;
+            }
+
+            @media (min-width: 850px) and (orientation: landscape) {
+                grid-template-rows: 65px;
+            }
+
+            @media (min-width: 1200px) and (orientation: landscape) {
+                grid-template-rows: 75px;
+            }
+
+            @media (min-width: 1400px) and (orientation: landscape) {
+                grid-template-rows: 80px 1fr;
+            }
 
             &__title {
-                padding: 0 10px;
-                font-size: 24px;
+                padding-right: 5%;
+                text-align: right;
                 font-weight: bold;
-                line-height: 150px;
-                border-bottom: 1px solid $main-color;
+
+                @media (min-width: 400px) and (orientation: landscape) {
+                    align-self: flex-end;
+                    padding: 0 0 4px 0;
+                }
             }
 
             &__user {
@@ -55,37 +133,141 @@
 
         &__name {
             display: grid;
-            grid-template-rows: 100px repeat(10, 1fr);
-            grid-row: 1 /11;
-            grid-column: 1;
-            justify-items: end;
-            border-right: 1px solid $main-color;
+            grid-column: 1/12;
+            justify-items: center;
+            padding-bottom: 1%;
+            border-bottom: 1px solid $main-color;
 
-            &__title {
-                width: 100%;
-                border-bottom: 1px solid $main-color;
+            @media (min-width: 400px) and (orientation: landscape) {
+                grid-template-rows: 55px;
+                grid-auto-rows: 1fr;
+                grid-row: 1 / -1;
+                grid-column: 1;
+                justify-items: end;
+                align-items: center;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            @media (min-width: 850px) and (orientation: landscape) {
+                grid-template-rows: 65px;
+            }
+
+            @media (min-width: 1200px) and (orientation: landscape) {
+                grid-template-rows: 75px;
+            }
+
+            @media (min-width: 1400px) and (orientation: landscape) {
+                grid-template-rows: 80px 1fr;
             }
 
             &__user {
-                align-self: center;
-                padding-right: 7px;
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+
+                @media (min-width: 400px) and (orientation: landscape) {
+                    writing-mode: horizontal-tb;
+                    transform: rotate(0deg);
+                    padding-right: 5%;
+                }
             }
         }
 
         &__results {
             display: grid;
-            grid-template-rows: repeat(10, 1fr);
+            grid-column: 2;
+            grid-row: 3;
+
+            @media (min-width: 400px) and (orientation: landscape) {
+                grid-column: auto;
+                grid-row: auto;
+            }
 
             &__user {
                 display: grid;
-                grid-template-columns: repeat(36, 1fr);
+                grid-template-rows: repeat(36, 1fr);
 
-                .grey {
-                    background-color: $text-color;
+                @media (min-width: 400px) and (orientation: landscape) {
+                    grid-template-columns: repeat(36, 1fr);
+                    grid-template-rows: auto;
+                    grid-auto-rows: 1fr;
+                    height: 13px;
+                }
+
+                @media (min-width: 600px) and (orientation: landscape) {
+                    height: 15px;
+                }
+
+                @media (min-width: 1200px) and (orientation: landscape) {
+                    height: 20px;
+                }
+
+                @media (min-width: 1400px) and (orientation: landscape) {
+                    height: 24px;
+                }
+
+                .result {
                     border: 1px dotted $main-color;
-                    margin: 2px;
+                    margin: 1px;
+
+                    @media (min-width: 600px) and (orientation: portrait) {
+                        margin: 3px;
+                    }
+
+                    @media (min-width: 1400px) and (orientation: landscape) {
+                        margin: 2px;
+                    }
+
+                    &--grey {
+                        background-color: $text-color;
+                    }
+
+                    &--green {
+                        background-color: green;
+                    }
+
+                    &--yellow {
+                        background-color: yellow;
+                    }
+
+                    &--red {
+                        background-color: red;
+                    }
+
+                    &__details {
+                        position: absolute;
+                        border: 1px solid $main-color;
+                        background: pink;
+                    }
                 }
             }
+        }
+    }
+
+    &__link {
+        width: 100%;
+        margin-left: 30%;
+        text-decoration: none;
+
+        @media (min-width: 480px) and (orientation: portrait) {
+            margin-left: 40%;
+        }
+
+        @media (min-width: 400px) and (orientation: landscape) {
+            margin-left: 55%;
+        }
+
+        @media (min-width: 600px) and (orientation: landscape) {
+            margin-left: 65%;
+        }
+
+        @media (min-width: 700px) and (orientation: landscape) {
+            margin-left: 70%;
+        }
+
+        &__button {
+            @include resetButton;
+            @include submitButton(70%);
         }
     }
 }

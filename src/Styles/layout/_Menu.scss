@@ -3,13 +3,80 @@
 
 .navigation {
     position: absolute;
-    top: 8%;
-    right: 4%;
-    width: 28%;
-    height: calc(100% - 8%);
+    top: 15%;
+    left: -60%;
+    width: 60%;
+    height: calc(100% - 15%);
     background: linear-gradient(180deg, #a0acca 60%, #849BD5 90%);
     font-family: $main-font;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.6s;
+
+    @media (min-width: 600px) and (orientation: portrait) {
+        top: 15%;
+        left: auto;
+        right: 0;
+        width: 50%;
+        height: calc(100% - 8%);
+    }
+
+    @media (min-width: 1000px) and (orientation: portrait) {
+        width: 40%;
+    }
+
+    @media (min-width: 400px) and (max-width: 860px) and (orientation: landscape) {
+        z-index: 2;
+    }
+
+    @media (min-width: 400px) and (orientation: landscape) {
+        top: 0;
+        left: auto;
+        right: -40%;
+        width: 40%;
+        height: 100%;
+    }
+
+    @media (min-width: 950px) and (orientation: landscape) {
+        top: 9%;
+        right: 5%;
+        width: 25%;
+    }
+
+    @media (min-width: 1300px) and (orientation: landscape) {
+        width: 22%;
+    }
+
+    &--active-z-index {
+        z-index: 1;
+    }
+
+    &--animation-menu-in {
+        transform: translateX(100%);
+        animation: slideMenuIn 0.3s;
+
+        @media (min-width: 600px) {
+            transform: translateX(0);
+            animation: slideMenuIn 0.6s;
+        }
+
+        @media (min-width: 400px) and (max-width: 860px) and (orientation: landscape) {
+            transform: translateX(-100%);
+            animation: slideMenuIn 0.3s;
+        }
+    }
+
+    &--animation-menu-out {
+        transform: translateX(0);
+        animation: slideMenuOut 0.3s;
+
+        @media (min-width: 600px) {
+            animation: slideMenuOut 0.6s;
+        }
+
+        @media (min-width: 400px) and (max-width: 860px) and (orientation: landscape) {
+            animation: slideMenuOut 0.3s;
+        }
+    }
 
     &__menu {
         display: flex;
@@ -18,10 +85,18 @@
         height: 100%;
 
         &__link {
-            margin-top: 40px;
+            margin-top: 15%;
+
+            @media (min-width: 400px) and (max-width: 699px) and (orientation: landscape) {
+                margin-top: 10%;
+            }
 
             &:nth-child(1) {
-                margin-top: 130px;
+                margin-top: 40%;
+
+                @media (min-width: 400px) and (max-width: 950px) and (orientation: landscape) {
+                    margin-top: 15%;
+                }
 
                 .navigation__menu__link__list-item {
                     color: $type-font-color;
@@ -39,41 +114,27 @@
 
             &__list-item {
                 @include resetButton;
-                @include submitButton;
+                @include submitButton(70%, $line-height: 35px);
                 position: relative;
                 display: block;
                 margin: 0 auto;
                 overflow: hidden;
 
-                &::before {
-                    @include pseudoElementBeforeButton;
-                    width: 298px;
-                    height: 60px;
+                @media (min-width: 400px) and (orientation: landscape) {
+                    width: 65%;
+                    margin: 0 auto;
                 }
 
-                &::after {
-                    @include pseudoElementAfterButton;
-                    width: 0;
-                    height: 59px;
-                }
-
-                &:hover {
-                    &::before {
-                        transform: translateY(0);
-                    }
-
-                    &::after {
-                        width: 300px;
-                        color: $main-color;
-                    }
+                @media (min-width: 700px) and (max-width: 949px) and (orientation: landscape) {
+                    width: 60%;
                 }
             }
         }
 
         &__hamburger {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            top: 3%;
+            right: 10%;
             background-color: transparent;
             font-size: 60px;
             border: none;
@@ -81,178 +142,103 @@
             cursor: pointer;
             transition: 0.3s;
 
+            @media (min-width: 400px) and (max-width: 900px) and (orientation: landscape) {
+                top: 25%;
+                right: 110%;
+                font-size: 40px;
+                color: $text-color;
+                z-index: 2;
+            }
+
+            @media (min-width: 950px) and (orientation: landscape) {
+                right: 10%;
+                font-size: 50px;
+                color: $main-color;
+            }
+
             &:focus {
                 outline: none;
             }
         }
 
-        &__hamburger--active {
-            font-size: 70px;
-        }
+        // &__hamburger--active {
+        //     font-size: 70px;
+
+        //     @media (min-width: 950px) and (orientation: landscape) {
+        //         font-size: 60px;
+        //     }
+        // }
     }
-}
-
-.navigation--animation-menu-in {
-    animation: slideMenuIn 0.6s;
-}
-
-.navigation--animation-menu-out {
-    animation: slideMenuOut 0.6s;
-}
-
-.navigation--active-z-index {
-    z-index: 1;
 }
 
 @keyframes slideMenuIn {
     0% {
-        @include menuAnimationFrom;
-    }
-
-    50% {
-        @include menuAnimationMiddle;
+        @include menuAnimationLeft;
     }
 
     100% {
-        @include menuAnimationFrom;
+        @include menuAnimationRight;
     }
 }
 
 @keyframes slideMenuOut {
     0% {
-        @include menuAnimationFrom;
-    }
-
-    50% {
-        @include menuAnimationMiddle;
+        @include menuAnimationRight;
     }
 
     100% {
-        @include menuAnimationFrom;
+        @include menuAnimationLeft;
     }
 }
 
-@media (max-width: $breakpoint-1450) {
-    .menu {
-        aside {
-            a {
-                margin-top: 30px;
+@media (min-width: 600px) {
+    @keyframes slideMenuIn {
+        0% {
+            @include menuAnimationLeft;
+        }
 
-                .menuList {
-                    font-size: 22px;
-                }
-            }
+        50% {
+            @include menuAnimationRight;
+        }
+
+        100% {
+            @include menuAnimationLeft;
+        }
+    }
+
+    @keyframes slideMenuOut {
+        0% {
+            @include menuAnimationLeft;
+        }
+
+        50% {
+            @include menuAnimationRight;
+        }
+
+        100% {
+            @include menuAnimationLeft;
         }
     }
 }
 
-@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-800) {
-    .menu {
+@media (min-width: 400px) and (max-width: 860px) and (orientation: landscape) {
+    @keyframes slideMenuIn {
+        0% {
+            transform: translateX(0);
+        }
 
-        aside {
-            .hamburger {
-                top: 20px;
-                right: 20px;
-                font-size: 50px;
-            }
-
-            a {
-                margin-top: 20px;
-
-                .menuList {
-                    font-size: 20px;
-                    line-height: 45px;
-                }
-            }
+        100% {
+            transform: translateX(-100%);
         }
     }
-}
 
-@media (max-width: $breakpoint-1024) and (max-height: $breakpoint-600) {
-    .menu {
-
-        aside {
-            .hamburger {
-                font-size: 40px;
-            }
-
-            a {
-                &:nth-child(1) {
-                    margin-top: 80px;
-                }
-
-                .menuList {
-                    font-size: 18px;
-                }
-            }
+    @keyframes slideMenuOut {
+        0% {
+            transform: translateX(-100%);
         }
-    }
-}
 
-@media (max-width: $breakpoint-860) and (orientation: landscape) {
-    .menu {
-
-        aside {
-            .hamburger {
-                top: 15px;
-                right: 15px;
-                font-size: 30px;
-            }
-
-            a {
-                &:nth-child(1) {
-                    margin-top: 50px;
-                }
-
-                .menuList {
-                    font-size: 15px;
-                    line-height: 40px;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-650) and (orientation: landscape) {
-    .menu {
-
-        aside {
-            .hamburger {
-                top: 12px;
-                right: 12px;
-                font-size: 24px;
-            }
-
-            a {
-                &:nth-child(1) {
-                    margin-top: 40px;
-                }
-
-                .menuList {
-                    font-size: 12px;
-                    line-height: 30px;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: $breakpoint-570) and (orientation: landscape) {
-    .menu {
-
-        aside {
-            .hamburger {
-                top: 10px;
-                right: 10px;
-                font-size: 20px;
-            }
-
-            a {
-                .menuList {
-                    font-size: 10px;
-                    line-height: 25px;
-                }
-            }
+        100% {
+            transform: translateX(0);
         }
     }
 }

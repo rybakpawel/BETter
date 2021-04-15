@@ -2,106 +2,197 @@
 @import '../utilities/mixins';
 
 .table {
-    @include mainContainer;
-    padding: 5% 0 6% 0;
+    @include mainContainer(false);
 
     &__title {
         @include pageTitle;
     }
 
-    &__wrapper {
+    &__group {
         display: flex;
         flex-direction: column;
-        padding: 0 15%;
         width: 80%;
+        font-size: 14px;
+        color: $main-color;
 
-        &__form {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-bottom: 15px;
-
-            &__select-group {
-                padding: 4px 7px;
-                font-size: 30px;
-                background-color: $text-color;
-                font-family: $main-font;
-            }
-
-            &__legend {
-                font-size: 10px;
-                transform: translateX(25px);
-            }
+        @media (min-width: 360px) and (orientation: portrait) {
+            font-size: 20px;
         }
 
-        &__group {
+        @media (min-width: 480px) and (orientation: portrait) {
+            font-size: 28px;
+        }
+
+        @media (min-width: 600px) and (orientation: portrait) {
+            font-size: 34px;
+        }
+
+        @media (min-width: 800px) and (orientation: portrait) {
+            font-size: 44px;
+        }
+
+        @media (min-width: 400px) and (orientation: landscape) {
+            width: 65%;
+        }
+
+        @media (min-width: 600px) and (orientation: landscape) {
+            width: 55%;
+            font-size: 16px;
+        }
+
+        @media (min-width: 700px) and (orientation: landscape) {
+            font-size: 18px;
+        }
+
+        @media (min-width: 850px) and (orientation: landscape) {
+            font-size: 20px;
+        }
+
+        @media (min-width: 1000px) and (orientation: landscape) {
+            font-size: 24px;
+        }
+
+        @media (min-width: 1200px) and (orientation: landscape) {
+            width: 45%;
+            font-size: 28px;
+        }
+
+        @media (min-width: 1700px) and (orientation: landscape) {
             font-size: 40px;
-            color: $main-color;
+        }
 
-            &__shortcuts {
+        .form-shortcuts {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px $main-color solid;
+            padding-bottom: 3%;
+            margin-bottom: 3%;
+
+            @media (min-width: 400px) and (orientation: landscape) {
+                padding-bottom: 1%;
+                margin-bottom: 1%;
+            }
+
+            &__form {
                 display: flex;
-                justify-content: flex-end;
-                margin-bottom: 10px;
-                padding-bottom: 10px;
-                font-size: 33px;
-                border-bottom: 3px $main-color solid;
+                justify-content: space-between;
+                align-items: flex-end;
 
-                &__shortcut {
+                &__select-group {
+                    padding: 1% 2%;
+                    font-size: 15px;
+                    background-color: $text-color;
+                    font-family: $main-font;
 
-                    &:nth-last-of-type(1) {
-                        padding-left: 26px;
-                        transform: translateX(8px);
+                    @media (min-width: 480px) and (orientation: portrait) {
+                        font-size: 20px;
                     }
 
-                    &:nth-last-of-type(2) {
-                        padding-left: 34px;
-                        transform: translateX(8px);
+                    @media (min-width: 600px) and (orientation: portrait) {
+                        font-size: 24px;
                     }
 
-                    &:nth-last-of-type(3),
-                    &:nth-last-of-type(4) {
-                        padding-left: 12px;
+                    @media (min-width: 800px) and (orientation: portrait) {
+                        font-size: 30px;
                     }
 
-                    &:nth-last-of-type(5) {
-                        padding-left: 24px;
+                    @media (min-width: 1200px) and (orientation: landscape) {
+                        font-size: 20px;
+                    }
+
+                    @media (min-width: 1700px) and (orientation: landscape) {
+                        font-size: 30px;
                     }
                 }
             }
 
-            &__position {
+            &__shortcuts {
                 display: flex;
-                justify-content: space-between;
-                padding-bottom: 15px;
+                justify-content: flex-end;
+                flex-basis: 50%;
+                font-size: 14px;
 
-                div {
-                    display: flex;
+                @media (min-width: 480px) and (orientation: portrait) {
+                    font-size: 18px;
+                }
 
-                    &:nth-child(1) {
+                @media (min-width: 600px) and (orientation: portrait) {
+                    font-size: 22px;
+                }
 
-                        p {
-                            &:nth-child(1) {
-                                padding-right: 7px;
-                            }
-                        }
+                @media (min-width: 800px) and (orientation: portrait) {
+                    font-size: 30px;
+                }
+
+                @media (min-width: 1000px) and (orientation: landscape) {
+                    font-size: 18px;
+                }
+
+                @media (min-width: 1700px) and (orientation: landscape) {
+                    font-size: 22px;
+                }
+
+                &__shortcut {
+
+                    padding-top: 10%;
+                    width: 20%;
+                    text-align: center;
+
+                    @media (min-width: 400px) and (orientation: landscape) {
+                        padding-top: 3%;
                     }
 
-                    &:nth-child(2) {
-                        justify-content: flex-end;
-                        flex-basis: 50%;
+                    &:nth-of-type(2),
+                    &:nth-of-type(3),
+                    &:nth-of-type(4) {
+                        width: 10%;
+                    }
 
-                        p {
+                    &:nth-of-type(5) {
+                        width: 25%;
+                    }
+                }
+            }
+        }
 
-                            &:nth-last-of-type(1),
-                            &:nth-last-of-type(2),
-                            &:nth-last-of-type(5) {
-                                padding-left: 24px;
-                            }
+        &__position {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 15px;
 
-                            &:nth-last-of-type(3),
-                            &:nth-last-of-type(4) {
-                                padding-left: 12px;
-                            }
+            @media (min-width: 400px) and (orientation: landscape) {
+                padding-bottom: 3%;
+            }
+
+            div {
+                display: flex;
+
+                &:nth-child(1) {
+
+                    p {
+                        &:nth-child(1) {
+                            padding-right: 5%;
+                        }
+                    }
+                }
+
+                &:nth-child(2) {
+                    justify-content: flex-end;
+                    flex-basis: 50%;
+
+                    p {
+
+                        width: 20%;
+                        text-align: center;
+
+                        &:nth-of-type(2),
+                        &:nth-of-type(3),
+                        &:nth-of-type(4) {
+                            width: 10%;
+                        }
+
+                        &:nth-of-type(5) {
+                            width: 25%;
                         }
                     }
                 }
@@ -110,36 +201,29 @@
     }
 
     &__link {
+        width: 100%;
+        margin-left: 30%;
         text-decoration: none;
+
+        @media (min-width: 480px) and (orientation: portrait) {
+            margin-left: 40%;
+        }
+
+        @media (min-width: 400px) and (orientation: landscape) {
+            margin-left: 55%;
+        }
+
+        @media (min-width: 600px) and (orientation: landscape) {
+            margin-left: 65%;
+        }
+
+        @media (min-width: 700px) and (orientation: landscape) {
+            margin-left: 70%;
+        }
 
         &__button {
             @include resetButton;
-            @include submitButton(450px);
-
-            &::before {
-                @include pseudoElementBeforeButton;
-                width: 448px;
-                height: 60px;
-            }
-
-            &::after {
-                @include pseudoElementAfterButton;
-                width: 0;
-                height: 59px;
-            }
-
-            &:hover {
-                &::before {
-                    transform: translateY(0);
-                }
-
-                &::after {
-                    width: 450px;
-                    color: $main-color;
-                }
-            }
+            @include submitButton(70%);
         }
     }
-
-
 }

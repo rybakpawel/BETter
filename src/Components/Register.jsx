@@ -79,7 +79,7 @@ const Register = () => {
                     className='register__form__box__input'
                     value={inputType}
                     onChange={handleInput} />
-                <p className='register__form__box__error'>{errorMessageType || null}</p>
+                <p className='register__form__box__error'>{errorMessageType}</p>
             </div>
         )
     }

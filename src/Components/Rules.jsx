@@ -22,7 +22,7 @@ const Rules = () => {
             case 2:
                 return (
                     <>
-                        <p className="rules__rule__description">Każdy mecz punktowany jest osobno. Za wytypowanie dokładnego wyniku spotkania gracz otrzymuje 3 pkt. W przypadku trafienia tylko i wyłącznie odpowiedniego rozstrzygnięcia (czyli np. remisu lub zwycięstwa jednej z drużyn, ale innym stosunkiem bramek niż przewidział gracz) przewidziany jest 1 pkt. W momencie błędnego typu, bądź nie dokonania go wcale nie należą się żadne punkty. Końcowym rezultatem gracza jest suma punktów zebranych z wszystkich 51 spotkań EURO 2021.</p>
+                        <p className="rules__rule__description">Każdy mecz punktowany jest osobno. Za wytypowanie dokładnego wyniku spotkania gracz otrzymuje 3 pkt. W przypadku trafienia tylko i wyłącznie odpowiedniego rozstrzygnięcia (czyli np. remisu lub zwycięstwa jednej z drużyn, ale innym stosunkiem bramek niż obstawił gracz) przewidziany jest 1 pkt. W momencie błędnego typu, bądź nie dokonania go wcale nie należą się żadne punkty. Końcowym rezultatem gracza jest suma punktów zebranych z wszystkich 51 spotkań EURO 2021.</p>
                         <button className="rules__rule__close" onClick={() => handleIsActive(0)}><VscChromeClose /></button>
                         <button className="rules__rule__next" onClick={() => handleIsActive(3)}><VscArrowRight /></button>
                     </>

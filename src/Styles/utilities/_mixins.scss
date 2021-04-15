@@ -1,5 +1,7 @@
 @import 'vars';
 
+//////////////////////////////// BUTTON
+
 @mixin resetButton {
     background-color: transparent;
     border: none;
@@ -14,32 +16,80 @@
     }
 }
 
-@mixin pseudoElementBeforeButton($color: $main-color) {
+@mixin pseudoElementButton($type, $width, $height, $color: $main-color) {
+    @if ($type==before) {
+        color: $color;
+        border-left: solid 1px;
+        border-right: solid 1px;
+        transform: translateY(100%);
+    }
+
+    @else if ($type==after) {
+        color: transparent;
+        border-top: solid 1px;
+        transform: translateY(-100%);
+    }
+
     content: '';
     position: absolute;
     display: block;
-    color: $color;
-    border-left: solid 1px;
-    border-right: solid 1px;
-    transform: translateY(100%);
+    width: $width;
+    height: $height;
     transition: 0.3s;
 }
 
-@mixin pseudoElementAfterButton {
-    content: '';
-    position: absolute;
-    display: block;
-    color: transparent;
-    border-top: solid 1px;
-    transform: translateY(-100%);
-    transition: 0.3s;
+@mixin buttonGoToBet {
+    @media (min-width: 480px) and (orientation: portrait) {
+        width: 60%;
+    }
+
+    @media (min-width: 400px) and (orientation: landscape) {
+        width: 45%;
+    }
+
+    @media (min-width: 600px) and (orientation: landscape) {
+        width: 35%;
+    }
+
+    @media (min-width: 700px) and (orientation: landscape) {
+        width: 30%;
+    }
 }
 
-@mixin submitButton($width: 300px, $color: $main-color, $font-size: 30px, $line-height: 60px) {
+@mixin buttonGoToLog {
+    @media (min-width: 600px) and (orientation: portrait) {
+        width: 35%;
+    }
+
+    @media (min-width: 750px) and (orientation: portrait) {
+        width: 30%;
+    }
+
+    @media (min-width: 400px) and (max-height: 400px) and (orientation: landscape) {
+        width: 25%;
+    }
+
+    @media (min-width: 700px) and (orientation: landscape) {
+        width: 20%;
+    }
+
+    @media (min-width: 1350px) and (orientation: landscape) {
+        width: 18%;
+    }
+}
+
+@mixin submitButton($width: 40%, $color: $main-color, $font-size: 16px, $line-height: 25px) {
+    @if $width==70% {
+        @include buttonGoToBet;
+    }
+
+    @else if $width==40% {
+        @include buttonGoToLog;
+    }
+
     position: relative;
     display: block;
     overflow: hidden;
-    margin: 5% 0 0 0;
     width: $width;
     line-height: $line-height;
     border-bottom: 1px $color solid;
@@ -47,46 +97,235 @@
     font-family: inherit;
     font-size: $font-size;
     transition: 0.3s;
+
+    @media (min-width: 480px) and (orientation: portrait) {
+        font-size: 20px;
+        line-height: 35px;
+    }
+
+    @media (min-width: 600px) and (orientation: portrait) {
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    @media (min-width: 750px) and (orientation: portrait) {
+        font-size: 28px;
+        line-height: 50px;
+    }
+
+    @media (min-width: 1000px) and (orientation: portrait) {
+        font-size: 34px;
+        line-height: 60px;
+    }
+
+    @media (min-width: 700px) and (orientation: landscape) {
+        line-height: 30px;
+    }
+
+    @media (min-width: 1250px) and (orientation: landscape) {
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    @media (min-width: 1350px) and (orientation: landscape) {
+        font-size: 24px;
+        line-height: 45px;
+    }
+
+    @media (min-width: 1700px) and (orientation: landscape) {
+        font-size: 30px;
+        line-height: 55px;
+    }
+
+    &::before {
+        @include pseudoElementButton(before, 99%, 100%);
+    }
+
+    &::after {
+        @include pseudoElementButton(after, 0, 98%);
+    }
+
+    &:hover {
+        &::before {
+            color: $color;
+            transform: translateY(0);
+        }
+
+        &::after {
+            width: 100%;
+            color: $color;
+        }
+    }
 }
 
 @mixin hoverButton {
     transform: scale(1.2, 1.2);
 }
 
-@mixin mainContainer {
-    position: absolute;
+///////////////////////////// MAIN CONTAINER
+
+@mixin mainPage {
     top: 50%;
+    width: 100%;
+    height: 40%;
+
+    @media (min-width: 600px) {
+        height: 65%;
+        top: 60%;
+    }
+
+    @media (min-width: 400px) and (max-height: 400px) and (orientation: landscape) {
+        height: auto;
+        top: 65%;
+    }
+
+    @media (min-width: 500px) and (max-height: 400px) and (orientation: landscape) {
+        top: 70%;
+    }
+
+    @media (min-width: 700px) and (max-height: 500px) and (orientation: landscape) {
+        height: auto;
+        top: 70%;
+    }
+
+    @media (min-width: 800px) and (max-height: 400px) and (orientation: landscape) {
+        top: 80%;
+    }
+
+    @media (min-width: 950px) and (orientation: landscape) {
+        width: 80%;
+        top: 50%;
+    }
+
+    @media (min-width: 1300px) and (orientation: landscape) {
+        height: 70%;
+        width: 85%;
+    }
+}
+
+@mixin notMainPage {
+    top: 65%;
+    width: 100%;
+    height: 65%;
+    padding: 5% 0 6% 0;
+
+    @media (min-width: 360px) and (orientation: portrait) {
+        top: 61%;
+        height: 72%;
+    }
+
+    @media (min-width: 400px) and (max-height: 400px) and (orientation: landscape) {
+        height: 75%;
+        top: 60%;
+        padding: 4% 0;
+    }
+
+    @media (min-width: 600px) and (max-height: 400px) and (orientation: landscape) {
+        height: 80%;
+        top: 57%;
+    }
+
+    @media (min-width: 700px) and (max-height: 500px) and (orientation: landscape) {
+        height: 80%;
+        top: 60%;
+    }
+
+    @media (min-width: 950px) and (orientation: landscape) {
+        width: 80%;
+        top: 50%;
+        padding: 3% 0;
+    }
+
+    @media (min-width: 1300px) and (orientation: landscape) {
+        height: 70%;
+        width: 85%;
+    }
+}
+
+@mixin mainContainer($main: false) {
+    @if $main {
+        @include mainPage;
+    }
+
+    @else {
+        @include notMainPage;
+    }
+
+    position: absolute;
     left: 0;
     transform: translate(0, -50%);
-    width: 76%;
-    height: 71%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     background-color: $bet-color;
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Questrial',
+    sans-serif;
     z-index: 1;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5),
+    0 6px 20px 0 rgba(0, 0, 0, 0.5);
 }
 
-@mixin pageTitle {
-    font-size: 45px;
+////////////////////////////////// PAGE TITLE
+
+@mixin pageTitle($fontSize: 20px) {
+    color: $main-color;
+    font-size: $fontSize;
     font-weight: normal;
+
+    @media (min-width: 360px) and (orientation: portrait) {
+        font-size: 24px;
+    }
+
+    @media (min-width: 480px) and (orientation: portrait) {
+        font-size: 28px;
+    }
+
+    @media (min-width: 600px) and (orientation: portrait) {
+        font-size: 32px;
+    }
+
+    @media (min-width: 800px) and (orientation: portrait) {
+        font-size: 40px;
+    }
+
+    @media (min-width: 1000px) and (orientation: portrait) {
+        font-size: 50px;
+    }
+
+    @media (min-width: 600px) and (max-height: 400px) and (orientation: landscape) {
+        font-size: 24px;
+    }
+
+    @media (min-width: 950px) and (orientation: landscape) {
+        font-size: 26px;
+    }
+
+    @media (min-width: 1250px) and (orientation: landscape) {
+        font-size: 28px;
+    }
+
+    @media (min-width: 1350px) and (orientation: landscape) {
+        font-size: 36px;
+    }
+
+    @media (min-width: 1700px) and (orientation: landscape) {
+        font-size: 50px;
+    }
 }
 
 @mixin rulesIcons {
     position: absolute;
     color: $main-color;
-    font-size: 30px;
+    font-size: 20px;
     transition: 0.3s;
 }
 
-@mixin menuAnimationFrom {
+@mixin menuAnimationLeft {
     transform: translateX(0);
     overflow: hidden;
 }
 
-@mixin menuAnimationMiddle {
-    transform: translateX(50%);
+@mixin menuAnimationRight {
+    transform: translateX(100%);
 }
