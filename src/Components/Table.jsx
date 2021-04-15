@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import Loading from './helpers/Loading';
+
 const Table = () => {
 
     const [isLoading, setIsLoading] = useState(true)
@@ -126,7 +128,7 @@ const Table = () => {
                         <p className='form-shortcuts__shortcuts__shortcut'>Pkt</p>
                     </div>
                 </div>
-                {isLoading ? <p>poczekaj</p> : handleTable()}
+                {isLoading ? <Loading /> : handleTable()}
             </div>
             <Link to='/bet' className='table__link'>
                 <button className='table__link__button' type='button'>Przejdź do typowania!</button>

@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+import Loading from './helpers/Loading';
+
 import DeviceContext from '../context/deviceContext'
 
 const Competition = () => {
@@ -182,9 +184,13 @@ const Competition = () => {
     return (
         <div className='competition'>
             <h3 className='competition__title'>Rozgrywka</h3>
-            <div className='competition__grid'>
-                {isLoading ? <p>ładuję...</p> : handleGrid()}
-            </div>
+            {isLoading ?
+                <Loading /> :
+                <div className='competition__grid'>
+                    {handleGrid()}
+                </div>
+
+            }
             <Link to='/bet' className='competition__link'>
                 <button className='competition__link__button' type='button'>Przejdź do typowania!</button>
             </Link>

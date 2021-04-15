@@ -1,4 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+
+import Loading from './helpers/Loading';
+
 import AuthContext from '../context/authContext'
 import LoginContext from '../context/loginContext'
 import DeviceContext from '../context/deviceContext'
@@ -175,7 +178,7 @@ const Bet = () => {
         <form method='POST' action='http://localhost:3080/bet' className='bet'>
             <h3 className='bet__title'>Najbliższe mecze</h3>
             <div className='bet__form'>
-                {isLoading ? <p>ładowanie..</p> : nextMatch(sorted)}
+                {isLoading ? <Loading /> : nextMatch(sorted)}
             </div>
             <button className="bet__submit" type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : toggleActiveLogin}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
         </form>
