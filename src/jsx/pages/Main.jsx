@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import heroImage from '../images/football.jpg'
+import heroImage from '../../images/football.jpg'
 
 const Main = () => {
     const [isTutorialClicked, setIsTutorialClicked] = useState(false)

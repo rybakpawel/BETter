@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
-import Loading from './helpers/Loading';
+import Loading from '../components/Loading';
 
 import AuthContext from '../context/authContext'
 import LoginContext from '../context/loginContext'
 import DeviceContext from '../context/deviceContext'
-import mousePosition from './helpers/mousePosition'
+import mousePosition from '../helpers/mousePosition'
 
 const Bet = () => {
 

@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import Loading from './helpers/Loading';
+import Loading from '../components/Loading';
 
 import DeviceContext from '../context/deviceContext'
 

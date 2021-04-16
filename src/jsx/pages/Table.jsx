@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import Loading from './helpers/Loading';
+import Loading from '../components/Loading';
 
 const Table = () => {
 
