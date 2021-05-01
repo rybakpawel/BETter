@@ -31,11 +31,14 @@
 body {
   background-color: #2F384D;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
-body #root > div {
+body #root {
   position: relative;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
 }
 
@@ -69,48 +72,45 @@ body input[type="number"] {
   transition: opacity 300ms linear;
 }
 
-.loading {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
+.box {
   margin: 0 auto;
+  width: 40px;
+  height: 140px;
+  position: relative;
 }
 
-.loading div {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  display: block;
+.box .shadow {
   position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #2F384D;
-  border-radius: 50%;
-  -webkit-animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-          animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #2F384D transparent transparent transparent;
+  width: 100%;
+  height: 10px;
+  background-color: grey;
+  bottom: 0;
+  border-radius: 100%;
+  -webkit-transform: scaleX(0.8);
+          transform: scaleX(0.8);
+  opacity: .6;
+  -webkit-animation: shadowScale 1s linear infinite;
+          animation: shadowScale 1s linear infinite;
 }
 
-.loading div:nth-child(1) {
-  -webkit-animation-delay: -0.45s;
-          animation-delay: -0.45s;
+.gravity {
+  width: 40px;
+  height: 40px;
+  -webkit-animation: bounce 1s cubic-bezier(0.68, 0.35, 0.29, 0.54) infinite;
+          animation: bounce 1s cubic-bezier(0.68, 0.35, 0.29, 0.54) infinite;
 }
 
-.loading div:nth-child(2) {
-  -webkit-animation-delay: -0.3s;
-          animation-delay: -0.3s;
+.ball {
+  width: 40px;
+  height: 40px;
+  background-image: url("https://image.flaticon.com/icons/svg/33/33736.svg");
+  background-size: cover;
+  -webkit-animation: roll .6s linear infinite;
+          animation: roll .6s linear infinite;
 }
 
-.loading div:nth-child(3) {
-  -webkit-animation-delay: -0.15s;
-          animation-delay: -0.15s;
-}
-
-@-webkit-keyframes loading {
+@-webkit-keyframes roll {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
@@ -118,14 +118,58 @@ body input[type="number"] {
   }
 }
 
-@keyframes loading {
+@keyframes roll {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes bounce {
+  0% {
+  }
+  50% {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  100% {
+  }
+}
+
+@keyframes bounce {
+  0% {
+  }
+  50% {
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
+  }
+  100% {
+  }
+}
+
+@-webkit-keyframes shadowScale {
+  0% {
+  }
+  50% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: .8;
+  }
+  100% {
+  }
+}
+
+@keyframes shadowScale {
+  0% {
+  }
+  50% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: .8;
+  }
+  100% {
   }
 }
 
@@ -2578,8 +2622,46 @@ body input[type="number"] {
 
 .competition__grid__results__user .result__details {
   position: absolute;
-  border: 1px solid #2F384D;
-  background: pink;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 60px;
+  width: 200px;
+  background-color: #2F384D;
+  color: #E5E5E5;
+  border: 1px solid #E5E5E5;
+}
+
+.competition__grid__results__user .result__details__teams {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.competition__grid__results__user .result__details__rows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+}
+
+.competition__grid__results__user .result__details__rows__row {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+}
+
+.competition__grid__results__user .result__details__rows__row:nth-child(1) {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  text-align: right;
 }
 
 .competition__link {

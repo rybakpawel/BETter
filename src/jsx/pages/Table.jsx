@@ -17,7 +17,7 @@ const Table = () => {
     const loadData = async () => {
         const response = await fetch('/table')
         const data = await response.json()
-        setAllGroups(data.allGroups)
+        setAllGroups(data.allMatches)
         setGroups(data.groups)
         setIsLoading(false);
     }

@@ -10,7 +10,7 @@ import mousePosition from '../helpers/mousePosition'
 const Bet = () => {
 
     const { isLogged } = useContext(AuthContext)
-    const { toggleActiveLogin } = useContext(LoginContext)
+    const { isLoginActive, setIsLoginActive } = useContext(LoginContext)
     const { orientation, changeOrientation } = useContext(DeviceContext)
 
     const [isLoading, setIsLoading] = useState(true)
@@ -51,14 +51,12 @@ const Bet = () => {
 
     const loadData = async () => {
         const response = await fetch('/bet')
-        const response2 = await fetch('/login')
         const data = await response.json()
-        const auth = await response2.json()
+
         setSorted(data.sortByDate)
         setTeams(data.teams)
         setStadiums(data.stadiums)
         setIsLoading(false);
-        console.log(auth)
     }
 
     const handleClick = (e) => {
@@ -180,7 +178,7 @@ const Bet = () => {
             <div className='bet__form'>
                 {isLoading ? <Loading /> : nextMatch(sorted)}
             </div>
-            <button className="bet__submit" type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : toggleActiveLogin}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
+            <button className="bet__submit" type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : () => setIsLoginActive(!isLoginActive)}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
         </form>
     )
 }

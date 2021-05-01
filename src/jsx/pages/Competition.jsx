@@ -28,6 +28,7 @@ const Competition = () => {
 
     const buttonRef = useRef();
     const detailRef = useRef();
+
     const usersInTable = () => {
         return users.length < 10 ? 10 : users.length
     }
@@ -38,7 +39,7 @@ const Competition = () => {
 
     useEffect(() => {
         if (activeDetails.match) {
-            detailRef.current.style.top = `${mousePosition.y}px`;
+            detailRef.current.style.top = `${mousePosition.y - 100}px`;
             detailRef.current.style.left = `${mousePosition.x}px`;
         }
     })
@@ -93,19 +94,20 @@ const Competition = () => {
     const showDetails = (match, bet) => {
         return (
             <div className='result__details' ref={detailRef}>
-                <div className='result__details__teams'>
-                    <p className='result__details__teams__team1'>{match.team1}</p>
-                    <p className='result__details__teams__team2'>{match.team2}</p>
+                <div className='result__details__rows'>
+                    <span className='result__details__rows__row'></span>
+                    <p className='result__details__rows__row'>{teams[match.team1 - 1].name}</p>
+                    <p className='result__details__rows__row'>{teams[match.team2 - 1].name}</p>
                 </div>
-                <div className='result__details__real'>
-                    <p>Wynik</p>
-                    <p>{match.result1 === -1 ? '-' : match.result1}</p>
-                    <p>{match.result2 === -1 ? '-' : match.result2}</p>
+                <div className='result__details__rows'>
+                    <p className='result__details__rows__row'>Wynik</p>
+                    <p className='result__details__rows__row'>{match.result1 === -1 ? '-' : match.result1}</p>
+                    <p className='result__details__rows__row'>{match.result2 === -1 ? '-' : match.result2}</p>
                 </div>
-                <div className='result__details__user'>
-                    <p>Typ</p>
-                    <p>{bet.result1 === null ? '-' : bet.result1}</p>
-                    <p>{bet.result2 === null ? '-' : bet.result2}</p>
+                <div className='result__details__rows'>
+                    <p className='result__details__rows__row'>Typ</p>
+                    <p className='result__details__rows__row'>{bet.result1 === null ? '-' : bet.result1}</p>
+                    <p className='result__details__rows__row'>{bet.result2 === null ? '-' : bet.result2}</p>
                 </div>
             </div>
         )
@@ -116,13 +118,13 @@ const Competition = () => {
             <>
                 <p
                     className={`result result--${color}`}
-                    onMouseEnter={() => handleDetails(match, bet)}
+                    onMouseEnter={orientation === 'landscape' && window.innerWidth > 860 ? () => handleDetails(match, bet) : null}
                     onMouseLeave={() => handleDetails(null, null)}
                     ref={buttonRef}
                 >
-
+                    {(activeDetails.match === match && activeDetails.bet === bet) ? showDetails(match, bet) : null}
                 </p>
-                {(activeDetails.match === match && activeDetails.bet === bet) ? showDetails(match, bet) : null}
+                {/* {(activeDetails.match === match && activeDetails.bet === bet) ? showDetails(match, bet) : null} */}
             </>
         )
     }
@@ -166,8 +168,6 @@ const Competition = () => {
             if (a.points > b.points) return 1
             return 0
         }
-
-        console.log(users.length)
 
         const sortedUsers = users.sort(compare)
 

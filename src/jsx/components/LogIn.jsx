@@ -5,7 +5,8 @@ import LoginContext from '../context/loginContext'
 
 const LogIn = () => {
 
-    const { toggleActiveLogin } = useContext(LoginContext)
+    // const { toggleActiveLogin } = useContext(LoginContext)
+    const { isLoginActive, setIsLoginActive } = useContext(LoginContext)
 
     const [inputLogin, setInputLogin] = useState(
         {
@@ -30,7 +31,7 @@ const LogIn = () => {
 
     return (
         <>
-            <div className='login-wrapper' onClick={toggleActiveLogin}></div>
+            <div className='login-wrapper' onClick={() => setIsLoginActive(!isLoginActive)}></div>
             <form method='POST' action='http://localhost:3080/login' className='login' ref={divRef}>
                 <div className='login__form'>
                     <label className='login__form__label' htmlFor="">login</label>

@@ -1,59 +1,24 @@
 const router = require('express').Router();
-const loadDB = require('../connection');
 
-const launchServer = async () => {
-    
-    const db = await loadDB();
-    const teamsCollection = await db.collection('teams').find()
+const { getSortByDate } = require('../controllers/groups');
+const { getTeams } = require('../controllers/teams');
+const getUsers = require('../controllers/users');
 
-    teamsCollection.toArray((err, res) => {
-        if (err) console.log("Błędne zapytanie o kolekcję 'teams'")
-        else {
-            const teams = res
-            module.exports.teams = teams
-        }
-    })
-
-    const groupsCollection = await db.collection('groups').find()
-    groupsCollection.toArray((err, res) => {
-        if (err) console.log("Błędne zapytanie o kolekcję 'groups'")
-        else {
-            const groups = res
-            const allGroups = groups[0].matches.concat(groups[1].matches, groups[2].matches, groups[3].matches, groups[4].matches, groups[5].matches)
-
-            const compareGroups = (a, b) => {
-                if (Number(a.date.slice(0, 3)) === Number(b.date.slice(0, 3))) {
-                    return Number(a.date.slice(10, 12) - Number(b.date.slice(10, 12)))
-                }
-                else {
-                    return(Number(a.date.slice(0, 3)) - Number(b.date.slice(0, 3)))
-                }
-            }
-            
-            const sortByDate = allGroups.sort(compareGroups)
-
-            module.exports.sortByDate = sortByDate
-        }
-    })
-    
-    const usersCollection = await db.collection('users').find()
-    usersCollection.toArray((err, res) => {
-        if (err) console.log("Błędne zapytanie o kolekcję 'users'")
-        else {
-            const users = res
-
-            const comparePoints = (a, b) => {
-                return (a.points > b.points) ? 1 : (a.points === b.points) ? ((a.name[0] > b.name[0]) ? 1 : -1) : -1
-            }
-
-            const usersByPoints = users.sort(comparePoints)
-
-            module.exports.users = usersByPoints
-        }
-    })
+const getData = async () => {
+    try {                                               
+        const sortByDate = await getSortByDate()
+        const teams = await getTeams()
+        const users = await getUsers()
+ 
+        module.exports.sortByDate = sortByDate
+        module.exports.teams = teams
+        module.exports.users = users
+    } catch {
+        console.log('Cos poszło nie tak (competition).')
+    }  
 }
 
-launchServer();
+getData();
 
 router.get('/', (req, res) => {
     res.send({

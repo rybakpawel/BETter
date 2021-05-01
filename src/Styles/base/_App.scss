@@ -9,10 +9,13 @@
 body {
     background-color: $main-color;
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 
-    #root>div {
+    #root {
         position: relative;
         height: 100vh;
+        width: 100vw;
         overflow: hidden;
     }
 

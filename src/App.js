@@ -65,38 +65,41 @@ function App() {
     menuAnimation();
   }
 
-  const toggleActiveLogin = () => {
-    setIsLoginActive(!isLoginActive)
-  }
-
   const location = useLocation();
   
   return (
     <>
       <AuthContext.Provider value={{ isLogged, setIsLogged }}>
         <DeviceContext.Provider value={{ orientation, changeOrientation }}>
-        <LoginContext.Provider value={{ isLoginActive, toggleActiveLogin }}>
+        <LoginContext.Provider value={{ isLoginActive, setIsLoginActive }}>
           <MenuContext.Provider value={{ isMenuActive, toggleActiveMenu, zIndex, isAnimationActive }}>
-            <TransitionGroup>
+            {/* <TransitionGroup>
               <CSSTransition 
                 key={location.key}
-                timeout={300}
-                classNames='fade'>
+                timeout={30000}
+                classNames='fade'> */}
                 <>
-                  <Switch location={location}>
-                    <Route path="/" exact component={Main}/>
-                    <Route path="/bet" component={Bet}/>
-                    <Route path="/competition" component={Competition}/>
-                    <Route path="/register" component={Register}/>
-                    <Route path="/rules" component={Rules}/>
-                    <Route path="/table" component={Table}/>
-                  </Switch>
+                  <TransitionGroup>
+                    <CSSTransition 
+                      key={location.key}
+                      timeout={300}
+                      classNames='fade'>
+                        <Switch location={location}>
+                          <Route path="/" exact component={Main}/>
+                          <Route path="/bet" component={Bet}/>
+                          <Route path="/competition" component={Competition}/>
+                          <Route path="/register" component={Register}/>
+                          <Route path="/rules" component={Rules}/>
+                          <Route path="/table" component={Table}/>
+                        </Switch>
+                    </CSSTransition>
+                  </TransitionGroup>
                   <Switch>
                     <Route path="/" exact
-                           render={(props) => (<Header {...props} activeComponent={'main'} />)}
+                          render={(props) => (<Header {...props} activeComponent={'main'} />)}
                     />
                     <Route path="/register" 
-                           render={(props) => (<Header {...props} activeComponent={'register'} />)}
+                          render={(props) => (<Header {...props} activeComponent={'register'} />)}
                     />
                     <Header />
                   </Switch>
@@ -123,8 +126,8 @@ function App() {
                   </Switch>
                   {isLoginActive ? <LogIn /> : null}
                 </>
-              </CSSTransition>
-            </TransitionGroup>
+              {/* </CSSTransition> */}
+            {/* </TransitionGroup> */}
           </MenuContext.Provider>
         </LoginContext.Provider>
         </DeviceContext.Provider>

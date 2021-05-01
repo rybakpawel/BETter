@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import AuthContext from '../context/authContext'
@@ -12,7 +12,8 @@ import { VscChromeClose } from 'react-icons/vsc'
 const Header = (props) => {
 
     const { isLogged } = useContext(AuthContext)
-    const { toggleActiveLogin } = useContext(LoginContext)
+    // const { toggleActiveLogin } = useContext(LoginContext)
+    const { isLoginActive, setIsLoginActive } = useContext(LoginContext)
     const { orientation, changeOrientation } = useContext(DeviceContext)
     const { isMenuActive, toggleActiveMenu } = useContext(MenuContext)
 
@@ -32,7 +33,7 @@ const Header = (props) => {
                         ? <button className={`header__login__hamburger`} onClick={toggleActiveMenu}>{isMenuActive ? <VscChromeClose /> : <FaBars />}</button>
                         : null}
                     <div className='header__login__wrapper'>
-                        <button className='header__login__wrapper__button' onClick={toggleActiveLogin}>Zaloguj się</button>
+                        <button className='header__login__wrapper__button' onClick={() => setIsLoginActive(!isLoginActive)}>Zaloguj się</button>
                         {orientation === 'portrait' || orientation === 'portrait-tablet' ? null : <span className='header__login__wrapper__span'> / </span>}
                         <Link to="/register">
                             <button className='header__login__wrapper__button' onClick={props.activeComponent === 'register' ? blockComponent : null}>Zarejestruj się</button>
