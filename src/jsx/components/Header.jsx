@@ -11,7 +11,8 @@ import { VscChromeClose } from 'react-icons/vsc'
 
 const Header = (props) => {
 
-    const { isLogged } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
+    const { isLogged, name } = auth
     // const { toggleActiveLogin } = useContext(LoginContext)
     const { isLoginActive, setIsLoginActive } = useContext(LoginContext)
     const { orientation, changeOrientation } = useContext(DeviceContext)
@@ -49,7 +50,7 @@ const Header = (props) => {
                         ? <button className={`header__login__hamburger`} onClick={toggleActiveMenu}>{isMenuActive ? <VscChromeClose /> : <FaBars />}</button>
                         : null}
                     <div className='header__login__wrapper'>
-                        <h4 className='header__login__wrapper__welcome'>Witaj (name)!</h4>
+                        <h4 className='header__login__wrapper__welcome'>Witaj, {name}!</h4>
                         <button className='header__login__wrapper__button'>Wyloguj się</button>
                     </div>
                 </div>

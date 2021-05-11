@@ -10,7 +10,7 @@ const LogIn = () => {
 
     const [inputLogin, setInputLogin] = useState(
         {
-            login: '',
+            email: '',
             password: '',
         }
     );
@@ -32,10 +32,10 @@ const LogIn = () => {
     return (
         <>
             <div className='login-wrapper' onClick={() => setIsLoginActive(!isLoginActive)}></div>
-            <form method='POST' action='http://localhost:3080/login' className='login' ref={divRef}>
+            <form method='POST' action='http://localhost:3080/user/login' className='login' ref={divRef}>
                 <div className='login__form'>
                     <label className='login__form__label' htmlFor="">login</label>
-                    <input className='login__form__input' name="login" type="text" value={inputLogin.login} onChange={handleInput} />
+                    <input className='login__form__input' name="email" type="text" value={inputLogin.email} onChange={handleInput} />
                 </div>
                 <div className='login__form'>
                     <label className='login__form__label' htmlFor="">hasło</label>

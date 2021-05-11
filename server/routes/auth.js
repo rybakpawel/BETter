@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const { registerValidation, loginValidation } = require('../validation');
 const User = require('../model/User');
@@ -63,7 +64,13 @@ router.post('/login', async (req, res) => {
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass) return res.status(400).send('Nieprawidłowe hasło');
 
-    res.send('Zalogowałeś się!')
+    const token = jwt.sign({ 
+        _id: user._id, 
+        login: user.login
+    }, process.env.TOKEN_SECRET);
+
+    res.cookie("cookieToken", token, { httpOnly: true })
+    res.redirect('http://localhost:3000/')   
 })
 
 router.get('/register', (req, res) => {
@@ -72,8 +79,8 @@ router.get('/register', (req, res) => {
         })
 })
 
-router.get('/login', (req, res) => {
-    res.send('elo login')
-})
+// router.get('/login', verify, (req, res) => {
+//     res.redirect('http://localhost:3000/')
+// })
 
-module.exports = router;
+module.exports = router; 

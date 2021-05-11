@@ -9,7 +9,8 @@ import mousePosition from '../helpers/mousePosition'
 
 const Bet = () => {
 
-    const { isLogged } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext)
+    const { isLogged, name } = auth
     const { isLoginActive, setIsLoginActive } = useContext(LoginContext)
     const { orientation, changeOrientation } = useContext(DeviceContext)
 

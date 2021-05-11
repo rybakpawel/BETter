@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
@@ -29,13 +29,32 @@ function App() {
     else return 'portrait'
   }
 
-  const [isLogged, setIsLogged] = useState(false)
+  const [auth, setAuth] = useState({
+    isLogged: false,
+    name: null
+  })
   const [orientation, setOrientation] = useState(checkOrientation())
   const [isMenuActive, setIsMenuActive] = useState(false)
   const [isLoginActive, setIsLoginActive] = useState(false)
 
   const [zIndex, setZIndex] = useState(isMenuActive ? 'navigation--active-z-index' : '');
   const [isAnimationActive, setIsAnimationActive] = useState('');
+
+  useEffect(() => {
+    loadData();
+  }, [])
+
+  const loadData = async () => {
+    const response = await fetch('/main')
+    const data = await response.json()
+
+    setAuth({
+      isLogged: true,
+      name: data.name
+    })
+
+    console.log(data)
+  } 
 
   const changeOrientation = () => {
     const { innerWidth: width, innerHeight: height } = window
@@ -69,7 +88,7 @@ function App() {
   
   return (
     <>
-      <AuthContext.Provider value={{ isLogged, setIsLogged }}>
+      <AuthContext.Provider value={{ auth, setAuth }}>
         <DeviceContext.Provider value={{ orientation, changeOrientation }}>
         <LoginContext.Provider value={{ isLoginActive, setIsLoginActive }}>
           <MenuContext.Provider value={{ isMenuActive, toggleActiveMenu, zIndex, isAnimationActive }}>
