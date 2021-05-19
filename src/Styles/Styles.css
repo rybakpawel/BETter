@@ -52,6 +52,22 @@ body input[type="number"] {
   -moz-appearance: textfield;
 }
 
+body input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+body input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+body input:focus::-ms-input-placeholder {
+  color: transparent;
+}
+
+body input:focus::placeholder {
+  color: transparent;
+}
+
 .fade-enter {
   opacity: 0;
 }
@@ -561,7 +577,7 @@ body input[type="number"] {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 7% 10%;
+  padding: 7% 10% 0 10%;
   background-color: #2F384D;
   border: 2px #E5E5E5 solid;
   font-family: 'Questrial', sans-serif;
@@ -594,7 +610,7 @@ body input[type="number"] {
   .login {
     width: 50%;
     height: 50%;
-    padding: 7%;
+    padding: 7% 7% 0 7%;
   }
 }
 
@@ -605,7 +621,7 @@ body input[type="number"] {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    padding: 4% 10%;
+    padding: 4% 10% 0 10%;
   }
 }
 
@@ -626,14 +642,14 @@ body input[type="number"] {
   .login {
     width: 50%;
     height: 60%;
-    padding: 3% 6%;
+    padding: 3% 6% 0 6%;
   }
 }
 
 @media (min-width: 960px) and (orientation: landscape) {
   .login {
     width: 30%;
-    padding: 3%;
+    padding: 3% 3% 0 3%;
   }
 }
 
@@ -951,6 +967,41 @@ body input[type="number"] {
 
 @media (min-width: 1700px) and (orientation: landscape) {
   .login__register-button {
+    font-size: 20px;
+  }
+}
+
+.login__error {
+  color: #ca1515;
+  margin: 5% 0 2% 0;
+}
+
+@media (min-width: 480px) and (orientation: portrait) {
+  .login__error {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 800px) and (orientation: portrait) {
+  .login__error {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 400px) and (orientation: landscape) {
+  .login__error {
+    margin-top: 2%;
+  }
+}
+
+@media (min-width: 960px) and (orientation: landscape) {
+  .login__error {
+    margin: 4% 0;
+  }
+}
+
+@media (min-width: 1700px) and (orientation: landscape) {
+  .login__error {
     font-size: 20px;
   }
 }
@@ -1802,6 +1853,10 @@ body input[type="number"] {
   margin-left: 2%;
 }
 
+.bet__form .matches__one-match__result--blocked {
+  background-color: #a9a9a9;
+}
+
 .bet__form .matches__date {
   width: 50%;
 }
@@ -2467,7 +2522,7 @@ body input[type="number"] {
       justify-self: center;
 }
 
-.competition__grid__name {
+.competition__grid__login {
   display: -ms-grid;
   display: grid;
   -ms-grid-column: 1;
@@ -2479,7 +2534,7 @@ body input[type="number"] {
 }
 
 @media (min-width: 400px) and (orientation: landscape) {
-  .competition__grid__name {
+  .competition__grid__login {
     -ms-grid-rows: 55px;
         grid-template-rows: 55px;
     grid-auto-rows: 1fr;
@@ -2496,27 +2551,27 @@ body input[type="number"] {
 }
 
 @media (min-width: 850px) and (orientation: landscape) {
-  .competition__grid__name {
+  .competition__grid__login {
     -ms-grid-rows: 65px;
         grid-template-rows: 65px;
   }
 }
 
 @media (min-width: 1200px) and (orientation: landscape) {
-  .competition__grid__name {
+  .competition__grid__login {
     -ms-grid-rows: 75px;
         grid-template-rows: 75px;
   }
 }
 
 @media (min-width: 1400px) and (orientation: landscape) {
-  .competition__grid__name {
+  .competition__grid__login {
     -ms-grid-rows: 80px 1fr;
         grid-template-rows: 80px 1fr;
   }
 }
 
-.competition__grid__name__user {
+.competition__grid__login__user {
   -webkit-writing-mode: vertical-rl;
       -ms-writing-mode: tb-rl;
           writing-mode: vertical-rl;
@@ -2525,7 +2580,7 @@ body input[type="number"] {
 }
 
 @media (min-width: 400px) and (orientation: landscape) {
-  .competition__grid__name__user {
+  .competition__grid__login__user {
     -webkit-writing-mode: horizontal-tb;
         -ms-writing-mode: lr-tb;
             writing-mode: horizontal-tb;

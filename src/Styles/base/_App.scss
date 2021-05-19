@@ -28,6 +28,10 @@ body {
     input[type="number"] {
         -moz-appearance: textfield;
     }
+
+    input:focus::placeholder {
+        color: transparent;
+    }
 }
 
 .fade-enter {

@@ -142,6 +142,10 @@
                     &:nth-of-type(2) {
                         margin-left: 2%;
                     }
+
+                    &--blocked {
+                        background-color: #a9a9a9;
+                    }
                 }
             }
 

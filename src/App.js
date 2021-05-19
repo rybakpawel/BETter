@@ -31,7 +31,8 @@ function App() {
 
   const [auth, setAuth] = useState({
     isLogged: false,
-    name: null
+    name: null,
+    bets: null
   })
   const [orientation, setOrientation] = useState(checkOrientation())
   const [isMenuActive, setIsMenuActive] = useState(false)
@@ -49,12 +50,11 @@ function App() {
     const data = await response.json()
 
     setAuth({
-      isLogged: true,
-      name: data.name
+      isLogged: data.isLogged,
+      name: data.name,
+      bets: data.bets
     })
-
-    console.log(data)
-  } 
+  }
 
   const changeOrientation = () => {
     const { innerWidth: width, innerHeight: height } = window

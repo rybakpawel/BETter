@@ -26,7 +26,7 @@ const Register = () => {
     const loadData = async () => {
         const response = await fetch('/user/register')
         const data = await response.json()
-        const { email, login, password, confirmPassword } = data.errorMsg
+        const { email, login, password, confirmPassword } = data.registerErrorMsg
         setErrorMessage({
             email,
             login,

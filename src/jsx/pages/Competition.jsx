@@ -130,8 +130,71 @@ const Competition = () => {
     }
 
     const handleResults = (matches, users) => {
+
+
+        // console.log(matches)
+        // console.log(users[0].bets)
+
+        // console.log(matches)
         const userResult = users.map(user => {
-            const userBets = user.bets.map(bet => {
+            // for (let i = 0; i < user.bets.length; i++) {
+            //     console.log([i])
+            //     console.log(user.bets[i].id)
+            //     console.log(matches[i].id)
+            //     console.log(matches[i])
+
+            //     if (matches[i].result1 === -1)
+            //         return showResult('grey', matches[i], bet)
+            //     else if (matches[bet.id - 1].result1 === bet.result1 && matches[bet.id - 1].result2 === bet.result2)
+            //         return showResult('green', matches[bet.id - 1], bet)
+
+            //     else if (
+            //         (matches[bet.id - 1].result1 > matches[bet.id - 1].result2 && bet.result1 > bet.result2)
+            //         ||
+            //         (matches[bet.id - 1].result1 < matches[bet.id - 1].result2 && bet.result1 < bet.result2)
+            //         ||
+            //         (matches[bet.id - 1].result1 === matches[bet.id - 1].result2 && bet.result1 === bet.result2)
+            //     )
+            //         return showResult('yellow', matches[bet.id - 1], bet)
+
+            //     else
+            //         return showResult('red', matches[bet.id - 1], bet)
+
+
+
+            //     if (matches[bet.id - 1].result1 === -1)
+            //         return showResult('grey', matches[bet.id - 1], bet)
+            //     else if (matches[bet.id - 1].result1 === bet.result1 && matches[bet.id - 1].result2 === bet.result2)
+            //         return showResult('green', matches[bet.id - 1], bet)
+
+            //     else if (
+            //         (matches[bet.id - 1].result1 > matches[bet.id - 1].result2 && bet.result1 > bet.result2)
+            //         ||
+            //         (matches[bet.id - 1].result1 < matches[bet.id - 1].result2 && bet.result1 < bet.result2)
+            //         ||
+            //         (matches[bet.id - 1].result1 === matches[bet.id - 1].result2 && bet.result1 === bet.result2)
+            //     )
+            //         return showResult('yellow', matches[bet.id - 1], bet)
+
+            //     else
+            //         return showResult('red', matches[bet.id - 1], bet)
+
+
+
+            //     // if (users.bets[req.body.id[i] - 1].result1 == null || req.body.bet1[i]) users.bets[req.body.id[i] - 1].result1 = req.body.bet1[i]
+            //     // if (users.bets[req.body.id[i] - 1].result2 == null || req.body.bet2[i]) users.bets[req.body.id[i] - 1].result2 = req.body.bet2[i]
+            // }
+            // console.log(user.bets[2].id)
+            // console.log(matches[2].id)
+
+            let betsSortedById = [];
+            for (let i = 0; i < user.bets.length; i++) {
+
+                let bet = user.bets[matches[i].id - 1]
+                betsSortedById.push(bet)
+            }
+            // console.log(betsSortedById)
+            const userBets = betsSortedById.map(bet => {
                 if (matches[bet.id - 1].result1 === -1)
                     return showResult('grey', matches[bet.id - 1], bet)
                 else if (matches[bet.id - 1].result1 === bet.result1 && matches[bet.id - 1].result2 === bet.result2)
@@ -169,13 +232,14 @@ const Competition = () => {
             return 0
         }
 
+        // console.log(users)
         const sortedUsers = users.sort(compare)
 
         return (
             <>
                 {handleMatchList(sortedMatches)}
                 {handleUsers(sortedUsers, 'points')}
-                {handleUsers(sortedUsers, 'name')}
+                {handleUsers(sortedUsers, 'login')}
                 {handleResults(sortedMatches, users)}
             </>
         )

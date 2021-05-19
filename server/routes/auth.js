@@ -5,26 +5,29 @@ const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require('../validation');
 const User = require('../model/User');
 const { getAllMatches } = require('../controllers/groups');
+const { sendEmail } = require('../nodemailer');
 
-let errorMsg = {
+let registerErrorMsg = {
     email: null,
     login: null,
     password: null,
     confirmPassword: null
 }
 
+let loginErrorMsg = null
+
 router.post('/register', async (req, res) => {
     try {
     const { error } = registerValidation(req.body);
     if (error) {
-        Object.keys(errorMsg).forEach(message => errorMsg[message] = false)
+        Object.keys(registerErrorMsg).forEach(message => registerErrorMsg[message] = false)
         const path = error.details[0].path[0]
-        errorMsg[path] = `${(error.details[0].message)}`
+        registerErrorMsg[path] = `${(error.details[0].message)}`
         return res.redirect('http://localhost:3000/register')
     } 
     const emailExist = await User.findOne({ email: req.body.email });
     if (emailExist) {
-        errorMsg.email = 'Założono już konto na podany e-mail'
+        registerErrorMsg.email = 'Założono już konto na podany e-mail'
         return res.redirect('http://localhost:3000/register')
     } 
 
@@ -47,8 +50,12 @@ router.post('/register', async (req, res) => {
         password: hashedPassword,
         bets
     });
-        await user.save();
-        res.redirect('http://localhost:3000/')
+    await user.save();
+
+    sendEmail(req.body.email, req.body.login)
+
+    res.redirect('http://localhost:3000/')
+
     } catch(err) { 
         res.status(400).send(err)
     }
@@ -59,28 +66,40 @@ router.post('/login', async (req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(400).send('Nie istnieje konto o podanym emailu');
+    if (!user) {
+        loginErrorMsg = 'Nie istnieje konto o podanym e-mailu'
+        return res.redirect('http://localhost:3000/')
+    }
 
     const validPass = await bcrypt.compare(req.body.password, user.password);
-    if (!validPass) return res.status(400).send('Nieprawidłowe hasło');
+    if (!validPass) {
+        loginErrorMsg = 'Nieprawidłowe hasło'
+        return res.redirect('http://localhost:3000/')
+    }
 
     const token = jwt.sign({ 
         _id: user._id, 
-        login: user.login
+        login: user.login,
+        bets: user.bets
     }, process.env.TOKEN_SECRET);
 
-    res.cookie("cookieToken", token, { httpOnly: true })
+    res.cookie('cookieToken', token, { httpOnly: true })
     res.redirect('http://localhost:3000/')   
 })
 
 router.get('/register', (req, res) => {
     res.send({
-        errorMsg,
+        registerErrorMsg,
         })
 })
 
-// router.get('/login', verify, (req, res) => {
-//     res.redirect('http://localhost:3000/')
-// })
+router.get('/login', (req, res) => {
+    res.send(loginErrorMsg)
+})
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('cookieToken')
+    res.redirect('http://localhost:3000/')
+  })
 
 module.exports = router; 

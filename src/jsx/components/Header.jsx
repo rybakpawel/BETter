@@ -40,7 +40,6 @@ const Header = (props) => {
                             <button className='header__login__wrapper__button' onClick={props.activeComponent === 'register' ? blockComponent : null}>Zarejestruj się</button>
                         </Link>
                     </div>
-
                 </div>
             )
         } else {
@@ -51,7 +50,9 @@ const Header = (props) => {
                         : null}
                     <div className='header__login__wrapper'>
                         <h4 className='header__login__wrapper__welcome'>Witaj, {name}!</h4>
-                        <button className='header__login__wrapper__button'>Wyloguj się</button>
+                        <form method='GET' action='http://localhost:3080/user/logout'>
+                            <button type='submit' className='header__login__wrapper__button'>Wyloguj się</button>
+                        </form>
                     </div>
                 </div>
             )

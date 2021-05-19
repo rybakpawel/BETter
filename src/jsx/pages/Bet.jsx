@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import Loading from '../components/Loading';
+import MatchDetails from '../components/MatchDetails';
 
 import AuthContext from '../context/authContext'
 import LoginContext from '../context/loginContext'
@@ -10,7 +11,7 @@ import mousePosition from '../helpers/mousePosition'
 const Bet = () => {
 
     const { auth } = useContext(AuthContext)
-    const { isLogged, name } = auth
+    const { isLogged, name, bets } = auth
     const { isLoginActive, setIsLoginActive } = useContext(LoginContext)
     const { orientation, changeOrientation } = useContext(DeviceContext)
 
@@ -18,6 +19,7 @@ const Bet = () => {
     const [sorted, setSorted] = useState(null)
     const [teams, setTeams] = useState(null)
     const [stadiums, setStadiums] = useState(null)
+    const [betss, setBets] = useState(null)
     const [activeDetails, setActiveDetails] = useState(null)
     const [mousePosition, setMousePosition] = useState(
         {
@@ -57,6 +59,7 @@ const Bet = () => {
         setSorted(data.sortByDate)
         setTeams(data.teams)
         setStadiums(data.stadiums)
+        // setBets(data.bets)
         setIsLoading(false);
     }
 
@@ -69,102 +72,50 @@ const Bet = () => {
         setActiveDetails(id)
     }
 
-    const showDetails = (match) => {
-        const handleStadium = (stadiums) => {
-            let correctStadium;
-            stadiums.forEach((stadium) => {
-                if (stadium.id === match.stadium) {
-                    correctStadium = stadium
-                }
-            })
-            return correctStadium
-        }
-
-        const handleStadiumImage = (stadiums) => {
-            const stadium = handleStadium(stadiums);
-            return (
-                `url('../images/stadiums/${stadium.id}.jpg')`
-            )
-        }
-
-        const handleStadiumDetails = (stadiums) => {
-            const stadium = handleStadium(stadiums);
-            return (
-                `${stadium.city}, ${stadium.name}, poj. ${stadium.capacity}`
-            )
-        }
-
-        return (
-            <div className='detail' ref={detailRef} style={{ backgroundImage: handleStadiumImage(stadiums) }}>
-                <div className='detail__teams'>
-                    <div className='detail__teams__one-team'>
-                        <p>{teams[match.team1 - 1].name}</p>
-                    </div>
-                    <div className='detail__teams__one-team'>
-                        <p>{teams[match.team2 - 1].name}</p>
-                    </div>
-                </div>
-                <div className='detail__menu'>
-                    <div className='detail__menu__section'>
-                        <p>ostatni mecz</p>
-                    </div>
-                    <div className='detail__menu__section'>
-                        <p>miejsce</p>
-                    </div>
-                    <div className='detail__menu__section'>
-                        <p>forma</p>
-                    </div>
-                    <div className='detail__menu__section'>
-                        <p>???</p>
-                    </div>
-                    <div className='detail__menu__section'>
-                        <p>stadion</p>
-                    </div>
-                </div>
-                <div className='detail__results'>
-                    <div className='detail__results__one-result'>
-                        <p className='detail__results__one-result__text'>ostatni mecz 1</p>
-                        <p className='detail__results__one-result__text'>ostatni mecz 2</p>
-                    </div>
-                    <div className='detail__results__one-result'>
-                        <p className='detail__results__one-result__text'>miejsce 1 (punktów 1)</p>
-                        <p className='detail__results__one-result__text'>miejsce 2 (punktów 1)</p>
-                    </div>
-                    <div className='detail__results__one-result'>
-                        <p className='detail__results__one-result__text'>forma 1</p>
-                        <p className='detail__results__one-result__text'>forma 2</p>
-                    </div>
-                    <div className='detail__results__one-result'>
-                        <p className='detail__results__one-result__text'>??? 1</p>
-                        <p className='detail__results__one-result__text'>??? 2</p>
-                    </div>
-                    <p>{handleStadiumDetails(stadiums)}</p>
-                </div>
-            </div>
-        )
-    }
-
     const nextMatch = (matches) => {
         const matchList = matches.map((match) => {
+            const { date, id, team1, team2 } = match
+            let betedMatch = {};
+            let { result1, result2 } = betedMatch
+            const currentDate = new Date()
+
+            if ((currentDate.getDate() >= parseInt(date.slice(0, 2), 10)
+                && currentDate.getMonth() + 1 >= parseInt(date.slice(3, 5), 10)
+                && currentDate.getHours() >= parseInt(date.slice(10, 12), 10))
+                || currentDate.getMonth() + 1 > parseInt(date.slice(3, 5), 10)) {
+                return null
+            }
+
+
+            bets.forEach((bet) => {
+                if (id === bet.id) {
+                    result1 = bet.result1
+                    result2 = bet.result2
+                }
+            })
+
             return (
-                <div className='matches bet__form__matches' key={match.id}>
+                <div className='matches bet__form__matches' key={id}>
                     <div className='matches__one-match'>
-                        <label className='matches__one-match__team' htmlFor="">{teams[match.team1 - 1].name}</label>
-                        <input className='matches__one-match__result' type="number" name="bet1" />
+                        <label className='matches__one-match__team' htmlFor="">{teams[team1 - 1].name}</label>
+                        <input className='matches__one-match__result' type="number" name="bet1" placeholder={result1} />
                         :
-                        <input className='matches__one-match__result' type="number" name="bet2" />
-                        <label className='matches__one-match__team' htmlFor="">{teams[match.team2 - 1].name}</label>
+                        <input className='matches__one-match__result' type="number" name="bet2" placeholder={result2} />
+                        <label className='matches__one-match__team' htmlFor="">{teams[team2 - 1].name}</label>
+                        <input type='hidden' name='user' value={name} />
+                        <input type='hidden' name='date' value={date} />
+                        <input type='hidden' name='id' value={id} />
                     </div>
-                    <p className='matches__date'>{match.date}</p>
+                    <p className='matches__date'>{date}</p>
                     { orientation === 'portrait' || orientation === 'portrait-tablet' || window.innerWidth < 860 ? null :
                         <button
                             className='matches__details'
                             onClick={handleClick}
-                            onMouseEnter={() => handleDetails(match.id)}
+                            onMouseEnter={() => handleDetails(id)}
                             onMouseLeave={() => handleDetails(null)}
                             ref={buttonRef}>
                             szczegóły
-                        {activeDetails === match.id ? showDetails(match) : null}
+                            {activeDetails === id ? <MatchDetails match={match} stadiums={stadiums} teams={teams} detailRef={detailRef} /> : null}
                         </button>
                     }
                 </div>
@@ -177,9 +128,9 @@ const Bet = () => {
         <form method='POST' action='http://localhost:3080/bet' className='bet'>
             <h3 className='bet__title'>Najbliższe mecze</h3>
             <div className='bet__form'>
-                {isLoading ? <Loading /> : nextMatch(sorted)}
+                {isLoading || !bets ? <Loading /> : nextMatch(sorted)}
             </div>
-            <button className="bet__submit" type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : () => setIsLoginActive(!isLoginActive)}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
+            <button className='bet__submit' type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : () => setIsLoginActive(!isLoginActive)}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
         </form>
     )
 }
