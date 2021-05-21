@@ -45,5 +45,5 @@ const getGroups = async () => {
 
 module.exports = {
     getTeams,
-    getGroups
+    getGroups,
 }

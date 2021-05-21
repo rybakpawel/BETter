@@ -12,6 +12,26 @@ const teamsSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    wins: {
+        type: Number,
+        default: 0
+    },
+    ties: {
+        type: Number,
+        default: 0
+    },
+    loses: {
+        type: Number,
+        default: 0
+    },
+    goalsScored: {
+        type: Number,
+        default: 0
+    },
+    goalsLost: {
+        type: Number,
+        default: 0
+    },
 }, { collection: 'teams'});
 
 module.exports = mongoose.model('Teams', teamsSchema);

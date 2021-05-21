@@ -19,7 +19,6 @@ const Bet = () => {
     const [sorted, setSorted] = useState(null)
     const [teams, setTeams] = useState(null)
     const [stadiums, setStadiums] = useState(null)
-    const [betss, setBets] = useState(null)
     const [activeDetails, setActiveDetails] = useState(null)
     const [mousePosition, setMousePosition] = useState(
         {
@@ -59,7 +58,6 @@ const Bet = () => {
         setSorted(data.sortByDate)
         setTeams(data.teams)
         setStadiums(data.stadiums)
-        // setBets(data.bets)
         setIsLoading(false);
     }
 
@@ -87,20 +85,22 @@ const Bet = () => {
             }
 
 
-            bets.forEach((bet) => {
-                if (id === bet.id) {
-                    result1 = bet.result1
-                    result2 = bet.result2
-                }
-            })
+            if (bets) {
+                bets.forEach((bet) => {
+                    if (id === bet.id) {
+                        result1 = bet.result1
+                        result2 = bet.result2
+                    }
+                })
+            }
 
             return (
                 <div className='matches bet__form__matches' key={id}>
                     <div className='matches__one-match'>
                         <label className='matches__one-match__team' htmlFor="">{teams[team1 - 1].name}</label>
-                        <input className='matches__one-match__result' type="number" name="bet1" placeholder={result1} />
+                        <input className='matches__one-match__result' type="number" name="bet1" placeholder={result1 ? result1 : null} />
                         :
-                        <input className='matches__one-match__result' type="number" name="bet2" placeholder={result2} />
+                        <input className='matches__one-match__result' type="number" name="bet2" placeholder={result2 ? result2 : null} />
                         <label className='matches__one-match__team' htmlFor="">{teams[team2 - 1].name}</label>
                         <input type='hidden' name='user' value={name} />
                         <input type='hidden' name='date' value={date} />
@@ -128,7 +128,7 @@ const Bet = () => {
         <form method='POST' action='http://localhost:3080/bet' className='bet'>
             <h3 className='bet__title'>Najbliższe mecze</h3>
             <div className='bet__form'>
-                {isLoading || !bets ? <Loading /> : nextMatch(sorted)}
+                {isLoading && !bets ? <Loading /> : nextMatch(sorted)}
             </div>
             <button className='bet__submit' type={isLogged ? 'submit' : 'button'} onClick={isLogged ? null : () => setIsLoginActive(!isLoginActive)}>{isLogged ? 'Zatwierdź' : 'Zaloguj się'}</button>
         </form>

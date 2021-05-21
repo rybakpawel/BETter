@@ -51,7 +51,7 @@ const Competition = () => {
     const loadData = async () => {
         const response = await fetch('/competition')
         const data = await response.json()
-        setSortedMatches(data.sortByDate)
+        setSortedMatches(data.nextMatches)
         setTeams(data.teams)
         setUsers(data.users)
         setIsLoading(false);
@@ -134,7 +134,6 @@ const Competition = () => {
 
             let betsSortedById = [];
             for (let i = 0; i < user.bets.length; i++) {
-
                 let bet = user.bets[matches[i].id - 1]
                 betsSortedById.push(bet)
             }

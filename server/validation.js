@@ -4,7 +4,7 @@ const registerValidation = data => {
     const schema = Joi.object({
         login: Joi.string()
             .required()
-            .min(6)
+            .min(3)
             .messages({
                 'string.base': `Login powinien być tekstem`,
                 'string.empty': `Wprowadź login`,

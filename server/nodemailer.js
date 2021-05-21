@@ -13,7 +13,7 @@ const sendEmail = (email, login) => {
         from: 'betterapp.euro2021@gmail.com',
         to: email,
         subject: 'BETter',
-        text: `Witaj ${login}! Pozostał ostatni krok do tego żeby rejestracja przebiegła pomyślnie. Kliknij w wygenerowany link aby aktywować swoje konto i mieć dostęp do całego serwisu.`
+        text: `Witaj w BETter, ${login}! Pozostał ostatni krok do tego żeby rejestracja przebiegła pomyślnie. Kliknij w wygenerowany link aby aktywować swoje konto i mieć dostęp do całego serwisu.`
     }
     
     transporter.sendMail(options, (err, info) => {

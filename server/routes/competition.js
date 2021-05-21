@@ -1,16 +1,16 @@
 const router = require('express').Router();
 
-const { getSortByDate } = require('../controllers/groups');
+const { getNextMatches } = require('../controllers/groups');
 const { getTeams } = require('../controllers/teams');
 const getUsers = require('../controllers/users');
 
 const getData = async () => {
     try {                                               
-        const sortByDate = await getSortByDate()
+        const nextMatches = await getNextMatches()
         const teams = await getTeams()
         const users = await getUsers()
  
-        module.exports.sortByDate = sortByDate
+        module.exports.nextMatches = nextMatches
         module.exports.teams = teams
         module.exports.users = users
     } catch {
@@ -23,7 +23,7 @@ getData();
 router.get('/', (req, res) => {
     res.send({
         teams: router.teams,
-        sortByDate: router.sortByDate,
+        nextMatches: router.nextMatches,
         users: router.users,
     })
 })

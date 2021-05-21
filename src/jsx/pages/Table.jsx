@@ -6,7 +6,6 @@ import Loading from '../components/Loading';
 const Table = () => {
 
     const [isLoading, setIsLoading] = useState(true)
-    const [allGroups, setAllGroups] = useState(null)
     const [groups, setGroups] = useState(null)
     const [selected, setSelected] = useState(0)
 
@@ -17,7 +16,6 @@ const Table = () => {
     const loadData = async () => {
         const response = await fetch('/table')
         const data = await response.json()
-        setAllGroups(data.allMatches)
         setGroups(data.groups)
         setIsLoading(false);
     }
@@ -30,48 +28,8 @@ const Table = () => {
     }
 
     const handleTeam = (team) => {
-        const teamMatches = allGroups.filter(match => {
-            return match.team1 === team.id || match.team2 === team.id
-        })
 
-        let numberOfMatches = 0;
-        let numberOfWins = 0;
-        let numberOfTies = 0;
-        let numberOfLosts = 0;
-        let teamGoals = 0;
-        let rivalGoals = 0;
-        let numberOfPoints = 0;
-
-        teamMatches.forEach(match => {
-            if (match.result1 >= 0 || match.result2 >= 0) {
-                numberOfMatches++
-                if (team.id === match.team1) {
-                    if (match.result1 > match.result2) {
-                        numberOfWins++
-                        numberOfPoints += 3
-                    }
-                    else if (match.result1 === match.result2) {
-                        numberOfTies++
-                        numberOfPoints += 1
-                    }
-                    else numberOfLosts++
-                    teamGoals += match.result1
-                    rivalGoals += match.result2
-                } else if (team.id === match.team2) {
-                    if (match.result2 > match.result1) {
-                        numberOfWins++
-                        numberOfPoints += 3
-                    }
-                    else if (match.result2 === match.result1) {
-                        numberOfTies++
-                        numberOfPoints += 1
-                    }
-                    else numberOfLosts++
-                    teamGoals += match.result2
-                    rivalGoals += match.result1
-                }
-            }
-        })
+        const { name, numberOfMatches, wins, ties, loses, goalsScored, goalsLost, points } = team
 
         tablePosition++;
 
@@ -79,15 +37,15 @@ const Table = () => {
             <div className='table__group__position'>
                 <div>
                     <p>{`${tablePosition}.`}</p>
-                    <p>{team.name}</p>
+                    <p>{name}</p>
                 </div>
                 <div>
                     <p>{numberOfMatches}</p>
-                    <p>{numberOfWins}</p>
-                    <p>{numberOfTies}</p>
-                    <p>{numberOfLosts}</p>
-                    <p>{`${teamGoals}-${rivalGoals}`}</p>
-                    <p>{numberOfPoints}</p>
+                    <p>{wins}</p>
+                    <p>{ties}</p>
+                    <p>{loses}</p>
+                    <p>{`${goalsScored}-${goalsLost}`}</p>
+                    <p>{points}</p>
                 </div>
             </div>
         )
