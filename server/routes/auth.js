@@ -15,6 +15,7 @@ let registerErrorMsg = {
 }
 
 let loginErrorMsg = null
+let isLoginActive = false
 
 router.post('/register', async (req, res) => {
     try {
@@ -63,19 +64,28 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { error } = loginValidation(req.body);
-    if (error) return res.status(400).send(error.details[0].message);
+    if (error) {
+        loginErrorMsg = error.details[0].message
+        isLoginActive = true
+        return res.redirect('http://localhost:3000/')
+    } 
 
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
         loginErrorMsg = 'Nie istnieje konto o podanym e-mailu'
+        isLoginActive = true
         return res.redirect('http://localhost:3000/')
     }
 
     const validPass = await bcrypt.compare(req.body.password, user.password);
     if (!validPass) {
         loginErrorMsg = 'Nieprawidłowe hasło'
+        isLoginActive = true
         return res.redirect('http://localhost:3000/')
     }
+
+    isLoginActive = false
+    loginErrorMsg = null
 
     const token = jwt.sign({ 
         _id: user._id, 
@@ -94,7 +104,10 @@ router.get('/register', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.send(loginErrorMsg)
+    res.send({
+        loginErrorMsg,
+        isLoginActive
+    })
 })
 
 router.get('/logout', (req, res) => {

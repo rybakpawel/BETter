@@ -46,14 +46,19 @@ function App() {
   }, [])
 
   const loadData = async () => {
-    const response = await fetch('/main')
-    const data = await response.json()
+    const responseMain = await fetch('/main')
+    const dataMain = await responseMain.json()
+
+    const responseLogin = await fetch('/user/login')
+    const dataLogin = await responseLogin.json()
 
     setAuth({
-      isLogged: data.isLogged,
-      name: data.name,
-      bets: data.bets
+      isLogged: dataMain.isLogged,
+      name: dataMain.name,
+      bets: dataMain.bets
     })
+
+    setIsLoginActive(dataLogin.isLoginActive)
   }
 
   const changeOrientation = () => {

@@ -27,13 +27,13 @@ const LogIn = () => {
         try {
             const response = await fetch('/user/login')
             const data = await response.json()
-            console.log(response)
-            if (data) setErrorMessage(data)
+
+            if (data.loginErrorMsg) setErrorMessage(data.loginErrorMsg)
             else setErrorMessage(null)
+
         } catch {
             console.log(':(')
         }
-
     }
 
     useEffect(() => {

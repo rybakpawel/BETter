@@ -21,19 +21,26 @@ const saveStatistics = async () => {
         const teams = await getTeams()
 
         const teamStatistics = teams.map((team) => {
-            Object.entries(team).forEach(([key, value]) => {
-                if (key !== '_id' && key !== 'id' && key !== 'name' && key !== 'group') value = 0
+            
+            Object.entries(team.toObject()).forEach(([key, value]) => {
+                if (key !== '_id' && key !== 'id' && key !== 'name' && key !== 'group') value = 0 
             })
 
             const teamMatches = allMatches.filter(match => {
                 return match.team1 === team.id || match.team2 === team.id
             })
-            team.points = 0
+ 
+            team.points = 0                          // do poprawy metodą z linii 25
+            team.numberOfMatches = 0
+            team.wins = 0
+            team.ties = 0
+            team.loses = 0
+            team.goalsScored = 0
+            team.goalsLost = 0
+
             teamMatches.forEach(match => {
     
                 const { result1, result2, team1, team2 } = match
-
-                
                 
                 if (result1 >= 0 || result2 >= 0) {
                     team.numberOfMatches++

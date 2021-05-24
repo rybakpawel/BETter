@@ -49,10 +49,17 @@ const loginValidation = data => {
         email: Joi.string()
             .required()
             .min(6)
-            .email(),
+            .email()
+            .messages({
+                'string.email': `Nieprawidłowy adres e-mail`,
+                'string.empty': `Wprowadź e-mail`,
+            }),
         password: Joi.string()
             .required()
-            .min(6),
+            .min(6)
+            .messages({
+                'string.empty': `Wprowadź hasło`,
+            }),
     });
 
     return schema.validate(data)
